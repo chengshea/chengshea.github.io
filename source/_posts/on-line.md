@@ -25,7 +25,7 @@ shadowsocks
 ```
 $sudo pip install shadowsocks 
 ```
-
+ <!--more--> 
 ### 配置
 ####  服务端
 ss.json

@@ -31,7 +31,7 @@ $sudo node -v #当用root执行，commond not found
 #mousepad  ~/.bashrc
 alias sudo='sudo env PATH=$PATH'
 ```
-
+ <!--more--> 
 ### git
 
 ``` bash
