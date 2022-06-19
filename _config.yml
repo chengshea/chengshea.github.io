@@ -20,7 +20,8 @@ root: /
 
 ####分类方式
 #permalink: :year/:month/:day/:title/
-permalink: :category/:title/
+#permalink: :category/:title/
+permalink: :title/
 #permalink_defaults:
 
 # Directory

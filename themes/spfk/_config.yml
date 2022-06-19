@@ -102,9 +102,9 @@ left_col_width: 300
 # Keep TOC title on the same line | 
 toc_nowrap: false
 
-# 自定义"阅读全文"链接按钮的显示文字
+# 自定义"阅读全文"链接按钮的显示文字  <!--more--> 
 # Customize the text on excerpt link
-excerpt_link: 大航海 #修改more>>的文字
+excerpt_link: 进入详情  #修改more>>的文字 
 
 # 是否显示边栏中的搜索框（仅样式，未添加搜索功能）
 # Search Box in left column
