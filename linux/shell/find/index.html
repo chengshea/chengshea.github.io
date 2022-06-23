@@ -12,7 +12,11 @@ find [OPTIONS] [查找起始路径] [查找条件] [处理动作]
 [OPTIONS]  忽略
 路径  相对    ./
   绝对   /
-条件">
+条件名称
+name    find  /  -name   mysql
+iname   find  /  -iname  cmake   忽略大小写
+regex  find / -regex  /docker*  正则模糊查询
+大小">
 <meta property="og:type" content="article">
 <meta property="og:title" content="find查找搜索">
 <meta property="og:url" content="http://yoursite.com/linux/shell/find/index.html">
@@ -24,8 +28,12 @@ find [OPTIONS] [查找起始路径] [查找条件] [处理动作]
 [OPTIONS]  忽略
 路径  相对    ./
   绝对   /
-条件">
-<meta property="og:updated_time" content="2022-06-12T13:56:42.885Z">
+条件名称
+name    find  /  -name   mysql
+iname   find  /  -iname  cmake   忽略大小写
+regex  find / -regex  /docker*  正则模糊查询
+大小">
+<meta property="og:updated_time" content="2022-06-20T13:09:00.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="find查找搜索">
 <meta name="twitter:description" content="查找
@@ -35,7 +43,11 @@ find [OPTIONS] [查找起始路径] [查找条件] [处理动作]
 [OPTIONS]  忽略
 路径  相对    ./
   绝对   /
-条件">
+条件名称
+name    find  /  -name   mysql
+iname   find  /  -iname  cmake   忽略大小写
+regex  find / -regex  /docker*  正则模糊查询
+大小">
   
     <link rel="alternative" href="/atom.xml" title="随心而记" type="application/atom+xml">
   
@@ -162,7 +174,7 @@ find [OPTIONS] [查找起始路径] [查找条件] [处理动作]
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 13.33px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 13.33px;">docker-engine</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/install/" style="font-size: 20px;">install</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/win/" style="font-size: 16.67px;">win</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/服务发现/" style="font-size: 10px;">服务发现</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/流程图/" style="font-size: 10px;">流程图</a> <a href="/tags/源/" style="font-size: 10px;">源</a> <a href="/tags/监控工具/" style="font-size: 10px;">监控工具</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a> <a href="/tags/选举/" style="font-size: 10px;">选举</a>
+                        <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 13.33px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 13.33px;">docker-engine</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/install/" style="font-size: 20px;">install</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/win/" style="font-size: 16.67px;">win</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/服务发现/" style="font-size: 10px;">服务发现</a> <a href="/tags/标签/" style="font-size: 16.67px;">标签</a> <a href="/tags/流程图/" style="font-size: 10px;">流程图</a> <a href="/tags/源/" style="font-size: 10px;">源</a> <a href="/tags/监控工具/" style="font-size: 10px;">监控工具</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a> <a href="/tags/选举/" style="font-size: 10px;">选举</a>
                     </div>
                 </section>
                 
@@ -282,12 +294,11 @@ find [OPTIONS] [查找起始路径] [查找条件] [处理动作]
 <p>[OPTIONS]  忽略</p>
 <h4 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h4><p>  相对    <code>./</code></p>
 <p>  绝对   <code>/</code></p>
-<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><a id="more"></a>
-<p>名称</p>
+<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><p>名称</p>
 <p><strong>name</strong>    <code>find  /  -name   mysql</code></p>
 <p><strong>iname</strong>   <code>find  /  -iname  cmake</code>   <em>忽略大小写</em></p>
 <p><strong>regex</strong>  <code>find / -regex  /docker*</code>  正则模糊查询</p>
-<p>大小</p>
+<p>大小<br><a id="more"></a></p>
 <p><strong>size</strong>   <code>find  / -size  +20M</code> </p>
 <p> <em>+</em> 大于    <em>-</em>小于    <em>K</em>  <em>M</em>  <em>G</em></p>
 <p><code>20M</code>       (20-1,20]</p>
@@ -328,7 +339,7 @@ find [OPTIONS] [查找起始路径] [查找条件] [处理动作]
         <p><span>本文标题:</span><a href="/linux/shell/find/">find查找搜索</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Cheng Shuai 的个人博客">Cheng Shuai</a></p>
         <p><span>发布时间:</span>2022年06月12日 - 21时55分</p>
-        <p><span>最后更新:</span>2022年06月12日 - 21时56分</p>
+        <p><span>最后更新:</span>2022年06月20日 - 21时09分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/linux/shell/find/" title="find查找搜索">http://yoursite.com/linux/shell/find/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/linux/shell/find/　　作者: Cheng Shuai" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -444,7 +455,7 @@ gitment.render('gitment')
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm初始/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services-discovery/zookeeper/选举机制/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/初识K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/内网穿透/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/评论/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/elk/安装ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/搭建hexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/https自己签名/">https签名</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm初始/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services-discovery/zookeeper/选举机制/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/初识K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/内网穿透/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/评论/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/elk/安装ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/搭建hexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https自己签名/">https签名</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
