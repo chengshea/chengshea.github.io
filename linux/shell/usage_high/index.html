@@ -6,7 +6,7 @@
   <title>磁盘或Inode使用率高 | 随心而记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Inode一个文件占用一个inode ，且inode是固定的，小文件过多就可能造成磁盘空间剩余挺多，但是inode耗尽的情况。
-1df -i  #查看当前系统inode使用情况
+df -i查看当前系统inode使用情况
 
 一级一级往下，统计inode文件数量。数字大就表示占用inode多">
 <meta property="og:type" content="article">
@@ -14,17 +14,17 @@
 <meta property="og:url" content="http://yoursite.com/linux/shell/usage_high/index.html">
 <meta property="og:site_name" content="随心而记">
 <meta property="og:description" content="Inode一个文件占用一个inode ，且inode是固定的，小文件过多就可能造成磁盘空间剩余挺多，但是inode耗尽的情况。
-1df -i  #查看当前系统inode使用情况
+df -i查看当前系统inode使用情况
 
 一级一级往下，统计inode文件数量。数字大就表示占用inode多">
 <meta property="og:image" content="http://yoursite.com/pics/inode-1-2848.png">
 <meta property="og:image" content="http://yoursite.com/pics/inode-3-4837.png">
 <meta property="og:image" content="http://yoursite.com/pics/inode-2-4723.png">
-<meta property="og:updated_time" content="2022-06-23T13:08:12.446Z">
+<meta property="og:updated_time" content="2022-07-16T07:37:55.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="磁盘或Inode使用率高">
 <meta name="twitter:description" content="Inode一个文件占用一个inode ，且inode是固定的，小文件过多就可能造成磁盘空间剩余挺多，但是inode耗尽的情况。
-1df -i  #查看当前系统inode使用情况
+df -i查看当前系统inode使用情况
 
 一级一级往下，统计inode文件数量。数字大就表示占用inode多">
 <meta name="twitter:image" content="http://yoursite.com/pics/inode-1-2848.png">
@@ -154,7 +154,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 12.5px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 12.5px;">docker-engine</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/install/" style="font-size: 20px;">install</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/shell/" style="font-size: 12.5px;">shell</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/win/" style="font-size: 15px;">win</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/服务发现/" style="font-size: 10px;">服务发现</a> <a href="/tags/标签/" style="font-size: 17.5px;">标签</a> <a href="/tags/流程图/" style="font-size: 10px;">流程图</a> <a href="/tags/源/" style="font-size: 10px;">源</a> <a href="/tags/监控工具/" style="font-size: 10px;">监控工具</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a> <a href="/tags/选举/" style="font-size: 10px;">选举</a>
+                        <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 12.5px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 12.5px;">docker-engine</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/install/" style="font-size: 17.5px;">install</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/kubernetes/" style="font-size: 10px;">kubernetes</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/mysql/" style="font-size: 12.5px;">mysql</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/redis/" style="font-size: 12.5px;">redis</a> <a href="/tags/redis-cluster/" style="font-size: 10px;">redis-cluster</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/shell/" style="font-size: 12.5px;">shell</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/traefik/" style="font-size: 10px;">traefik</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/win/" style="font-size: 15px;">win</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/服务发现/" style="font-size: 10px;">服务发现</a> <a href="/tags/标签/" style="font-size: 20px;">标签</a> <a href="/tags/流程图/" style="font-size: 10px;">流程图</a> <a href="/tags/源/" style="font-size: 10px;">源</a> <a href="/tags/监控工具/" style="font-size: 10px;">监控工具</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a> <a href="/tags/选举/" style="font-size: 10px;">选举</a>
                     </div>
                 </section>
                 
@@ -268,13 +268,13 @@
       
           
         <h2 id="Inode"><a href="#Inode" class="headerlink" title="Inode"></a>Inode</h2><p><strong>一个文件占用一个inode ，且inode是固定的，小文件过多就可能造成磁盘空间剩余挺多，但是inode耗尽的情况。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df -i  #查看当前系统inode使用情况</div></pre></td></tr></table></figure>
+<h3 id="df-i"><a href="#df-i" class="headerlink" title="df -i"></a>df -i</h3><p>查看当前系统inode使用情况</p>
 <p><img src="/pics/inode-1-2848.png" alt=""></p>
 <p>一级一级往下，统计inode文件数量。数字大就表示占用inode多</p>
 <a id="more"></a>
 <p>如果命令在那个目录卡住,表示该目录,文件特多,ctrl+c停止,从该目录开始排查</p>
 <p><img src="/pics/inode-3-4837.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for i in /home/* ; do echo $i; find $i | wc -l; done</div></pre></td></tr></table></figure>
+<h3 id="wc-l"><a href="#wc-l" class="headerlink" title="wc  -l"></a>wc  -l</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">for i in /home/* ; do echo $i; find $i | wc -l; done</div></pre></td></tr></table></figure>
 <p><img src="/pics/inode-2-4723.png" alt=""></p>
 <p>删除</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find  /home/go/test/  -maxdepth 1  -type f   -mtime +0   -exec  rm  -rf  &#123;&#125; \;</div></pre></td></tr></table></figure>
@@ -285,12 +285,36 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#卸载</div><div class="line">umount /home/cs/go </div><div class="line">#建立文件系统，指定inode节点数 </div><div class="line">mkfs.ext3 /dev/sda6 -N 18276352 </div><div class="line">#修改fstab文件 </div><div class="line">vim /etc/fstab </div><div class="line">/dev/sda6 /home/cs/go ext3 defaults 1 2 </div><div class="line">#重新加载并检查挂载文件 </div><div class="line">mount -a </div><div class="line">#查看修改后的inode参数 </div><div class="line">dumpe2fs -h /dev/sda6 | grep node</div></pre></td></tr></table></figure>
 <p>多核cpu生成百万文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/go/test</div><div class="line">seq 1000000 | xargs -i  -P 0 dd if=/dev/urandom of=&#123;&#125;.txt bs=1024 count=1</div></pre></td></tr></table></figure>
-<h2 id="disk"><a href="#disk" class="headerlink" title="disk"></a>disk</h2><p><strong>df -h</strong></p>
+<h2 id="disk"><a href="#disk" class="headerlink" title="disk"></a>disk</h2><h3 id="df-h"><a href="#df-h" class="headerlink" title="df  -h"></a>df  -h</h3><p>排查目录</p>
+<p>du -sh * | sort  -nr | head -5</p>
 <p>查找大于1G的文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find /  -type f -size +1G</div></pre></td></tr></table></figure>
 <p> 没有大文件,查看已经删除的文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsof -n |grep deleted</div></pre></td></tr></table></figure>
 <p>删除的文件有程序在使用,一直没有释放掉,kill掉pid</p>
+<h2 id="cpu"><a href="#cpu" class="headerlink" title="cpu"></a>cpu</h2><p>ps -aux | sort -k3nr | head -5</p>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p> shift+p    切到cpu排序高到低</p>
+<h3 id="tid"><a href="#tid" class="headerlink" title="tid"></a>tid</h3><p>ps -Lfp pid或者ps -mp pid -o THREAD，tid，time或者top -Hp pid</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -mp $pid -o THREAD，tid，time | sort -nr</div></pre></td></tr></table></figure>
+<p>#线程ID转成16进制用于查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ printf &quot;%x\n&quot;  $tid</div><div class="line">a221</div></pre></td></tr></table></figure>
+<h3 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jstack $pid | grep &quot;a221&quot;  -A  30</div></pre></td></tr></table></figure>
+<blockquote>
+<p>-A  -B -C(大写)  后面都跟阿拉伯数字<br>-A是显示匹配后和它后面的n行。after<br>-B是显示匹配行和它前面的n行。 before<br>-C是匹配行和它前后各n行。 context</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep $name</div><div class="line">jstack $pid &gt;&gt; ./dump.log</div></pre></td></tr></table></figure>
+<h3 id="Thread-Dump"><a href="#Thread-Dump" class="headerlink" title="Thread Dump"></a>Thread Dump</h3><p><strong><em>\</em>kill -3 PID命令只能打印那一瞬间java进程的堆栈信息**</strong>，适合在服务器响应慢，cpu、内存快速飙升等异常情况下使用，可以方便地定位到导致异常发生的java类，解决如死锁、连接超时等原因导致的系统异常问题。<strong>该命令不会杀死进程。</strong></p>
+<ul>
+<li>tomcat  堆栈信息会打印在catalina.out</li>
+<li>nohup启动 堆栈信息会在nohup.out</li>
+</ul>
+<h2 id="mem"><a href="#mem" class="headerlink" title="mem"></a>mem</h2><h3 id="free-m"><a href="#free-m" class="headerlink" title="free -m"></a>free -m</h3><p>ps -aux | sort -k4nr | head -5</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>arthas  </p>
+<p>下载 <a href="https://github.com/alibaba/arthas/releases" target="_blank" rel="external">https://github.com/alibaba/arthas/releases</a></p>
+<p>文档 <a href="https://arthas.aliyun.com/doc/advanced-use.html" target="_blank" rel="external">https://arthas.aliyun.com/doc/advanced-use.html</a></p>
+<p>jvisualvm</p>
+<p>${JDK_HOME}\bin\jvisualvm</p>
+<p><a href="https://www.cnblogs.com/mzq123/p/11166640.html" target="_blank" rel="external">https://www.cnblogs.com/mzq123/p/11166640.html</a></p>
 
       
     </div>
@@ -302,7 +326,7 @@
         <p><span>本文标题:</span><a href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Cheng Shuai 的个人博客">Cheng Shuai</a></p>
         <p><span>发布时间:</span>2022年06月23日 - 20时26分</p>
-        <p><span>最后更新:</span>2022年06月23日 - 21时08分</p>
+        <p><span>最后更新:</span>2022年07月16日 - 15时37分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/linux/shell/usage_high/" title="磁盘或Inode使用率高">http://yoursite.com/linux/shell/usage_high/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/linux/shell/usage_high/　　作者: Cheng Shuai" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -340,7 +364,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inode"><span class="toc-number">1.</span> <span class="toc-text">Inode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#disk"><span class="toc-number">2.</span> <span class="toc-text">disk</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Inode"><span class="toc-number">1.</span> <span class="toc-text">Inode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#df-i"><span class="toc-number">1.1.</span> <span class="toc-text">df -i</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wc-l"><span class="toc-number">1.2.</span> <span class="toc-text">wc  -l</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#disk"><span class="toc-number">2.</span> <span class="toc-text">disk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#df-h"><span class="toc-number">2.1.</span> <span class="toc-text">df  -h</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cpu"><span class="toc-number">3.</span> <span class="toc-text">cpu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#top"><span class="toc-number">3.1.</span> <span class="toc-text">top</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tid"><span class="toc-number">3.2.</span> <span class="toc-text">tid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jstack"><span class="toc-number">3.3.</span> <span class="toc-text">jstack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread-Dump"><span class="toc-number">3.4.</span> <span class="toc-text">Thread Dump</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mem"><span class="toc-number">4.</span> <span class="toc-text">mem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#free-m"><span class="toc-number">4.1.</span> <span class="toc-text">free -m</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">5.</span> <span class="toc-text">工具</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -418,7 +442,7 @@ gitment.render('gitment')
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/lang/sawtl/">强弱类型语言</a></li><li class="post-list-item"><a class="post-list-link" href="/database/mongo/">mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/design-pattern/singleton/">singleton单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker1/">常用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm初始/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services/zookeeper/选举机制/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/初识K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/内网穿透/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/评论/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/安装ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/搭建hexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https自己签名/">https签名</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/linux/shell/iptable/">iptable防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/grep/">grep常用过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/tree/">tree工具</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/maven/">maven介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s01/">k8s集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/traefik/">traefik</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/redis-cluster/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/redis/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/redis/redis-cluster/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my/">mysql配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/install/">mysql安装</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/pip/">pip包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/services/container/tomcat/">tomcat优化</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/apt/">apt</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/sawtl/">强弱类型语言</a></li><li class="post-list-item"><a class="post-list-link" href="/database/mongo/">mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/design-pattern/singleton/">singleton单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker1/">常用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm初始/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services/zookeeper/选举机制/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/初识K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/内网穿透/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/评论/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/安装ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/搭建hexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https自己签名/">https签名</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
