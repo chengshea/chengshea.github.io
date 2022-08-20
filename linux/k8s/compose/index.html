@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>docker-compose | 个人杂记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装git下载地址:https://github.com/docker/compose/releases 推荐pip安装 123sudo pip install -U docker-composechmod +x /usr/local/bin/docker-composedocker-compose -version">
+<meta name="keywords" content="install,docker-engine,docker compose">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-compose">
+<meta property="og:url" content="https://chengshea.github.io/linux/k8s/compose/index.html">
+<meta property="og:site_name" content="个人杂记">
+<meta property="og:description" content="安装git下载地址:https://github.com/docker/compose/releases 推荐pip安装 123sudo pip install -U docker-composechmod +x /usr/local/bin/docker-composedocker-compose -version">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2022-08-07T08:34:03.144Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker-compose">
+<meta name="twitter:description" content="安装git下载地址:https://github.com/docker/compose/releases 推荐pip安装 123sudo pip install -U docker-composechmod +x /usr/local/bin/docker-composedocker-compose -version">
+  
+    <link rel="alternative" href="/atom.xml" title="个人杂记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+
+      <link rel="stylesheet" href="/css/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+   <!-- 评论 -->
+<link rel="stylesheet" href="/css/sreach/sreach.css">
+   <link rel="stylesheet" href="/css/gitment.css">
+   <script src="/js/gitment.js"></script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Cheng Shuai</a></h1>
+        </hgroup>
+
+        
+ 
+     
+	<div id="id_search"   onclick = "document.getElementById('local_search').style.display='block'">
+ <span class="search-icon">
+		    <i class="fa fa-search"> </i>
+		  </span>
+
+搜索
+</div>
+
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+
+
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+
+
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+
+
+                     
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+
+
+                    </div>
+                    
+                </div>
+
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+                 
+        
+
+   
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">归档</a></li>
+                        
+                            <li><a href="/tags">分类&amp;标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/chengshea" title="github">github</a>
+                            
+                                <a class="fl google" target="_blank" href="mailto:cs876321722@gmail.com?subject=github%20subject" title="google">google</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 13.33px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 13.33px;">docker-engine</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flanneld/" style="font-size: 10px;">flanneld</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/formula/" style="font-size: 10px;">formula</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/grammar/" style="font-size: 10px;">grammar</a> <a href="/tags/grep/" style="font-size: 10px;">grep</a> <a href="/tags/harbor/" style="font-size: 10px;">harbor</a> <a href="/tags/helm/" style="font-size: 10px;">helm</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/install/" style="font-size: 20px;">install</a> <a href="/tags/iptable/" style="font-size: 10px;">iptable</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/kubeadm/" style="font-size: 10px;">kubeadm</a> <a href="/tags/kubectl/" style="font-size: 10px;">kubectl</a> <a href="/tags/kubelet/" style="font-size: 10px;">kubelet</a> <a href="/tags/kubernetes/" style="font-size: 13.33px;">kubernetes</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mvn/" style="font-size: 10px;">mvn</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/redis-cluster/" style="font-size: 13.33px;">redis-cluster</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/singleton/" style="font-size: 10px;">singleton</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/tar/" style="font-size: 10px;">tar</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/traefik/" style="font-size: 10px;">traefik</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/usage-high/" style="font-size: 10px;">usage_high</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/win/" style="font-size: 16.67px;">win</a> <a href="/tags/xz/" style="font-size: 10px;">xz</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/服务发现/" style="font-size: 10px;">服务发现</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/流程图/" style="font-size: 10px;">流程图</a> <a href="/tags/源/" style="font-size: 10px;">源</a> <a href="/tags/监控工具/" style="font-size: 10px;">监控工具</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a> <a href="/tags/选举/" style="font-size: 10px;">选举</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">theme author</a>
+                    
+                    </div>
+                </section>
+                
+
+
+                
+                   
+		        <section class="switch-part switch-part4">
+		        
+               <div id="js-aboutme">八哥，你跑那里去了！！！</div>
+                </section>
+                    
+
+            </div>
+
+
+        </div>
+
+    </header>   
+            
+</div>
+    </div>
+
+
+<div id="local_search" class="search-popup" >
+  <div class="search-header">
+	
+	    <i class="fa fa-search"> </i> <input id="local-search-input" class="search-input" placeholder="搜索..." spellcheck="false" type="search"/>
+	  
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Cheng Shuai</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Cheng Shuai</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">归档</a></li>
+                
+                    <li><a href="/tags">分类&amp;标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/chengshea" title="github">github</a>
+                    
+                        <a class="google" target="_blank" href="mailto:cs876321722@gmail.com?subject=github%20subject" title="google">google</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-linux/k8s/compose" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/linux/k8s/compose/" class="article-date">
+      <time datetime="2017-02-27T04:08:32.000Z" itemprop="datePublished">2017-02-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker-compose
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a><a class="article-category-link" href="/categories/linux/k8s/">k8s</a><a class="article-category-link" href="/categories/linux/k8s/docker/">docker</a>
+    </div>
+
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-compose/">docker compose</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-engine/">docker-engine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/">install</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>git下载地址:<a href="https://github.com/docker/compose/releases" target="_blank" rel="noopener">https://github.com/docker/compose/releases</a></p>
+<p>推荐pip安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install -U docker-compose</span><br><span class="line">chmod +x /usr/local/bin/docker-compose</span><br><span class="line">docker-compose -version</span><br></pre></td></tr></table></figure>
+
+  <a id="more"></a> 
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><blockquote>
+<p>build</p>
+</blockquote>
+<p>指定Dockerfile 文件,compose会利用它自动构建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">build: /path</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>command</p>
+</blockquote>
+<p>覆盖容器启动后默认命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">command:</span><br><span class="line">       - &quot;python&quot; </span><br><span class="line">       - &quot;neural_style.py&quot; </span><br><span class="line">       - &quot;--content&quot; </span><br><span class="line">       - &quot;/neural/input.jpg&quot;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>links</p>
+</blockquote>
+<p>链接其它服务的容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">links:</span><br><span class="line">    - redis</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ports</p>
+</blockquote>
+<p>暴露端口信息给宿主机,使用(host:container) 必须字符串格式,yaml解析涉及进制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ports:</span><br><span class="line">      - &quot;8888:8888&quot;</span><br><span class="line">      - &quot;127.0.0.1:8001:8001&quot;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>volumes</p>
+</blockquote>
+<p>挂载路径,宿主机(host:container);上访模式(host:container:ro)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">    - ~/tmp:/tmp/dir</span><br><span class="line">    -</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>volumes_from</p>
+</blockquote>
+<p>挂载容器或服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volumes_from:</span><br><span class="line">    - jupyter</span><br><span class="line">    - service_name</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>devices</p>
+</blockquote>
+<p>设配映射列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devices:</span><br><span class="line">    - &quot;/dev/nivida0:/dev/nivida0&quot;</span><br><span class="line">    - &quot;/dev/nivida1:/dev/nivida1&quot;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>depends_on</p>
+</blockquote>
+<p>express之间依赖关系,</p>
+<ul>
+<li><code>docker-compose up</code> 按照依赖顺序启动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">depends_on:</span><br><span class="line">    - elasticsearch</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>labels</p>
+</blockquote>
+<p>向docker容器添加元数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">labels:</span><br><span class="line">   - aliyun.gpu=2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其它</p>
+</blockquote>
+<p>docker run 支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cpu_shares: 73</span><br><span class="line">#指定工作目录</span><br><span class="line">working_dir: /code  </span><br><span class="line"></span><br><span class="line">entrypoint: /code/entrypoint.sh</span><br><span class="line">user: postgresql</span><br><span class="line">hostname: foo</span><br><span class="line">domainname: foo.com</span><br><span class="line">mem_limit: 1000000000</span><br><span class="line">privileged: true</span><br><span class="line">restart: always</span><br><span class="line">stdin_open: true</span><br><span class="line">tty: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;2&apos;</span><br><span class="line">services:</span><br><span class="line">  jupyter:</span><br><span class="line">    image: registry.cn-hangzhou.aliyuncs.com/denverdino/tensorflow:1.0.0</span><br><span class="line">    container_name: jupyter</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;8888:8888&quot;</span><br><span class="line">    environment:</span><br><span class="line">      - PASSWORD=tensorflow</span><br><span class="line">    volumes:</span><br><span class="line">      - &quot;/tmp/tensorflow_logs&quot;</span><br><span class="line">      - &quot;./notebooks:/root/notebooks&quot;</span><br><span class="line">    command:</span><br><span class="line">      - &quot;/run_jupyter.sh&quot;</span><br><span class="line">      - &quot;/root/notebooks&quot;</span><br><span class="line">  tensorboard:</span><br><span class="line">    image: registry.cn-hangzhou.aliyuncs.com/denverdino/tensorflow:1.0.0</span><br><span class="line">    container_name: tensorboard</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;6006:6006&quot;</span><br><span class="line">    volumes_from:</span><br><span class="line">      - jupyter</span><br><span class="line">    command:</span><br><span class="line">      - &quot;tensorboard&quot;</span><br><span class="line">      - &quot;--logdir&quot;</span><br><span class="line">      - &quot;/tmp/tensorflow_logs&quot;</span><br><span class="line">      - &quot;--host&quot;</span><br><span class="line">      - &quot;0.0.0.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>logstash</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">logstash:</span><br><span class="line">  image: logstash:2.4.1</span><br><span class="line">  command: /opt/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf</span><br><span class="line">  privileged: false</span><br><span class="line">  restart: always</span><br><span class="line">  ports:</span><br><span class="line">  - 21020:21020</span><br><span class="line">  volumes:</span><br><span class="line">  - /mnt/tinkle_data/logstash/logstash.conf:/etc/logstash/conf.d/logstash.conf</span><br></pre></td></tr></table></figure>
+
+<p>kibana</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">kibana:</span><br><span class="line">  image: daocloud.io/library/kibana:4.6.1</span><br><span class="line">  privileged: false</span><br><span class="line">  restart: always</span><br><span class="line">  ports:</span><br><span class="line">  - 5601:5601</span><br><span class="line">  volumes:</span><br><span class="line">  - /mnt/tinkle_data/kibana/kibana.yml:/opt/kibana/config/kibana.yml</span><br></pre></td></tr></table></figure>
+
+<p>elasticsearch</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">es:</span><br><span class="line">  restart: always</span><br><span class="line">  ports:</span><br><span class="line">    - &apos;9200:9200/tcp&apos;</span><br><span class="line">    - &apos;9300:9300/tcp&apos;</span><br><span class="line">  environment:</span><br><span class="line">    - LANG=C.UTF-8</span><br><span class="line">    - JAVA_HOME=/docker-java-home/jre</span><br><span class="line">    - TZ=Asia/ShangHai</span><br><span class="line">  memswap_limit: 0</span><br><span class="line">  labels:</span><br><span class="line">    aliyun.scale: &apos;1&apos;</span><br><span class="line">  shm_size: 0</span><br><span class="line">  image: &apos;elasticsearch:2.4.1&apos;</span><br><span class="line">  memswap_reservation: 0</span><br><span class="line">  volumes:</span><br><span class="line">    - &apos;/home/data/es:/usr/share/elasticsearch/data:rw&apos;</span><br><span class="line">    - &apos;/mnt/elasticsearch/plugins:/usr/share/elasticsearch/plugins:rw&apos;</span><br><span class="line">  kernel_memory: 0</span><br><span class="line">  mem_limit: 0</span><br></pre></td></tr></table></figure>
+
+<p>redis</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">redis:</span><br><span class="line">  image: redis:3.2.5</span><br><span class="line">  command: </span><br><span class="line">     -  /etc/redis/6379.conf</span><br><span class="line">  privileged: false</span><br><span class="line">  restart: always</span><br><span class="line">  ports:</span><br><span class="line">  - 6379:6379</span><br><span class="line">  volumes:</span><br><span class="line">  - /mnt/tinkle_data/redis/data:/data/</span><br><span class="line">  - /mnt/tinkle_data/redis/conf/6379.conf:/etc/redis/6379.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql:</span><br><span class="line">  image: &apos;mysql:5.7.17&apos;</span><br><span class="line">  ports:</span><br><span class="line">    - &apos;3306:3306&apos;</span><br><span class="line">  restart: always</span><br><span class="line">  environment:</span><br><span class="line">    - MYSQL_ROOT_PASSWORD=19930221</span><br><span class="line">  labels:</span><br><span class="line">    aliyun.scale: &apos;1&apos;</span><br><span class="line">  volumes:</span><br><span class="line">    - &apos;/home/data/mysql/mysql:/var/lib/mysql&apos;</span><br><span class="line">    - &apos;/home/data/mysql/conf/mysql.cnf:/etc/mysql/conf.d/mysql.cnf&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#docker-compose services  mysql的服务名</span><br><span class="line">jdbc_url=jdbc:mysql://服务名:3306/databasename</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/linux/k8s/compose/">docker-compose</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Cheng Shuai 的个人博客">Cheng Shuai</a></p>
+        <p><span>发布时间:</span>2017年02月27日 - 12时08分</p>
+        <p><span>最后更新:</span>2022年08月07日 - 16时34分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/linux/k8s/compose/" title="docker-compose">https://chengshea.github.io/linux/k8s/compose/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://chengshea.github.io/linux/k8s/compose/　　作者: Cheng Shuai" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/other/avd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          avd
+        
+      </div>
+    </a>
+  
+  
+    <a href="/linux/k8s/docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-number">3.</span> <span class="toc-text">示例</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+   <script src="/js/require-2.1.6.js"></script>
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitment"></div>
+<!-- 主页不要加载gitment -->
+
+<script>
+var gitment = new Gitment({
+owner: 'chengshea',
+repo: 'chengshea.github.io',
+oauth: {
+client_id: '3478952f5e3ade063629',
+client_secret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
+ },
+})
+gitment.render('gitment')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/other/avd/" title="上一篇: avd">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/linux/k8s/docker/" title="下一篇: docker">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/lang/node/npm/hexo/">hexo本地搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/decompress/">decompress解压/压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/download/">download工具命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/helm/">helm工具</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubelet/">kubelet组件</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/formula/">Mathjax公式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/harbor/">harbor镜像私库</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubeadm/">kubeadm容器化安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/flanneld/">flanneld虚拟网络</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s/">kubernetes部署结构</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/iptable/">iptable防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/grep/">grep常用过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/tree/">tree工具</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/maven/">maven介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s01/">k8s集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/traefik/">traefik</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/etcd/">etcd集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/redis/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/redis/redis-cluster/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my/">mysql配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/install/">mysql安装</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/pip/">pip包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/services/container/tomcat/">tomcat优化</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/apt/">apt</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/sawtl/">强弱类型语言</a></li><li class="post-list-item"><a class="post-list-link" href="/database/mongo/">mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/design-pattern/singleton/">singleton单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker1/">常用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/sed/">sed替换查找</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm初始/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services/zookeeper/选举机制/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/mdgrammar/">md语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/初识K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/内网穿透/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/npm/hexo/评论/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/安装ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/npm/hexo/搭建hexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https自己签名/">https签名</a></li></ul>
+    <script src="/js/require-2.1.6.js"></script>
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2022 Cheng Shuai
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="/js/require-2.1.6.js"></script>
+<script src="/js/jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+
+   <script type="text/javascript">
+    
+	var inputArea       = document.querySelector("#local-search-input");
+	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+	var getSearchFile = function(){
+	  searchFunc("/" + "search.json", 'local-search-input', 'local-search-result',"/");
+	}
+           
+          $(document).on('click', function(e) {
+		   var si= $(e.target).closest('#id_search').length;
+               var d= $(e.target).closest('#local_search').length;
+             var btnId = $(e.target).attr('class');
+              var cc=$('#local_search').css('display');
+          //  console.log(cc+" "+" "+btnId)//si==0 && d==0
+             if( si==0 && d==0){
+  
+               //  console.log('弹出框以外的部分被点击了');
+                     // 关闭弹框
+               //document.getElementById('local_search').style.display='none';
+               
+               $('#local_search').hide();
+                  }
+            
+
+       });
+
+
+  </script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>stream写法 | 个人杂记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="123456789public static void main(String[] args) &amp;#123;  ArrayList&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(Arrays.asList(&amp;quot;I&amp;quot;, &amp;quot;love&amp;quot;, &amp;quot;you&amp;quot;, &amp;quot;too&amp;quot;));  for(Str">
+<meta name="keywords" content="stream">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stream写法">
+<meta property="og:url" content="https://chengshea.github.io/lang/java/stream/index.html">
+<meta property="og:site_name" content="个人杂记">
+<meta property="og:description" content="123456789public static void main(String[] args) &amp;#123;  ArrayList&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(Arrays.asList(&amp;quot;I&amp;quot;, &amp;quot;love&amp;quot;, &amp;quot;you&amp;quot;, &amp;quot;too&amp;quot;));  for(Str">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://chengshea.github.io/pics/stream-1.png">
+<meta property="og:image" content="https://chengshea.github.io/pics/stream-type2.png">
+<meta property="og:updated_time" content="2022-07-30T09:29:12.809Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="stream写法">
+<meta name="twitter:description" content="123456789public static void main(String[] args) &amp;#123;  ArrayList&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(Arrays.asList(&amp;quot;I&amp;quot;, &amp;quot;love&amp;quot;, &amp;quot;you&amp;quot;, &amp;quot;too&amp;quot;));  for(Str">
+<meta name="twitter:image" content="https://chengshea.github.io/pics/stream-1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="个人杂记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+
+      <link rel="stylesheet" href="/css/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+   <!-- 评论 -->
+<link rel="stylesheet" href="/css/sreach/sreach.css">
+   <link rel="stylesheet" href="/css/gitment.css">
+   <script src="/js/gitment.js"></script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Cheng Shuai</a></h1>
+        </hgroup>
+
+        
+ 
+     
+	<div id="id_search"   onclick = "document.getElementById('local_search').style.display='block'">
+ <span class="search-icon">
+		    <i class="fa fa-search"> </i>
+		  </span>
+
+搜索
+</div>
+
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+
+
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+
+
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+
+
+                     
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+
+
+                    </div>
+                    
+                </div>
+
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+                 
+        
+
+   
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">归档</a></li>
+                        
+                            <li><a href="/tags">分类&amp;标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/chengshea" title="github">github</a>
+                            
+                                <a class="fl google" target="_blank" href="mailto:cs876321722@gmail.com?subject=github%20subject" title="google">google</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 13.33px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 13.33px;">docker-engine</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flanneld/" style="font-size: 10px;">flanneld</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/formula/" style="font-size: 10px;">formula</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/grammar/" style="font-size: 10px;">grammar</a> <a href="/tags/grep/" style="font-size: 10px;">grep</a> <a href="/tags/harbor/" style="font-size: 10px;">harbor</a> <a href="/tags/helm/" style="font-size: 10px;">helm</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/install/" style="font-size: 20px;">install</a> <a href="/tags/iptable/" style="font-size: 10px;">iptable</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/kubeadm/" style="font-size: 10px;">kubeadm</a> <a href="/tags/kubectl/" style="font-size: 10px;">kubectl</a> <a href="/tags/kubelet/" style="font-size: 10px;">kubelet</a> <a href="/tags/kubernetes/" style="font-size: 13.33px;">kubernetes</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mvn/" style="font-size: 10px;">mvn</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/redis-cluster/" style="font-size: 13.33px;">redis-cluster</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/singleton/" style="font-size: 10px;">singleton</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/tar/" style="font-size: 10px;">tar</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/traefik/" style="font-size: 10px;">traefik</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/usage-high/" style="font-size: 10px;">usage_high</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/win/" style="font-size: 16.67px;">win</a> <a href="/tags/xz/" style="font-size: 10px;">xz</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/服务发现/" style="font-size: 10px;">服务发现</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/流程图/" style="font-size: 10px;">流程图</a> <a href="/tags/源/" style="font-size: 10px;">源</a> <a href="/tags/监控工具/" style="font-size: 10px;">监控工具</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a> <a href="/tags/选举/" style="font-size: 10px;">选举</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">theme author</a>
+                    
+                    </div>
+                </section>
+                
+
+
+                
+                   
+		        <section class="switch-part switch-part4">
+		        
+               <div id="js-aboutme">八哥，你跑那里去了！！！</div>
+                </section>
+                    
+
+            </div>
+
+
+        </div>
+
+    </header>   
+            
+</div>
+    </div>
+
+
+<div id="local_search" class="search-popup" >
+  <div class="search-header">
+	
+	    <i class="fa fa-search"> </i> <input id="local-search-input" class="search-input" placeholder="搜索..." spellcheck="false" type="search"/>
+	  
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Cheng Shuai</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Cheng Shuai</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">归档</a></li>
+                
+                    <li><a href="/tags">分类&amp;标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/chengshea" title="github">github</a>
+                    
+                        <a class="google" target="_blank" href="mailto:cs876321722@gmail.com?subject=github%20subject" title="google">google</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-lang/java/stream" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/lang/java/stream/" class="article-date">
+      <time datetime="2022-06-03T09:58:03.000Z" itemprop="datePublished">2022-06-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      stream写法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/lang/">lang</a><a class="article-category-link" href="/categories/lang/java/">java</a>
+    </div>
+
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stream/">stream</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">  ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">  for(String str : list)&#123;</span><br><span class="line">      if(str.length()&gt;3)</span><br><span class="line">          System.out.println(str);</span><br><span class="line">  &#125;</span><br><span class="line">  list.forEach(str-&gt;System.out.println(str));</span><br><span class="line">  list.stream().filter(str-&gt;str.length()&gt;3).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>用stream的filter来替代if&#x2F;else业务逻辑</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i=0;i&lt;10;i++)&#123;</span><br><span class="line">    if(....)&#123;</span><br><span class="line">      //...........</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        //.......</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">list.stream().filter().limit(10).foreach();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><p><img src="/pics/stream-1.png"></p>
+<a id="more"></a>
+
+<h3 id="流创建"><a href="#流创建" class="headerlink" title="流创建"></a>流创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;String&gt; list = Arrays.asList(&quot;hello&quot;,&quot;world&quot;,&quot;stream&quot;);</span><br><span class="line">//创建顺序流</span><br><span class="line">Stream&lt;String&gt; stream = list.stream();</span><br><span class="line">//创建并行流</span><br><span class="line">Stream&lt;String&gt; parallelStream = list.parallelStream();</span><br></pre></td></tr></table></figure>
+
+<h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><p><strong><code>of()、iterate()、generate()</code></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream1 = Stream.of(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;);</span><br><span class="line">stream1.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">Stream&lt;Integer&gt; stream2 = Stream.iterate(0, i -&gt; i + 2).limit(3);</span><br><span class="line">stream2.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">Stream&lt;Boolean&gt; stream3 = Stream.generate(new Random()::nextBoolean).limit(3);</span><br><span class="line">stream3.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<p>并行流  多线程  把一个内容分成多个数据块 不同线程分别处理每个数据块的流,最后合并(<em>无序数据处理</em>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Integer&gt; findFirst = list.stream().parallel().filter( x -&gt; x&gt;4 ).findFirst();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以通过<code>parallel()</code>把顺序流转换成并行流</p>
+</blockquote>
+<p><img src="/pics/stream-type2.png"></p>
+<h3 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h3><h4 id="无状态（Stateless）"><a href="#无状态（Stateless）" class="headerlink" title="无状态（Stateless）"></a>无状态（Stateless）</h4><p>指元素的处理不受之前元素的影响</p>
+<h5 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h5><p><strong>筛选，是按照一定的规则校验流中的元素，将符合条件的元素提取到新的流中的操作</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.stream().filter(str-&gt;str.length()&gt;3).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<p>相当于if</p>
+<h5 id="映射-map、flatMap、peek"><a href="#映射-map、flatMap、peek" class="headerlink" title="映射(map、flatMap、peek)"></a>映射(map、flatMap、peek)</h5><h6 id="map"><a href="#map" class="headerlink" title="map"></a>map</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; out =  list.stream().</span><br><span class="line">       map(String::toUpperCase).</span><br><span class="line">       collect(Collectors.toList());</span><br><span class="line">System.out.println(out);//[I, LOVE, YOU, TOO]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">Test t = new Test();</span><br><span class="line"></span><br><span class="line">list.add(t.new Product(1, &quot;domestic phone&quot;, new BigDecimal(6899.99)));</span><br><span class="line">list.add(t.new Product(2, &quot;overseas notebook&quot;, new BigDecimal(14989.98)));</span><br><span class="line"></span><br><span class="line">String out =  list.stream().</span><br><span class="line"> //map(a-&gt;a.name.split(&quot; &quot;)[1]).//phone&amp;&amp;notebook</span><br><span class="line">map(a-&gt;a.name.replaceAll(&quot; &quot;, &quot;-&quot;)).//domestic-phone&amp;&amp;overseas-notebook</span><br><span class="line">collect(Collectors.joining(&quot;&amp;&amp;&quot;));</span><br><span class="line">System.out.println(out);</span><br></pre></td></tr></table></figure>
+
+<h6 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = Arrays.asList(&quot;a:b:c&quot;, &quot;1:3:5&quot;);</span><br><span class="line">List&lt;String&gt; listNew = list.stream().</span><br><span class="line">        flatMap(s -&gt; Arrays.stream(s.split(&quot;:&quot;)) ).</span><br><span class="line">        collect(Collectors.toList());</span><br><span class="line"> </span><br><span class="line">System.out.println(&quot;处理前的集合：&quot; + list);</span><br><span class="line">System.out.println(&quot;处理后的集合：&quot; + listNew);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>处理前的集合：[a:b:c, 1:3:5]<br>处理后的集合：[a, b, c, 1, 3, 5]</p>
+</blockquote>
+<h6 id="peek"><a href="#peek" class="headerlink" title="peek"></a>peek</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream = Stream.of(&quot;hello&quot;, &quot;world&quot;);</span><br><span class="line">stream.peek(System.out::println).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<p>终端操作。通常分为 <strong>最终的消费</strong> （<code>foreach</code> 之类的）和 <strong>归纳</strong> （<code>collect</code>）两类。</p>
+<h4 id="有状态（Stateful）"><a href="#有状态（Stateful）" class="headerlink" title="有状态（Stateful）"></a>有状态（Stateful）</h4><p>指该操作只有拿到所有元素之后才能继续下去</p>
+<h6 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h6><p>使用hashCode（）和equals（）方法来获取不同的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream = Stream.of(&quot;1&quot;, &quot;3&quot;,&quot;4&quot;,&quot;10&quot;,&quot;4&quot;,&quot;6&quot;,&quot;23&quot;,&quot;3&quot;);</span><br><span class="line">stream.distinct().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<h6 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Integer, String&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">map.put(1,&quot;phone&quot;);</span><br><span class="line">map.put(2,&quot;notebook&quot;);</span><br><span class="line">map.entrySet().stream().sorted(</span><br><span class="line">                Collections.reverseOrder(Map.Entry.comparingByKey())//倒序</span><br><span class="line">                //Comparator.comparing(e -&gt; e.getKey())//正序</span><br><span class="line">        ).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<h6 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;Integer&gt; stream = Stream.of(3,1,10,16,8,4,9);</span><br><span class="line">stream.limit(3).skip(2).forEach(System.out::print);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>limit(3)  Iloveyou</p>
+<p>skip(2)  you</p>
+</blockquote>
+<h3 id="终结操作"><a href="#终结操作" class="headerlink" title="终结操作"></a>终结操作</h3><h4 id="短路（Short-circuiting）"><a href="#短路（Short-circuiting）" class="headerlink" title="短路（Short-circuiting）"></a>短路（Short-circuiting）</h4><p>指遇到某些符合条件的元素就可以得到最终结果</p>
+<h6 id="anyMatch"><a href="#anyMatch" class="headerlink" title="anyMatch"></a>anyMatch</h6><p>Stream 中只要有一个元素符合传入的 predicate，返回 true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream.anyMatch(s-&gt;s==2)</span><br></pre></td></tr></table></figure>
+
+<h6 id="allMatch"><a href="#allMatch" class="headerlink" title="allMatch"></a>allMatch</h6><p>Stream 中全部元素符合传入的 predicate，返回 true</p>
+<h6 id="noneMatch"><a href="#noneMatch" class="headerlink" title="noneMatch"></a>noneMatch</h6><p>Stream 中没有一个元素符合传入的 predicate，返回 true</p>
+<h6 id="findFirst"><a href="#findFirst" class="headerlink" title="findFirst"></a>findFirst</h6><p>用于返回满足条件的第一个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">System.out.println(</span><br><span class="line">	list.stream().filter(s-&gt; s.length()&gt;2).findFirst().get()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h6 id="findAny"><a href="#findAny" class="headerlink" title="findAny"></a>findAny</h6><p>返回流中的任意元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(</span><br><span class="line">        list.parallelStream().filter(s-&gt; s.length()&gt;2).findAny().get()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>love 或 you</p>
+</blockquote>
+<p>并行数据多返回满足第一个</p>
+<h4 id="非短路（Unshort-circuiting）"><a href="#非短路（Unshort-circuiting）" class="headerlink" title="非短路（Unshort-circuiting）"></a>非短路（Unshort-circuiting）</h4><p>指必须处理完所有元素才能得到最终结果</p>
+<h6 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h6><p>reduce操作效率不高，因为它创建了大量的中间<code>String</code>和<code>StringBuilder</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream().</span><br><span class="line">	 	map(a-&gt;a.name.replaceAll(&quot; &quot;, &quot;-&quot;)).</span><br><span class="line">	reduce((str1, str2) -&gt; str1 + &quot;&amp;&amp;&quot; + str2).get();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>等价 collect(Collectors.joining(“&amp;&amp;”))</p>
+</blockquote>
+<h6 id="toArray"><a href="#toArray" class="headerlink" title="toArray"></a>toArray</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> Product[] array = list.stream().toArray(Product[]::new);</span><br><span class="line">//Arrays.stream(array).sorted(Comparator.comparing(s&gt;s.getId())).forEach(System.out::println);</span><br><span class="line"> Arrays.stream(array).filter(s-&gt;s.id&gt;1).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/lang/java/stream/">stream写法</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Cheng Shuai 的个人博客">Cheng Shuai</a></p>
+        <p><span>发布时间:</span>2022年06月03日 - 17时58分</p>
+        <p><span>最后更新:</span>2022年07月30日 - 17时29分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/lang/java/stream/" title="stream写法">https://chengshea.github.io/lang/java/stream/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://chengshea.github.io/lang/java/stream/　　作者: Cheng Shuai" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/services/zookeeper/选举机制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          zk选举
+        
+      </div>
+    </a>
+  
+  
+    <a href="/lang/go/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go语法规则</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream"><span class="toc-number">1.</span> <span class="toc-text">Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流创建"><span class="toc-number">1.1.</span> <span class="toc-text">流创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#静态方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">静态方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中间操作"><span class="toc-number">1.2.</span> <span class="toc-text">中间操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#无状态（Stateless）"><span class="toc-number">1.2.1.</span> <span class="toc-text">无状态（Stateless）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#filter"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#映射-map、flatMap、peek"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">映射(map、flatMap、peek)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#map"><span class="toc-number">1.2.1.2.1.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#flatMap"><span class="toc-number">1.2.1.2.2.</span> <span class="toc-text">flatMap</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#peek"><span class="toc-number">1.2.1.2.3.</span> <span class="toc-text">peek</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有状态（Stateful）"><span class="toc-number">1.2.2.</span> <span class="toc-text">有状态（Stateful）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#distinct"><span class="toc-number">1.2.2.0.1.</span> <span class="toc-text">distinct</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#sorted"><span class="toc-number">1.2.2.0.2.</span> <span class="toc-text">sorted</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#skip"><span class="toc-number">1.2.2.0.3.</span> <span class="toc-text">skip</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终结操作"><span class="toc-number">1.3.</span> <span class="toc-text">终结操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#短路（Short-circuiting）"><span class="toc-number">1.3.1.</span> <span class="toc-text">短路（Short-circuiting）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#anyMatch"><span class="toc-number">1.3.1.0.1.</span> <span class="toc-text">anyMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#allMatch"><span class="toc-number">1.3.1.0.2.</span> <span class="toc-text">allMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#noneMatch"><span class="toc-number">1.3.1.0.3.</span> <span class="toc-text">noneMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#findFirst"><span class="toc-number">1.3.1.0.4.</span> <span class="toc-text">findFirst</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#findAny"><span class="toc-number">1.3.1.0.5.</span> <span class="toc-text">findAny</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非短路（Unshort-circuiting）"><span class="toc-number">1.3.2.</span> <span class="toc-text">非短路（Unshort-circuiting）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#reduce"><span class="toc-number">1.3.2.0.1.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#toArray"><span class="toc-number">1.3.2.0.2.</span> <span class="toc-text">toArray</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+   <script src="/js/require-2.1.6.js"></script>
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitment"></div>
+<!-- 主页不要加载gitment -->
+
+<script>
+var gitment = new Gitment({
+owner: 'chengshea',
+repo: 'chengshea.github.io',
+oauth: {
+client_id: '3478952f5e3ade063629',
+client_secret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
+ },
+})
+gitment.render('gitment')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/services/zookeeper/选举机制/" title="上一篇: zk选举">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/lang/go/" title="下一篇: go语法规则">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/lang/node/npm/hexo/">hexo本地搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/decompress/">decompress解压/压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/download/">download工具命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/helm/">helm工具</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubelet/">kubelet组件</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/formula/">Mathjax公式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/harbor/">harbor镜像私库</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubeadm/">kubeadm容器化安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/flanneld/">flanneld虚拟网络</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s/">kubernetes部署结构</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/iptable/">iptable防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/grep/">grep常用过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/tree/">tree工具</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/maven/">maven介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s01/">k8s集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/traefik/">traefik</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/etcd/">etcd集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/redis/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/redis/redis-cluster/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my/">mysql配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/install/">mysql安装</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/pip/">pip包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/services/container/tomcat/">tomcat优化</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/apt/">apt</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/sawtl/">强弱类型语言</a></li><li class="post-list-item"><a class="post-list-link" href="/database/mongo/">mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/design-pattern/singleton/">singleton单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker1/">常用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/sed/">sed替换查找</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm初始/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services/zookeeper/选举机制/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/mdgrammar/">md语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/初识K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/内网穿透/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/npm/hexo/评论/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/安装ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/npm/hexo/搭建hexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https自己签名/">https签名</a></li></ul>
+    <script src="/js/require-2.1.6.js"></script>
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2022 Cheng Shuai
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="/js/require-2.1.6.js"></script>
+<script src="/js/jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+
+   <script type="text/javascript">
+    
+	var inputArea       = document.querySelector("#local-search-input");
+	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+	var getSearchFile = function(){
+	  searchFunc("/" + "search.json", 'local-search-input', 'local-search-result',"/");
+	}
+           
+          $(document).on('click', function(e) {
+		   var si= $(e.target).closest('#id_search').length;
+               var d= $(e.target).closest('#local_search').length;
+             var btnId = $(e.target).attr('class');
+              var cc=$('#local_search').css('display');
+          //  console.log(cc+" "+" "+btnId)//si==0 && d==0
+             if( si==0 && d==0){
+  
+               //  console.log('弹出框以外的部分被点击了');
+                     // 关闭弹框
+               //document.getElementById('local_search').style.display='none';
+               
+               $('#local_search').hide();
+                  }
+            
+
+       });
+
+
+  </script>
+
+  </div>
+</body>
+</html>
