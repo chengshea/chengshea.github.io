@@ -55,9 +55,9 @@
       }
   </script>
    <!-- 评论 -->
-<link rel="stylesheet" href="/css/sreach/sreach.css">
-   <link rel="stylesheet" href="/css/gitment.css">
-   <script src="/js/gitment.js"></script>
+   <link rel="stylesheet" href="/css/sreach/sreach.css">
+   <link rel="stylesheet" href="/css/gitalk.css">
+   <script src="/js/gitalk.min.js"></script>
 </head></html>
 <body>
   <div id="container">
@@ -461,19 +461,22 @@
 
 
     
-        <div id="gitment"></div>
-<!-- 主页不要加载gitment -->
+        <div id="gitalk-container"></div>
+<!-- 主页不要加载gitalk -->
 
 <script>
-var gitment = new Gitment({
+var gitalk = new Gitalk({
+clientID: '3478952f5e3ade063629',
+clientSecret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
 owner: 'chengshea',
 repo: 'chengshea.github.io',
-oauth: {
-client_id: '3478952f5e3ade063629',
-client_secret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
- },
+admin: ['chengshea'],
+id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+title: document.title,
+ody:  '文章链接：'+ decodeURIComponent(location.origin+location.pathname),
+distractionFreeMode: false  // Facebook-like distraction free mode
 })
-gitment.render('gitment')
+gitalk.render('gitalk-container')
 </script>
 
     
