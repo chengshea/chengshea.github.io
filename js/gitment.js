@@ -2905,7 +2905,7 @@ function renderComments(_ref2, instance) {
         initButton.setAttribute('disabled', true);
         instance.init().catch(function (e) {
           initButton.removeAttribute('disabled');
-          alert(e);
+          console.log(JSON.stringify(e));
         });
       };
       initButton.innerText = 'Initialize Comments';
@@ -3103,7 +3103,7 @@ function renderEditor(_ref3, instance) {
       submitButton.removeAttribute('disabled');
       submitButton.innerText = 'Comment';
     }).catch(function (e) {
-      alert(e);
+      console.log(JSON.stringify(e));
       submitButton.removeAttribute('disabled');
       submitButton.innerText = 'Comment';
     });
@@ -3422,7 +3422,7 @@ var Gitment = function () {
         _this.update();
       }).catch(function (e) {
         _this.state.user.isLoggingIn = false;
-        alert(e);
+        console.log(JSON.stringify(e));
       });
     } else {
       this.update();
@@ -3643,7 +3643,7 @@ var Gitment = function () {
       var _this12 = this;
 
       if (!this.accessToken) {
-        alert('Login to Like');
+        console.log('Login to Like');
         return Promise.reject();
       }
 
@@ -3683,7 +3683,7 @@ var Gitment = function () {
       var _this14 = this;
 
       if (!this.accessToken) {
-        alert('Login to Like');
+        console.log('Login to Like');
         return Promise.reject();
       }
 
