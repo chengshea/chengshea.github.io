@@ -2,7 +2,7 @@
   font-family: sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  color: #333;
+  color: #999;
   word-wrap: break-word;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .gitment-container .gitment-spinner-icon {
-  fill: #333;
+  fill: #999;
 
   -webkit-animation: gitment-spin 1s steps(12) infinite;
   animation: gitment-spin 1s steps(12) infinite;
@@ -89,7 +89,7 @@ a.gitment-header-issue-link,
 a.gitment-header-issue-link:visited {
   float: right;
   line-height: 30px;
-  color: #666;
+  color: #999;
 }
 
 a.gitment-header-issue-link:hover {
