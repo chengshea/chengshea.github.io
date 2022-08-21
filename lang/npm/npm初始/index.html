@@ -51,10 +51,10 @@
       }
   </script>
 
-   <!-- 评论 -->
+   <!-- 评论  -->
    <link rel="stylesheet" href="/css/sreach/sreach.css">
-   <link rel="stylesheet" href="/css/gitalk.css">
-   <script src="/js/gitalk.min.js"></script>
+   <link rel="stylesheet" href="/css/gitment.css">
+   <script src="/js/gitment.js"></script>
 </head></html>
 <body>
   <div id="container">
@@ -316,7 +316,7 @@
 <blockquote>
 <p>&#x2F;opt&#x2F;node&#x2F;bin&#x2F;tsc -&gt; &#x2F;opt&#x2F;node&#x2F;lib&#x2F;node_modules&#x2F;typescript&#x2F;bin&#x2F;tsc<br>&#x2F;opt&#x2F;node&#x2F;bin&#x2F;tsserver -&gt; &#x2F;opt&#x2F;node&#x2F;lib&#x2F;node_modules&#x2F;typescript&#x2F;bin&#x2F;tsserver</p>
 <ul>
-<li><a href="mailto:&#116;&#121;&#112;&#x65;&#115;&#x63;&#114;&#105;&#112;&#116;&#x40;&#52;&#x2e;&#55;&#x2e;&#51;" target="_blank" rel="noopener">&#116;&#121;&#112;&#x65;&#115;&#x63;&#114;&#105;&#112;&#116;&#x40;&#52;&#x2e;&#55;&#x2e;&#51;</a><br>added 1 package from 1 contributor in 2.252s</li>
+<li><a href="mailto:&#x74;&#x79;&#112;&#x65;&#115;&#x63;&#114;&#x69;&#x70;&#x74;&#x40;&#52;&#x2e;&#55;&#x2e;&#x33;" target="_blank" rel="noopener">&#x74;&#x79;&#112;&#x65;&#115;&#x63;&#114;&#x69;&#x70;&#x74;&#x40;&#52;&#x2e;&#55;&#x2e;&#x33;</a><br>added 1 package from 1 contributor in 2.252s</li>
 </ul>
 </blockquote>
 <h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g  typescript</span><br></pre></td></tr></table></figure>
@@ -424,22 +424,19 @@
 
 
     
-        <div id="gitalk-container" style="margin: 30px;padding-bottom: 30px;"></div>
-<!-- 主页不要加载gitalk -->
+        <div id="gitment"></div>
+<!-- 主页不要加载gitment -->
 
 <script>
-var gitalk = new Gitalk({
-clientID: '3478952f5e3ade063629',
-clientSecret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
+var gitment = new Gitment({
 owner: 'chengshea',
 repo: 'chengshea.github.io',
-admin: ['chengshea'],
-id: location.pathname,      // Ensure uniqueness and length less than 50
-title: document.title,
-body: '文章链接：'+ decodeURIComponent(location.origin+location.pathname),
-distractionFreeMode: false  // Facebook-like distraction free mode
+oauth: {
+client_id: '3478952f5e3ade063629',
+client_secret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
+ },
 })
-gitalk.render('gitalk-container')
+gitment.render('gitment')
 </script>
 
     
@@ -497,7 +494,7 @@ gitalk.render('gitalk-container')
             </div>
         </div>
         
-            <div class="visit">
+            <div class="visit">  <!--计数设置-->
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
                         <span id="site-visit" >海贼到访数: 
@@ -524,8 +521,8 @@ gitalk.render('gitalk-container')
     <script src="/js/require-2.1.6.js"></script>
 <script src="/js/jquery-1.9.1.min.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/search.js"></script>
 <script src="/js/busuanzi.pure.mini.js"></script>
+<script src="/js/search.js"></script>
 
     <script>
         $(document).ready(function() {

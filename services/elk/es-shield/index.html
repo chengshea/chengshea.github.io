@@ -51,10 +51,10 @@
       }
   </script>
 
-   <!-- 评论 -->
+   <!-- 评论  -->
    <link rel="stylesheet" href="/css/sreach/sreach.css">
-   <link rel="stylesheet" href="/css/gitalk.css">
-   <script src="/js/gitalk.min.js"></script>
+   <link rel="stylesheet" href="/css/gitment.css">
+   <script src="/js/gitment.js"></script>
 </head></html>
 <body>
   <div id="container">
@@ -452,22 +452,19 @@
 
 
     
-        <div id="gitalk-container" style="margin: 30px;padding-bottom: 30px;"></div>
-<!-- 主页不要加载gitalk -->
+        <div id="gitment"></div>
+<!-- 主页不要加载gitment -->
 
 <script>
-var gitalk = new Gitalk({
-clientID: '3478952f5e3ade063629',
-clientSecret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
+var gitment = new Gitment({
 owner: 'chengshea',
 repo: 'chengshea.github.io',
-admin: ['chengshea'],
-id: location.pathname,      // Ensure uniqueness and length less than 50
-title: document.title,
-body: '文章链接：'+ decodeURIComponent(location.origin+location.pathname),
-distractionFreeMode: false  // Facebook-like distraction free mode
+oauth: {
+client_id: '3478952f5e3ade063629',
+client_secret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
+ },
 })
-gitalk.render('gitalk-container')
+gitment.render('gitment')
 </script>
 
     
@@ -525,7 +522,7 @@ gitalk.render('gitalk-container')
             </div>
         </div>
         
-            <div class="visit">
+            <div class="visit">  <!--计数设置-->
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
                         <span id="site-visit" >海贼到访数: 
@@ -552,8 +549,8 @@ gitalk.render('gitalk-container')
     <script src="/js/require-2.1.6.js"></script>
 <script src="/js/jquery-1.9.1.min.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/search.js"></script>
 <script src="/js/busuanzi.pure.mini.js"></script>
+<script src="/js/search.js"></script>
 
     <script>
         $(document).ready(function() {
