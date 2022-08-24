@@ -480,32 +480,53 @@ gitment.render('gitment')
         
     </script>
 </div>
-      <script src="/js/L2Dwidget.min.js"></script>
+      
+<!-- cpu  -->
+<script src="/js/L2Dwidget.min.js"></script>
 <script>
-    L2Dwidget.init({
-        "model": {
-　　　　　　　//jsonpath控制显示那个小萝莉模型，下面这个就是我觉得最可爱的小萝莉模型
-            jsonPath: "https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json",
-           // jsonPath: "/hibiki/hibiki.model.json",
-            "scale": 1
-        },
-        "display": {
-            "position": "right", //看板娘的表现位置
-            "width": 150,  //小萝莉的宽度
-            "height": 300, //小萝莉的高度
-            "hOffset": 0,
-            "vOffset": -20
-        },
-        "mobile": {
-            "show": true,
-            "scale": 0.5
-        },
-        "react": {
-            "opacityDefault": 0.7,
-            "opacityOnHover": 0.2
-        }
-    });
+     var baseurl=document.domain;
+     console.log("==="+document.domain)
+    if("chengshea.github.io"==baseurl || "cheng.vercel.app"==baseurl){
+	    L2Dwidget.init({
+		"model": {
+	　　　　　　　//jsonpath控制显示那个小萝莉模型，haru01/haru01  haru02/haru02  hibiki/hibiki  hijiki/hijiki
+		    //jsonPath: "https://xxxxx/assets/hijiki.model.json",
+		     jsonPath: "/models/haru01/haru01.model.json",
+		    "scale": 1
+		},
+		"display": {
+		    "position": "right", //看板娘的表现位置
+		    "width": 150,  //小萝莉的宽度
+		    "height": 330, //小萝莉的高度
+		    "hOffset": 0,
+		    "vOffset": -20
+		},
+		"mobile": {
+		    "show": true,
+		    "scale": 0.5
+		},
+		"react": {
+		    "opacityDefault": 0.7,
+		    "opacityOnHover": 0.2
+		}
+	    }); 
+    }
+  var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("12/03/2016 21:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已运行<span class='date_num'> "+dnum+"</span> 天 "; 
+        document.getElementById("times").innerHTML ="<span class='date_num'>"+ hnum + "</span> 小时 <span class='date_num'>" + mnum + "</span> 分 <span class='date_num'>" + snum + "</span> 秒 | "; 
+    } 
+setInterval("createtime()",250);
 </script>
+
 <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -518,6 +539,7 @@ gitment.render('gitment')
         </div>
         
             <div class="visit">  <!--计数设置-->
+ <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
                         <span id="site-visit" >海贼到访数: 
@@ -602,7 +624,7 @@ gitment.render('gitment')
     });
 </script>
 
-
+<!--搜索--->
 
    <script type="text/javascript">
     
@@ -614,17 +636,19 @@ gitment.render('gitment')
 	}
            
           $(document).on('click', function(e) {
-		   var si= $(e.target).closest('#id_search').length;
+		  var si= $(e.target).closest('#id_search').length;
                var d= $(e.target).closest('#local_search').length;
-             var btnId = $(e.target).attr('class');
-              var cc=$('#local_search').css('display');
-          //  console.log(cc+" "+" "+btnId)//si==0 && d==0
+
+            //console.log(si+" "+" "+d)//si==0 && d==0
+		if(si==1){ 
+			document.body.style.overflow='hidden';
+		}
+                 // 关闭弹框
              if( si==0 && d==0){
-  
+ 
                //  console.log('弹出框以外的部分被点击了');
-                     // 关闭弹框
-               //document.getElementById('local_search').style.display='none';
-               
+                     
+               document.body.style.overflow=''
                $('#local_search').hide();
                   }
             
