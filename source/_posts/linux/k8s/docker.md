@@ -96,3 +96,38 @@ $ rm /usr/local/bin/docker-compose
 # pip
 $ pip uninstall docker-compose
 ```
+
+
+
+docker.service
+
+```
+cat >/usr/lib/systemd/system/docker.service <<EOF
+[Unit]
+Description=Docker Application Container Engine
+Documentation=http://docs.docker.com
+After=network.target docker.socket
+[Service]
+Type=notify
+EnvironmentFile=$BASE/flanneld/subnet.env
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/bin/dockerd \
+                \$DOCKER_NETWORK_OPTIONS \
+                -H unix:///var/run/docker.sock 
+ExecReload=/bin/kill -s HUP $MAINPID
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+TimeoutStartSec=0
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+

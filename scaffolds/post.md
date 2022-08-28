@@ -1,9 +1,24 @@
 ---
 title: {{ title }}
 date: {{ date }}
-permalink: {{ path }}
+permalink: {{ path }}/
 tags:
-   - 标签
+  - {{ title.split("/").join("\n") }}
+  - xx
+  - xxx
 categories:
-   - {{ path }}
+   - {{ path.split("/").join("\n   - ") }}
 ---
+
+## 
+
+<!--more--->
+
+
+
+##
+
+
+
+
+

@@ -1,7 +1,8 @@
 <% if (is_archive() || is_tag() || is_category()) { %>
     <button class="hide-labels">TAG 开关</button>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
+   <%- js('js/require-2.1.6') %>
+<%- js('js/jquery-1.9.1.min') %>
+
     <script>
         $(document).ready(function() {
             $("button").click(function() {

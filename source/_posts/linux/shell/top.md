@@ -1,6 +1,6 @@
 ---
 title: top排查服务器
-permalink: linux/shell/top
+permalink: linux/shell/top/
 tags:
   - shell
 categories:
@@ -11,7 +11,11 @@ date: 2022-06-12 21:39:53
 
 
 
-top
+top -M  
+
+top -c 
+
+top -p $pid
 
 ![](/pics/top-4834.png)
 
@@ -26,8 +30,6 @@ top
 >\>：向右移动一列排序
 >
 ><:向左移动一列排序
->
->
 
 界面shift+m (根据内存排序)
 
@@ -53,6 +55,10 @@ cs@debian:~/go$ uptime
 >load average后面的三个数字分别表示距离现在一分钟，五分钟，十五分钟的负载情况
 
 load average数据是每隔5秒钟检查一次活跃的进程数，然后按特定算法计算出的数值。如果这个数除以逻辑CPU的数量，结果高于5的时候就表明系统在超负荷运转了
+
+
+
+
 
 
 
@@ -122,9 +128,9 @@ KiB Swap:  7812092 total,  7812092 free,        0 used. 14425716 avail Mem
 >USER — 进程所有者
 >PR — 进程优先级
 >NI — nice值。负值表示高优先级，正值表示低优先级
->VIRT — 进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES
->RES — 进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA
->SHR — 共享内存大小，单位kb
+>VIRT — 进程使用的`虚拟内存`总量，单位kb。VIRT=SWAP+RES
+>RES — `常驻内存`,进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA
+>SHR — `共享内存`大小，单位kb
 >S — 进程状态。D=不可中断的睡眠状态 R=运行 S=睡眠 T=跟踪/停止 Z=僵尸进程
 >%CPU — 上次更新到现在的CPU时间占用百分比
 >%MEM — 进程使用的物理内存百分比
@@ -171,15 +177,4 @@ cs@debian:~/go$ jps
 
 
 
-```
-ps -Lfp pid或者ps -mp pid -o THREAD，tid，time或者top -Hp pid
-#线程ID转成16进制用于查询
-printf "%x\n" pid
-```
-
-
-
-```
-jstack $pid >> ./dump.log
-```
 

@@ -2,7 +2,7 @@
 title: git pull
 date: 2017-10-05 12:36:33
 tags: git
-categories: tools
+categories: tool
 ---
 ### pull
 稀疏检出*sparse checkout*

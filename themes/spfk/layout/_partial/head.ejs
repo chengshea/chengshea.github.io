@@ -29,7 +29,8 @@
     <link rel="icon" href="<%- config.root %><%- theme.favicon %>">
   <% } %>
   <% if (theme.animate){ %>
-      <%- css('//cdn.bootcss.com/animate.css/3.5.0/animate.min.css') %>
+
+      <%- css('css/animate.min.css') %>
   <% } %>
   <%- css('css/style') %>
   <link rel="stylesheet" href="<%- config.root %>font-awesome/css/font-awesome.min.css">
@@ -61,7 +62,9 @@
           open_in_new: <%=theme.open_in_new%>
       }
   </script>
-   <!-- 评论 -->
+
+   <!-- 评论  -->
+   <link rel="stylesheet" href="<%- config.root %>css/sreach/sreach.css">
    <link rel="stylesheet" href="<%- config.root %>css/gitment.css">
    <script src="<%- config.root %>js/gitment.js"></script>
 </head>

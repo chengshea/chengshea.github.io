@@ -1,0 +1,55 @@
+
+hexo new  "初识K8S"
+cs@debian:~/oss/hexo$ hexo new  "初识K8S"
+(node:9721) ExperimentalWarning: The fs.promises API is experimental
+(node:9721) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.
+INFO  Created: ~/oss/hexo/source/_posts/初识K8S.md
+
+
+
+
+
+
+
+cs@debian:~/oss/hexo$ hexo new --path linux/go  "go"
+(node:15495) ExperimentalWarning: The fs.promises API is experimental
+(node:15495) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.
+INFO  Created: ~/oss/hexo/source/_posts/linux/go.md
+
+--path  目录/文件名  "标题内容"
+~/oss/hexo/source/_posts路径下
+
+
+
+
+
+hexo server
+
+
+
+
+hexo g
+
+推送
+hexo d 
+
+
+
+git rm -r --cached  ./node_modules
+
+$ dir
+_config.yml  node_modules  package-lock.json  README	 source
+db.json      package.json  public	      scaffolds  themes
+
+
+
+$ git checkout src  && git branch 
+M	_config.yml
+M	db.json
+已经位于 'src'
+您的分支与上游分支 'origin/src' 一致。
+  master
+* src
+
+
+

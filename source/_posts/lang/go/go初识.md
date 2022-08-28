@@ -1,6 +1,6 @@
 ---
 title: go语法规则
-permalink: lang/go
+permalink: lang/go/
 tags:
   - 规则
   - 语法

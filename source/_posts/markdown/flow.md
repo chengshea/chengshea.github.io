@@ -1,6 +1,6 @@
 ---
 title: md流程图
-permalink: markdown/flow
+permalink: markdown/flow/
 tags:
   - 流程图
   - flow

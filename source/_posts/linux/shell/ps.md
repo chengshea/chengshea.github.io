@@ -15,10 +15,27 @@ ps (process status) 命令用于显示当前进程的状态，类似于 windows 
 ### 查找指定进程
 
 ```
-ps -ef | grep  key
+$ ps -ef | grep  key
+cs        4565  4533  0 21:14 pts/2    00:00:00 /opt/ELK/elasticsearch-7.17.1/modules/x-pack-ml/platform/linux-x86_64/bin/controller
 ```
 
 > key 运行进程的关键字 (如:ps -ef | grep  tomcat)
+>
+> UID 启动进程的用户名
+>
+> PID  进程pid
+>
+> PPID 
+>
+> C 
+>
+> STIME 开始启动时间 
+>
+> TTY  终端号
+>
+> TIME  运行时间
+>
+> CMD   启动进程的命令
 
 <!--more-->
 
@@ -54,6 +71,8 @@ cs  7458  1.2  0.8 4913400 139224 ?      Sl   15:11   0:08 /usr/share/typora/Typ
 
 
 
+#### 内存
+
 ```
 $ ps -aux | sort -k4nr | head -3
 USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND
@@ -77,4 +96,12 @@ cs   1753  1.0  1.4 1179343396 242272 ?   Sl   13:59   0:57 /opt/google/chrome/c
 >r 反向(reverse) ,默认从小到大
 >
 >head  头几列(-3 ,显示前3列)
+
+
+
+#### cpu
+
+```
+$ ps -aux | sort -k3nr | head -3
+```
 

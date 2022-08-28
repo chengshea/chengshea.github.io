@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 随心而记
+title: 个人杂记
 subtitle: 
-description: 个人杂记     
+description: 好记性,不如打字记录     
 author: Cheng Shuai 
 language:
 timezone:
@@ -13,7 +13,7 @@ timezone:
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 #####自定义
-url: http://yoursite.com
+url: https://chengshea.github.io/
 root: /
 #url: https://chengshea.github.io/blog/
 #root: /blog
@@ -39,11 +39,12 @@ skip_render:
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
+external_link: 
+  enable: true
 filename_case: 0
-render_drafts: false
+render_drafts: false  # true 预览草稿
 post_asset_folder: false
-relative_link: false
+relative_link: false #把链接改为与根目录的相对位址
 future: true
 highlight:
   enable: true
@@ -58,7 +59,8 @@ tag_map:
 
 #
 menu:
-  home: /
+  首页: /
+  归档: /archives
   #categories: /categories
   分类: /tags
 
@@ -86,19 +88,43 @@ theme: spfk
 deploy:
   type: git
   repo: git@github.com:chengshea/chengshea.github.io.git
-  #repo: git@github.com:chengshea/blog.git
   branch: master
 
 #sreach
-algolia:
-  appId: "NHOYSBY1H4"
-  apiKey: "2c45f7c8255b1fc9b551bd9abf7d46da"
-  adminApiKey: "de07b86e3f10be9a976b379a505ae15b"
-  chunkSize: 5000
-  indexName: "my-hexo-blog"
-  fields:
-    - title
-    - tags
-    - slug
-    - path
-    - content:strip
+# algolia:
+#   appId: "NHOYSBY1H4"
+#   apiKey: "2c45f7c8255b1fc9b551bd9abf7d46da"
+#   adminApiKey: "de07b86e3f10be9a976b379a505ae15b"
+#   chunkSize: 5000
+#   indexName: "my-hexo-blog"
+#   fields:
+#     - title
+#     - tags
+#     - slug
+#     - path
+#     - content:strip
+
+search:
+  path: search.json
+  field: all
+  content: true
+  limit: 1000
+  format: html
+
+
+# live2d:
+# enable: fasle
+# scriptFrom: local
+# model: 
+#   use: hibiki #模型选择live2d-widget-model-hibiki
+# display: 
+#   position: right  #模型位置
+#   width: 150       #模型宽度
+#   height: 300      #模型高度
+# mobile: 
+#   show: false      #是否在手机端显示
+
+
+
+baidusitemap:
+    path: baidusitemap.xml

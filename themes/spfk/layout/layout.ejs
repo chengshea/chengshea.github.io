@@ -4,6 +4,19 @@
     <div class="left-col">
     <%- partial('_partial/left-col', null, {cache: !config.relative_link}) %>
     </div>
+
+
+<div id="local_search" class="search-popup" >
+  <div class="search-header">
+	
+	    <i class="fa fa-search"> </i> <input id="local-search-input" class="search-input" placeholder="搜索..." spellcheck="false" type="search"/>
+	  
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
     <div class="mid-col">
       <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
       <div class="body-wrap"><%- body %></div>

@@ -1,1 +1,0 @@
-<%- partial('_partial/comments/gitment', {post: page, index: false}) %>

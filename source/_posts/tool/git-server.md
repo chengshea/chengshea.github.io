@@ -2,7 +2,7 @@
 title: git server 搭建
 date: 2017-10-10 19:36:33
 tags: git
-categories: tools
+categories: tool
 ---
 ## 准备
 *    ssh

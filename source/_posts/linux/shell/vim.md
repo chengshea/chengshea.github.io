@@ -1,6 +1,6 @@
 ---
 title: vi/vim基本命令
-permalink: linux/shell/vim
+permalink: linux/shell/vim/
 tags:
   - vim
 categories:
@@ -32,6 +32,7 @@ ecs 退出 **编辑状态**  到  **命令状态**
 ##### 替换
 
 当前字符 `r`
+<!--more-->
 
 当前及其后,直到按Esc `R`
 

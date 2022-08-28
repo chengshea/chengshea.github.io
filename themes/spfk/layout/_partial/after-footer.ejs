@@ -1,33 +1,53 @@
-<%- js('https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min') %>
+<%- js('js/require-2.1.6') %>
+<%- js('js/jquery-1.9.1.min') %>
 <%- js('js/main') %>
+<%- js('js/busuanzi.pure.mini') %>
+<%- js('js/snow') %>
+<%- js('js/search') %>
 <%- partial('background') %>
 <%- partial('analytics/google-analytics') %>
 <%- partial('analytics/baidu-analytics') %>
-<% if (theme.mathjax){ %>
+<% if (page.mathjax){ %>
 <%- partial('mathjax') %>
 <% } %>
 <%- partial('scrolling-button') %>
 <%- partial('hide-labels') %>
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+
 <% if (theme.TipTitle){ %>
   <%- partial('post/TipTitle') %>
 <% } %>
-<% if (theme.search_box){ %>
-    <script type="text/javascript">
-      window.onload = function(){
-        document.getElementById("search").onclick = function(){
-            console.log("search")
-            search();
-        }
-      }
-      function search(){
-        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
-      }
-    </script>
-<%}%>
+<!--搜索--->
+<% if (theme.search_box) { %>
+   <script type="text/javascript">
+    
+	var inputArea       = document.querySelector("#local-search-input");
+	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+	var getSearchFile = function(){
+	  searchFunc("<%= config.root %>" + "search.json", 'local-search-input', 'local-search-result');
+	}
+           
+          $(document).on('click', function(e) {
+		  var si= $(e.target).closest('#id_search').length;
+               var d= $(e.target).closest('#local_search').length;
+
+            //console.log(si+" "+" "+d)//si==0 && d==0
+		if(si==1){ 
+			document.body.style.overflow='hidden';
+		}
+                 // 关闭弹框
+             if( si==0 && d==0){
+ 
+               //  console.log('弹出框以外的部分被点击了');
+                     
+               document.body.style.overflow=''
+               $('#local_search').hide();
+                  }
+            
+
+       });
+
+
+  </script>
+<% } %>

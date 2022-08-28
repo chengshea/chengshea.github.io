@@ -1,6 +1,6 @@
 ---
 title: 初识jvm
-permalink: lang/gc
+permalink: lang/gc/
 tags:
   - jvm
 categories:

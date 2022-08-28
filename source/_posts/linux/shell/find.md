@@ -1,6 +1,6 @@
 ---
 title: find查找搜索
-permalink: linux/shell/find
+permalink: linux/shell/find/
 tags:
   - find
 categories:
@@ -27,8 +27,6 @@ date: 2022-06-12 21:55:12
 
 #### 条件
 
-<!--more-->
-
 名称
 
 **name**    `find  /  -name   mysql`
@@ -38,6 +36,7 @@ date: 2022-06-12 21:55:12
 **regex**  `find / -regex  /docker*`  正则模糊查询
 
 大小
+<!--more-->
 
 **size**   `find  / -size  +20M` 
 

@@ -69,16 +69,8 @@
 <%- partial('share/showshare') %>
 <% } %>
 <% if (!index && post.comments){ %>
-    <%  if (theme.gitment.on) { %>
+    <%  if (theme.gitment.enable) { %>
         <%- partial('comments/gitment') %>
-    <% } else if (theme.disqus.on) { %>
-        <%- partial('comments/disqus', {
-            shortname: theme.disqus.shortname
-          }) %>
-    <% } else if (config.disqus_shortname) { %>
-        <%- partial('comments/disqus', {
-            shortname: config.disqus_shortname
-          }) %>
     <% } %>
 <% } %>
 
