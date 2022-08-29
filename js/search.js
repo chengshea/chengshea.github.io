@@ -65,8 +65,8 @@ var searchFunc = function (path, search_id, content_id) {
             var content = orig_data_content;
             if (first_occur >= 0) {
               // cut out 100 characters
-              var start = first_occur - 20;
-              var end = first_occur + 10;
+              var start = first_occur - 30;
+              var end = first_occur + 100;
 
               if (start < 0) {
                 start = 0;
@@ -85,9 +85,10 @@ var searchFunc = function (path, search_id, content_id) {
               // highlight all keywords
               keywords.forEach(function (keyword) {
                 var regS = new RegExp(keyword, "gi");
-                match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                match_content = match_content.replace(regS, "<em class='search-keyword'>" + keyword + "</em>");
               });
-
+               let index=match_content.indexOf("<em class='search-keyword'>");
+               match_content=match_content.substr(index-20,index+50)
               str += "<p class=\"search-result\">" + match_content + "...</p>"
             }
             str += "</li>";
@@ -101,10 +102,6 @@ var searchFunc = function (path, search_id, content_id) {
       });
     }
   });
-
-
-
-
 
 }
 

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <title>stream写法 | 个人杂记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123456789public static void main(String[] args) &amp;#123;  ArrayList&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(Arrays.asList(&amp;quot;I&amp;quot;, &amp;quot;love&amp;quot;, &amp;quot;you&amp;quot;, &amp;quot;too&amp;quot;));  for(Str">
-<meta name="keywords" content="stream">
+  <meta name="description" content="123456789public static void main(String[] args) &amp;#123;  ArrayList&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));  for(Str">
 <meta property="og:type" content="article">
 <meta property="og:title" content="stream写法">
 <meta property="og:url" content="https://chengshea.github.io/lang/java/stream/index.html">
 <meta property="og:site_name" content="个人杂记">
-<meta property="og:description" content="123456789public static void main(String[] args) &amp;#123;  ArrayList&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(Arrays.asList(&amp;quot;I&amp;quot;, &amp;quot;love&amp;quot;, &amp;quot;you&amp;quot;, &amp;quot;too&amp;quot;));  for(Str">
-<meta property="og:locale" content="default">
+<meta property="og:description" content="123456789public static void main(String[] args) &amp;#123;  ArrayList&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));  for(Str">
+<meta property="og:locale">
 <meta property="og:image" content="https://chengshea.github.io/pics/stream-1.png">
 <meta property="og:image" content="https://chengshea.github.io/pics/stream-type2.png">
-<meta property="og:updated_time" content="2022-07-30T09:29:12.809Z">
+<meta property="article:published_time" content="2022-06-03T09:58:03.000Z">
+<meta property="article:modified_time" content="2022-08-28T09:10:00.932Z">
+<meta property="article:author" content="Cheng Shuai">
+<meta property="article:tag" content="stream">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="stream写法">
-<meta name="twitter:description" content="123456789public static void main(String[] args) &amp;#123;  ArrayList&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(Arrays.asList(&amp;quot;I&amp;quot;, &amp;quot;love&amp;quot;, &amp;quot;you&amp;quot;, &amp;quot;too&amp;quot;));  for(Str">
 <meta name="twitter:image" content="https://chengshea.github.io/pics/stream-1.png">
   
     <link rel="alternative" href="/atom.xml" title="个人杂记" type="application/atom+xml">
@@ -28,9 +28,13 @@
   
   
 
-      <link rel="stylesheet" href="/css/animate.min.css">
+      
+<link rel="stylesheet" href="/css/animate.min.css">
+
   
-  <link rel="stylesheet" href="/css/style.css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
@@ -39,7 +43,7 @@
   
   <!-- 加载特效 -->
     <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
   <script>
       var yiliaConfig = {
           rootUrl: '/',
@@ -58,7 +62,7 @@
    <link rel="stylesheet" href="/css/sreach/sreach.css">
    <link rel="stylesheet" href="/css/gitment.css">
    <script src="/js/gitment.js"></script>
-</head></html>
+<meta name="generator" content="Hexo 6.2.0"></head>
 <body>
   <div id="container">
     <div class="left-col">
@@ -72,7 +76,7 @@
         </a>
 
         <hgroup>
-          <h1 class="header-author"><a href="/" title="Hi Mate">Cheng Shuai</a></h1>
+          <h1 class="header-author"><a href="/" title="Hi Mate"></a></h1>
         </hgroup>
 
         
@@ -173,7 +177,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 13.33px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 13.33px;">docker-engine</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flanneld/" style="font-size: 10px;">flanneld</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/formula/" style="font-size: 10px;">formula</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/grammar/" style="font-size: 10px;">grammar</a> <a href="/tags/grep/" style="font-size: 10px;">grep</a> <a href="/tags/harbor/" style="font-size: 10px;">harbor</a> <a href="/tags/helm/" style="font-size: 10px;">helm</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/install/" style="font-size: 20px;">install</a> <a href="/tags/iptable/" style="font-size: 10px;">iptable</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/kubeadm/" style="font-size: 10px;">kubeadm</a> <a href="/tags/kubectl/" style="font-size: 10px;">kubectl</a> <a href="/tags/kubelet/" style="font-size: 10px;">kubelet</a> <a href="/tags/kubernetes/" style="font-size: 13.33px;">kubernetes</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mvn/" style="font-size: 10px;">mvn</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/redis-cluster/" style="font-size: 13.33px;">redis-cluster</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/search/" style="font-size: 13.33px;">search</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/singleton/" style="font-size: 10px;">singleton</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/tar/" style="font-size: 10px;">tar</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/traefik/" style="font-size: 10px;">traefik</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/usage-high/" style="font-size: 10px;">usage_high</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/win/" style="font-size: 16.67px;">win</a> <a href="/tags/xz/" style="font-size: 10px;">xz</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/强弱类型/" style="font-size: 10px;">强弱类型</a> <a href="/tags/服务发现/" style="font-size: 10px;">服务发现</a> <a href="/tags/流程图/" style="font-size: 10px;">流程图</a> <a href="/tags/源/" style="font-size: 10px;">源</a> <a href="/tags/监控工具/" style="font-size: 10px;">监控工具</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/草稿/" style="font-size: 10px;">草稿</a> <a href="/tags/规则/" style="font-size: 10px;">规则</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a> <a href="/tags/选举/" style="font-size: 10px;">选举</a>
+                        <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 13.33px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 13.33px;">docker-engine</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flanneld/" style="font-size: 10px;">flanneld</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/formula/" style="font-size: 10px;">formula</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/grammar/" style="font-size: 10px;">grammar</a> <a href="/tags/grep/" style="font-size: 10px;">grep</a> <a href="/tags/harbor/" style="font-size: 10px;">harbor</a> <a href="/tags/helm/" style="font-size: 10px;">helm</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/install/" style="font-size: 20px;">install</a> <a href="/tags/iptable/" style="font-size: 10px;">iptable</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/kubeadm/" style="font-size: 10px;">kubeadm</a> <a href="/tags/kubectl/" style="font-size: 10px;">kubectl</a> <a href="/tags/kubelet/" style="font-size: 10px;">kubelet</a> <a href="/tags/kubernetes/" style="font-size: 13.33px;">kubernetes</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mvn/" style="font-size: 10px;">mvn</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/redis-cluster/" style="font-size: 13.33px;">redis-cluster</a> <a href="/tags/request/" style="font-size: 10px;">request</a> <a href="/tags/response/" style="font-size: 10px;">response</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/search/" style="font-size: 13.33px;">search</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/singleton/" style="font-size: 10px;">singleton</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/tar/" style="font-size: 10px;">tar</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/traefik/" style="font-size: 10px;">traefik</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/usage-high/" style="font-size: 10px;">usage_high</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/win/" style="font-size: 16.67px;">win</a> <a href="/tags/xz/" style="font-size: 10px;">xz</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 10px;">内网穿透</a> <a href="/tags/%E5%BC%BA%E5%BC%B1%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">强弱类型</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" style="font-size: 10px;">服务发现</a> <a href="/tags/%E6%B5%81%E7%A8%8B%E5%9B%BE/" style="font-size: 10px;">流程图</a> <a href="/tags/%E6%BA%90/" style="font-size: 10px;">源</a> <a href="/tags/%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">监控工具</a> <a href="/tags/%E7%AD%BE%E5%90%8D/" style="font-size: 10px;">签名</a> <a href="/tags/%E8%8D%89%E7%A8%BF/" style="font-size: 10px;">草稿</a> <a href="/tags/%E8%A7%84%E5%88%99/" style="font-size: 10px;">规则</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E9%80%89%E4%B8%BE/" style="font-size: 10px;">选举</a>
                     </div>
                 </section>
                 
@@ -223,7 +227,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Cheng Shuai</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me"></a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -233,7 +237,7 @@
                 
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="Me">Cheng Shuai</a></h1>
+              <h1 class="header-author"><a href="/" title="Me"></a></h1>
             </hgroup>
             
             <nav class="header-menu">
@@ -295,7 +299,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stream/">stream</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stream/" rel="tag">stream</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -305,23 +309,29 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">  ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">  for(String str : list)&#123;</span><br><span class="line">      if(str.length()&gt;3)</span><br><span class="line">          System.out.println(str);</span><br><span class="line">  &#125;</span><br><span class="line">  list.forEach(str-&gt;System.out.println(str));</span><br><span class="line">  list.stream().filter(str-&gt;str.length()&gt;3).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">  ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">  for(String str : list)&#123;</span><br><span class="line">      if(str.length()&gt;3)</span><br><span class="line">          System.out.println(str);</span><br><span class="line">  &#125;</span><br><span class="line">  list.forEach(str-&gt;System.out.println(str));</span><br><span class="line">  list.stream().filter(str-&gt;str.length()&gt;3).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>用stream的filter来替代if&#x2F;else业务逻辑</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i=0;i&lt;10;i++)&#123;</span><br><span class="line">    if(....)&#123;</span><br><span class="line">      //...........</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        //.......</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">list.stream().filter().limit(10).foreach();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i=0;i&lt;10;i++)&#123;</span><br><span class="line">    if(....)&#123;</span><br><span class="line">      //...........</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        //.......</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">list.stream().filter().limit(10).foreach();</span><br></pre></td></tr></table></figure>
+
+
 
 <h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><p><img src="/pics/stream-1.png"></p>
-<a id="more"></a>
+<span id="more"></span>
 
-<h3 id="流创建"><a href="#流创建" class="headerlink" title="流创建"></a>流创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;String&gt; list = Arrays.asList(&quot;hello&quot;,&quot;world&quot;,&quot;stream&quot;);</span><br><span class="line">//创建顺序流</span><br><span class="line">Stream&lt;String&gt; stream = list.stream();</span><br><span class="line">//创建并行流</span><br><span class="line">Stream&lt;String&gt; parallelStream = list.parallelStream();</span><br></pre></td></tr></table></figure>
+<h3 id="流创建"><a href="#流创建" class="headerlink" title="流创建"></a>流创建</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;String&gt; list = Arrays.asList(&quot;hello&quot;,&quot;world&quot;,&quot;stream&quot;);</span><br><span class="line">//创建顺序流</span><br><span class="line">Stream&lt;String&gt; stream = list.stream();</span><br><span class="line">//创建并行流</span><br><span class="line">Stream&lt;String&gt; parallelStream = list.parallelStream();</span><br></pre></td></tr></table></figure>
+
+
 
 <h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><p><strong><code>of()、iterate()、generate()</code></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream1 = Stream.of(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;);</span><br><span class="line">stream1.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">Stream&lt;Integer&gt; stream2 = Stream.iterate(0, i -&gt; i + 2).limit(3);</span><br><span class="line">stream2.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">Stream&lt;Boolean&gt; stream3 = Stream.generate(new Random()::nextBoolean).limit(3);</span><br><span class="line">stream3.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream1 = Stream.of(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;);</span><br><span class="line">stream1.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">Stream&lt;Integer&gt; stream2 = Stream.iterate(0, i -&gt; i + 2).limit(3);</span><br><span class="line">stream2.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">Stream&lt;Boolean&gt; stream3 = Stream.generate(new Random()::nextBoolean).limit(3);</span><br><span class="line">stream3.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+
 
 <p>并行流  多线程  把一个内容分成多个数据块 不同线程分别处理每个数据块的流,最后合并(<em>无序数据处理</em>)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Integer&gt; findFirst = list.stream().parallel().filter( x -&gt; x&gt;4 ).findFirst();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Integer&gt; findFirst = list.stream().parallel().filter( x -&gt; x&gt;4 ).findFirst();</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>可以通过<code>parallel()</code>把顺序流转换成并行流</p>
@@ -329,28 +339,36 @@
 <p><img src="/pics/stream-type2.png"></p>
 <h3 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h3><h4 id="无状态（Stateless）"><a href="#无状态（Stateless）" class="headerlink" title="无状态（Stateless）"></a>无状态（Stateless）</h4><p>指元素的处理不受之前元素的影响</p>
 <h5 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h5><p><strong>筛选，是按照一定的规则校验流中的元素，将符合条件的元素提取到新的流中的操作</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.stream().filter(str-&gt;str.length()&gt;3).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.stream().filter(str-&gt;str.length()&gt;3).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
 
 <p>相当于if</p>
-<h5 id="映射-map、flatMap、peek"><a href="#映射-map、flatMap、peek" class="headerlink" title="映射(map、flatMap、peek)"></a>映射(map、flatMap、peek)</h5><h6 id="map"><a href="#map" class="headerlink" title="map"></a>map</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; out =  list.stream().</span><br><span class="line">       map(String::toUpperCase).</span><br><span class="line">       collect(Collectors.toList());</span><br><span class="line">System.out.println(out);//[I, LOVE, YOU, TOO]</span><br></pre></td></tr></table></figure>
+<h5 id="映射-map、flatMap、peek"><a href="#映射-map、flatMap、peek" class="headerlink" title="映射(map、flatMap、peek)"></a>映射(map、flatMap、peek)</h5><h6 id="map"><a href="#map" class="headerlink" title="map"></a>map</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; out =  list.stream().</span><br><span class="line">       map(String::toUpperCase).</span><br><span class="line">       collect(Collectors.toList());</span><br><span class="line">System.out.println(out);//[I, LOVE, YOU, TOO]</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">Test t = new Test();</span><br><span class="line"></span><br><span class="line">list.add(t.new Product(1, &quot;domestic phone&quot;, new BigDecimal(6899.99)));</span><br><span class="line">list.add(t.new Product(2, &quot;overseas notebook&quot;, new BigDecimal(14989.98)));</span><br><span class="line"></span><br><span class="line">String out =  list.stream().</span><br><span class="line"> //map(a-&gt;a.name.split(&quot; &quot;)[1]).//phone&amp;&amp;notebook</span><br><span class="line">map(a-&gt;a.name.replaceAll(&quot; &quot;, &quot;-&quot;)).//domestic-phone&amp;&amp;overseas-notebook</span><br><span class="line">collect(Collectors.joining(&quot;&amp;&amp;&quot;));</span><br><span class="line">System.out.println(out);</span><br></pre></td></tr></table></figure>
 
-<h6 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = Arrays.asList(&quot;a:b:c&quot;, &quot;1:3:5&quot;);</span><br><span class="line">List&lt;String&gt; listNew = list.stream().</span><br><span class="line">        flatMap(s -&gt; Arrays.stream(s.split(&quot;:&quot;)) ).</span><br><span class="line">        collect(Collectors.toList());</span><br><span class="line"> </span><br><span class="line">System.out.println(&quot;处理前的集合：&quot; + list);</span><br><span class="line">System.out.println(&quot;处理后的集合：&quot; + listNew);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Product&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">Test t = new Test();</span><br><span class="line"></span><br><span class="line">list.add(t.new Product(1, &quot;domestic phone&quot;, new BigDecimal(6899.99)));</span><br><span class="line">list.add(t.new Product(2, &quot;overseas notebook&quot;, new BigDecimal(14989.98)));</span><br><span class="line"></span><br><span class="line">String out =  list.stream().</span><br><span class="line"> //map(a-&gt;a.name.split(&quot; &quot;)[1]).//phone&amp;&amp;notebook</span><br><span class="line">map(a-&gt;a.name.replaceAll(&quot; &quot;, &quot;-&quot;)).//domestic-phone&amp;&amp;overseas-notebook</span><br><span class="line">collect(Collectors.joining(&quot;&amp;&amp;&quot;));</span><br><span class="line">System.out.println(out);</span><br></pre></td></tr></table></figure>
+
+<h6 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = Arrays.asList(&quot;a:b:c&quot;, &quot;1:3:5&quot;);</span><br><span class="line">List&lt;String&gt; listNew = list.stream().</span><br><span class="line">        flatMap(s -&gt; Arrays.stream(s.split(&quot;:&quot;)) ).</span><br><span class="line">        collect(Collectors.toList());</span><br><span class="line"> </span><br><span class="line">System.out.println(&quot;处理前的集合：&quot; + list);</span><br><span class="line">System.out.println(&quot;处理后的集合：&quot; + listNew);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>处理前的集合：[a:b:c, 1:3:5]<br>处理后的集合：[a, b, c, 1, 3, 5]</p>
 </blockquote>
-<h6 id="peek"><a href="#peek" class="headerlink" title="peek"></a>peek</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream = Stream.of(&quot;hello&quot;, &quot;world&quot;);</span><br><span class="line">stream.peek(System.out::println).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+<h6 id="peek"><a href="#peek" class="headerlink" title="peek"></a>peek</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream = Stream.of(&quot;hello&quot;, &quot;world&quot;);</span><br><span class="line">stream.peek(System.out::println).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+
 
 <p>终端操作。通常分为 <strong>最终的消费</strong> （<code>foreach</code> 之类的）和 <strong>归纳</strong> （<code>collect</code>）两类。</p>
 <h4 id="有状态（Stateful）"><a href="#有状态（Stateful）" class="headerlink" title="有状态（Stateful）"></a>有状态（Stateful）</h4><p>指该操作只有拿到所有元素之后才能继续下去</p>
 <h6 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h6><p>使用hashCode（）和equals（）方法来获取不同的元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream = Stream.of(&quot;1&quot;, &quot;3&quot;,&quot;4&quot;,&quot;10&quot;,&quot;4&quot;,&quot;6&quot;,&quot;23&quot;,&quot;3&quot;);</span><br><span class="line">stream.distinct().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream = Stream.of(&quot;1&quot;, &quot;3&quot;,&quot;4&quot;,&quot;10&quot;,&quot;4&quot;,&quot;6&quot;,&quot;23&quot;,&quot;3&quot;);</span><br><span class="line">stream.distinct().forEach(System.out::println);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h6 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Integer, String&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">map.put(1,&quot;phone&quot;);</span><br><span class="line">map.put(2,&quot;notebook&quot;);</span><br><span class="line">map.entrySet().stream().sorted(</span><br><span class="line">                Collections.reverseOrder(Map.Entry.comparingByKey())//倒序</span><br><span class="line">                //Comparator.comparing(e -&gt; e.getKey())//正序</span><br><span class="line">        ).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
 
-<h6 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;Integer&gt; stream = Stream.of(3,1,10,16,8,4,9);</span><br><span class="line">stream.limit(3).skip(2).forEach(System.out::print);</span><br></pre></td></tr></table></figure>
+
+<h6 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Integer, String&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">map.put(1,&quot;phone&quot;);</span><br><span class="line">map.put(2,&quot;notebook&quot;);</span><br><span class="line">map.entrySet().stream().sorted(</span><br><span class="line">                Collections.reverseOrder(Map.Entry.comparingByKey())//倒序</span><br><span class="line">                //Comparator.comparing(e -&gt; e.getKey())//正序</span><br><span class="line">        ).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;Integer&gt; stream = Stream.of(3,1,10,16,8,4,9);</span><br><span class="line">stream.limit(3).skip(2).forEach(System.out::print);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>limit(3)  Iloveyou</p>
@@ -358,15 +376,15 @@
 </blockquote>
 <h3 id="终结操作"><a href="#终结操作" class="headerlink" title="终结操作"></a>终结操作</h3><h4 id="短路（Short-circuiting）"><a href="#短路（Short-circuiting）" class="headerlink" title="短路（Short-circuiting）"></a>短路（Short-circuiting）</h4><p>指遇到某些符合条件的元素就可以得到最终结果</p>
 <h6 id="anyMatch"><a href="#anyMatch" class="headerlink" title="anyMatch"></a>anyMatch</h6><p>Stream 中只要有一个元素符合传入的 predicate，返回 true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream.anyMatch(s-&gt;s==2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream.anyMatch(s-&gt;s==2)</span><br></pre></td></tr></table></figure>
 
 <h6 id="allMatch"><a href="#allMatch" class="headerlink" title="allMatch"></a>allMatch</h6><p>Stream 中全部元素符合传入的 predicate，返回 true</p>
 <h6 id="noneMatch"><a href="#noneMatch" class="headerlink" title="noneMatch"></a>noneMatch</h6><p>Stream 中没有一个元素符合传入的 predicate，返回 true</p>
 <h6 id="findFirst"><a href="#findFirst" class="headerlink" title="findFirst"></a>findFirst</h6><p>用于返回满足条件的第一个元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">System.out.println(</span><br><span class="line">	list.stream().filter(s-&gt; s.length()&gt;2).findFirst().get()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&quot;I&quot;, &quot;love&quot;, &quot;you&quot;, &quot;too&quot;));</span><br><span class="line">System.out.println(</span><br><span class="line">	list.stream().filter(s-&gt; s.length()&gt;2).findFirst().get()</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h6 id="findAny"><a href="#findAny" class="headerlink" title="findAny"></a>findAny</h6><p>返回流中的任意元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(</span><br><span class="line">        list.parallelStream().filter(s-&gt; s.length()&gt;2).findAny().get()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(</span><br><span class="line">        list.parallelStream().filter(s-&gt; s.length()&gt;2).findAny().get()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>love 或 you</p>
@@ -374,12 +392,12 @@
 <p>并行数据多返回满足第一个</p>
 <h4 id="非短路（Unshort-circuiting）"><a href="#非短路（Unshort-circuiting）" class="headerlink" title="非短路（Unshort-circuiting）"></a>非短路（Unshort-circuiting）</h4><p>指必须处理完所有元素才能得到最终结果</p>
 <h6 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h6><p>reduce操作效率不高，因为它创建了大量的中间<code>String</code>和<code>StringBuilder</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream().</span><br><span class="line">	 	map(a-&gt;a.name.replaceAll(&quot; &quot;, &quot;-&quot;)).</span><br><span class="line">	reduce((str1, str2) -&gt; str1 + &quot;&amp;&amp;&quot; + str2).get();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.stream().</span><br><span class="line">	 	map(a-&gt;a.name.replaceAll(&quot; &quot;, &quot;-&quot;)).</span><br><span class="line">	reduce((str1, str2) -&gt; str1 + &quot;&amp;&amp;&quot; + str2).get();</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>等价 collect(Collectors.joining(“&amp;&amp;”))</p>
 </blockquote>
-<h6 id="toArray"><a href="#toArray" class="headerlink" title="toArray"></a>toArray</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> Product[] array = list.stream().toArray(Product[]::new);</span><br><span class="line">//Arrays.stream(array).sorted(Comparator.comparing(s&gt;s.getId())).forEach(System.out::println);</span><br><span class="line"> Arrays.stream(array).filter(s-&gt;s.id&gt;1).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<h6 id="toArray"><a href="#toArray" class="headerlink" title="toArray"></a>toArray</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> Product[] array = list.stream().toArray(Product[]::new);</span><br><span class="line">//Arrays.stream(array).sorted(Comparator.comparing(s&gt;s.getId())).forEach(System.out::println);</span><br><span class="line"> Arrays.stream(array).filter(s-&gt;s.id&gt;1).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
 
 
       
@@ -390,17 +408,17 @@
     
     <div class="copyright">
         <p><span>本文标题:</span><a href="/lang/java/stream/">stream写法</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 Cheng Shuai 的个人博客">Cheng Shuai</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问  的个人博客"></a></p>
         <p><span>发布时间:</span>2022年06月03日 - 17时58分</p>
-        <p><span>最后更新:</span>2022年07月30日 - 17时29分</p>
+        <p><span>最后更新:</span>2022年08月28日 - 17时10分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/lang/java/stream/" title="stream写法">https://chengshea.github.io/lang/java/stream/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://chengshea.github.io/lang/java/stream/　　作者: Cheng Shuai" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span class="copy-path" data-clipboard-text="原文: https://chengshea.github.io/lang/java/stream/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -408,7 +426,7 @@
 
 <nav id="article-nav">
   
-    <a href="/services/zookeeper/选举机制/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/services/zookeeper/%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
@@ -430,12 +448,16 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream"><span class="toc-number">1.</span> <span class="toc-text">Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流创建"><span class="toc-number">1.1.</span> <span class="toc-text">流创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#静态方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">静态方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中间操作"><span class="toc-number">1.2.</span> <span class="toc-text">中间操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#无状态（Stateless）"><span class="toc-number">1.2.1.</span> <span class="toc-text">无状态（Stateless）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#filter"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#映射-map、flatMap、peek"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">映射(map、flatMap、peek)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#map"><span class="toc-number">1.2.1.2.1.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#flatMap"><span class="toc-number">1.2.1.2.2.</span> <span class="toc-text">flatMap</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#peek"><span class="toc-number">1.2.1.2.3.</span> <span class="toc-text">peek</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有状态（Stateful）"><span class="toc-number">1.2.2.</span> <span class="toc-text">有状态（Stateful）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#distinct"><span class="toc-number">1.2.2.0.1.</span> <span class="toc-text">distinct</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#sorted"><span class="toc-number">1.2.2.0.2.</span> <span class="toc-text">sorted</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#skip"><span class="toc-number">1.2.2.0.3.</span> <span class="toc-text">skip</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终结操作"><span class="toc-number">1.3.</span> <span class="toc-text">终结操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#短路（Short-circuiting）"><span class="toc-number">1.3.1.</span> <span class="toc-text">短路（Short-circuiting）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#anyMatch"><span class="toc-number">1.3.1.0.1.</span> <span class="toc-text">anyMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#allMatch"><span class="toc-number">1.3.1.0.2.</span> <span class="toc-text">allMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#noneMatch"><span class="toc-number">1.3.1.0.3.</span> <span class="toc-text">noneMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#findFirst"><span class="toc-number">1.3.1.0.4.</span> <span class="toc-text">findFirst</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#findAny"><span class="toc-number">1.3.1.0.5.</span> <span class="toc-text">findAny</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非短路（Unshort-circuiting）"><span class="toc-number">1.3.2.</span> <span class="toc-text">非短路（Unshort-circuiting）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#reduce"><span class="toc-number">1.3.2.0.1.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#toArray"><span class="toc-number">1.3.2.0.2.</span> <span class="toc-text">toArray</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream"><span class="toc-number">1.</span> <span class="toc-text">Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">流创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">静态方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">中间操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%88Stateless%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">无状态（Stateless）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#filter"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%98%A0%E5%B0%84-map%E3%80%81flatMap%E3%80%81peek"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">映射(map、flatMap、peek)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#map"><span class="toc-number">1.2.1.2.1.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#flatMap"><span class="toc-number">1.2.1.2.2.</span> <span class="toc-text">flatMap</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#peek"><span class="toc-number">1.2.1.2.3.</span> <span class="toc-text">peek</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E7%8A%B6%E6%80%81%EF%BC%88Stateful%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">有状态（Stateful）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#distinct"><span class="toc-number">1.2.2.0.1.</span> <span class="toc-text">distinct</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#sorted"><span class="toc-number">1.2.2.0.2.</span> <span class="toc-text">sorted</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#skip"><span class="toc-number">1.2.2.0.3.</span> <span class="toc-text">skip</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E7%BB%93%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">终结操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%AD%E8%B7%AF%EF%BC%88Short-circuiting%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">短路（Short-circuiting）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#anyMatch"><span class="toc-number">1.3.1.0.1.</span> <span class="toc-text">anyMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#allMatch"><span class="toc-number">1.3.1.0.2.</span> <span class="toc-text">allMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#noneMatch"><span class="toc-number">1.3.1.0.3.</span> <span class="toc-text">noneMatch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#findFirst"><span class="toc-number">1.3.1.0.4.</span> <span class="toc-text">findFirst</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#findAny"><span class="toc-number">1.3.1.0.5.</span> <span class="toc-text">findAny</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E7%9F%AD%E8%B7%AF%EF%BC%88Unshort-circuiting%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">非短路（Unshort-circuiting）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#reduce"><span class="toc-number">1.3.2.0.1.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#toArray"><span class="toc-number">1.3.2.0.2.</span> <span class="toc-text">toArray</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-   <script src="/js/require-2.1.6.js"></script>
+   
+<script src="/js/require-2.1.6.js"></script>
+
+
 <script src="/js/jquery-1.9.1.min.js"></script>
+
 
 <script>
     var valueHide = "隐藏目录";
@@ -463,18 +485,6 @@
 
 
 
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
 
 
     
@@ -499,7 +509,7 @@ gitment.render('gitment')
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/services/zookeeper/选举机制/" title="上一篇: zk选举">
+            <a href="/services/zookeeper/%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6/" title="上一篇: zk选举">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -510,9 +520,13 @@ gitment.render('gitment')
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/draft/">草稿</a></li><li class="post-list-item"><a class="post-list-link" href="/node/npm/hexo/">hexo插件</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/decompress/">decompress解压/压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/download/">download工具命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/helm/">helm工具</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubelet/">kubelet组件</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/formula/">Mathjax公式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/harbor/">harbor镜像私库</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubeadm/">kubeadm容器化安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/flanneld/">flanneld虚拟网络</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s/">kubernetes部署结构</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/iptable/">iptable防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/grep/">grep常用过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/tree/">tree工具</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/maven/">maven介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s01/">k8s集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/traefik/">traefik</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/etcd/">etcd集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/redis/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/redis/redis-cluster/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my/">mysql配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/install/">mysql安装</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/pip/">pip包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/services/container/tomcat/">tomcat优化</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/apt/">apt</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/sawtl/">强弱类型语言</a></li><li class="post-list-item"><a class="post-list-link" href="/database/mongo/">mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/design-pattern/singleton/">singleton单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker1/">常用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/sed/">sed替换查找</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm初始/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services/zookeeper/选举机制/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/mdgrammar/">md语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/初识K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/内网穿透/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/hexo/评论/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/安装ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/hexo/搭建hexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https自己签名/">https签名</a></li></ul>
-    <script src="/js/require-2.1.6.js"></script>
-    <script src="/js/jquery-1.9.1.min.js"></script>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/lang/test/tests/">前置操作/后置操作</a></li><li class="post-list-item"><a class="post-list-link" href="/draft/">草稿</a></li><li class="post-list-item"><a class="post-list-link" href="/node/npm/hexo/">hexo插件</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/decompress/">decompress解压/压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/download/">download工具命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/helm/">helm工具</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubelet/">kubelet组件</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/formula/">Mathjax公式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/harbor/">harbor镜像私库</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubeadm/">kubeadm容器化安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/flanneld/">flanneld虚拟网络</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s/">kubernetes部署结构</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/iptable/">iptable防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/grep/">grep常用过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/tree/">tree工具</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/maven/">maven介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s01/">k8s集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/traefik/">traefik</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/etcd/">etcd集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/redis/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/redis/redis-cluster/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my/">mysql配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/install/">mysql安装</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/pip/">pip包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/services/container/tomcat/">tomcat优化</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/apt/">apt</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/sawtl/">强弱类型语言</a></li><li class="post-list-item"><a class="post-list-link" href="/database/mongo/">mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/design-pattern/singleton/">singleton单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker1/">常用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/sed/">sed替换查找</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm%E5%88%9D%E5%A7%8B/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services/zookeeper/%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/markdown/mdgrammar/">md语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/%E5%88%9D%E8%AF%86K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/hexo/%E8%AF%84%E8%AE%BA/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/%E5%AE%89%E8%A3%85ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/hexo/%E6%90%AD%E5%BB%BAhexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https%E8%87%AA%E5%B7%B1%E7%AD%BE%E5%90%8D/">https签名</a></li></ul>
+    
+<script src="/js/require-2.1.6.js"></script>
+
+    
+<script src="/js/jquery-1.9.1.min.js"></script>
+
     <script>
         $(".post-list").addClass("toc-article");
         $(".post-list-item a").attr("target","_blank");
@@ -542,7 +556,36 @@ gitment.render('gitment')
 <script src="/js/L2Dwidget.min.js"></script>
 <script>
      var baseurl=document.domain;
-     console.log("==="+document.domain)
+    function prt(str) {
+        let l = new String(str);
+        return l.substring(l.indexOf("/*") + 3, l.lastIndexOf("*/"));
+    }
+    let str = function () {
+    /* welcome to open console
+           _____                    _____          
+          /\    \                  /\    \         
+         /::\    \                /::\    \        
+        /::::\    \              /::::\    \       
+       /::::::\    \            /::::::\    \      
+      /:::/\:::\    \          /:::/\:::\    \     
+     /:::/  \:::\    \        /:::/__\:::\    \    
+    /:::/    \:::\    \       \:::\   \:::\    \   
+   /:::/    / \:::\    \    ___\:::\   \:::\    \  
+  /:::/    /   \:::\    \  /\   \:::\   \:::\    \ 
+ /:::/____/     \:::\____\/::\   \:::\   \:::\____\
+ \:::\    \      \::/    /\:::\   \:::\   \::/    /
+  \:::\    \      \/____/  \:::\   \:::\   \/____/ 
+   \:::\    \               \:::\   \:::\    \     
+    \:::\    \               \:::\   \:::\____\    
+     \:::\    \               \:::\  /:::/    /    
+      \:::\    \               \:::\/:::/    /     
+       \:::\    \               \::::::/    /      
+        \:::\____\               \::::/    /       
+         \::/    /                \::/    /        
+          \/____/                  \/____/          @阿帅 */
+    }
+
+    console.log(prt(str));
     if("chengshea.github.io"==baseurl || "cheng.vercel.app"==baseurl){
 	    L2Dwidget.init({
 		"model": {
@@ -620,12 +663,24 @@ setInterval("createtime()",250);
 </footer>
 
     </div>
-    <script src="/js/require-2.1.6.js"></script>
+    
+<script src="/js/require-2.1.6.js"></script>
+
+
 <script src="/js/jquery-1.9.1.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
+
 <script src="/js/busuanzi.pure.mini.js"></script>
+
+
 <script src="/js/snow.js"></script>
+
+
 <script src="/js/search.js"></script>
+
 
     <script>
         $(document).ready(function() {
@@ -680,6 +735,7 @@ setInterval("createtime()",250);
         });
     });
 </script>
+
 
 <!--搜索--->
 
