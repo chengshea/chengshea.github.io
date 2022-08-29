@@ -3412,8 +3412,8 @@ var Gitment = function () {
         link: replacedUrl
       }, options);
 
-      this.state.user.isLoggingIn = true;//域名https://cors.wenjunjiang.win/?https://github.com/login/oauth/access_token
-      _utils.http.post('https://gh-oauth.wowtalon.top', {//域名访问改自己域名 https://YourAppName.xx.com/
+      this.state.user.isLoggingIn = true;//域名  
+      _utils.http.post('https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token', {//域名访问改自己域名 https://YourAppName.xx.com/
         code: code,
         client_id: client_id,
         client_secret: client_secret
