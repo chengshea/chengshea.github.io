@@ -3420,9 +3420,10 @@ var Gitment = function () {
       }, '',{Accept:'application/json'}).then(function (data) {
         _this.accessToken = data.access_token;
         _this.update();
+         console.log("data:"+JSON.stringify(data));
       }).catch(function (e) {
         _this.state.user.isLoggingIn = false;
-        console.log(JSON.stringify(e));
+        console.log("catch:"+JSON.stringify(e));
       });
     } else {
       this.update();
