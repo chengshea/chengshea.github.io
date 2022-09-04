@@ -61,7 +61,6 @@ tag_map:
 menu:
   首页: /
   归档: /archives
-  #categories: /categories
   分类: /tags
 
 
@@ -106,7 +105,7 @@ deploy:
 
 search:
   path: search.json
-  field: all
+  field: post
   content: true
   limit: 1000
   format: html

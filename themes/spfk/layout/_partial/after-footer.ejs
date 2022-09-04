@@ -1,15 +1,15 @@
 <%- js('js/require-2.1.6') %>
 <%- js('js/jquery-1.9.1.min') %>
+<% if (page.mathjax){ %>
+<%- partial('mathjax') %>
+<% } %>
 <%- js('js/main') %>
 <%- js('js/busuanzi.pure.mini') %>
-<%- js('js/snow') %>
 <%- js('js/search') %>
 <%- partial('background') %>
 <%- partial('analytics/google-analytics') %>
 <%- partial('analytics/baidu-analytics') %>
-<% if (page.mathjax){ %>
-<%- partial('mathjax') %>
-<% } %>
+
 <%- partial('scrolling-button') %>
 <%- partial('hide-labels') %>
 

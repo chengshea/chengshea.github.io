@@ -6,14 +6,14 @@
 menu:
   首页: /
   归档: /archives
-#  留言打卡: /about
- # 前端导航: /FrontEndGuide
   分类&标签: /tags
-# 光影之路: /instagram
- #随笔: /tags/随笔
+  # 留言打卡: /categories
+  # 前端导航: /FrontEndGuide
+  # 光影之路: /instagram
+  # 随笔: /tags/随笔
 
-# Link to your avatar | 填写头像地址
-avatar: img/head.png
+# Link to your avatar | 填写头像地址 head.png
+avatar: img/head.gif
 
 # Small icon of Your site | 站点小图标地址
 favicon: img/favicon.ico
@@ -24,17 +24,18 @@ favicon: img/favicon.ico
 ## RSS requires a plugin to take effect | 使用 RSS 需先安装对应插件
 ## https://github.com/hexojs/hexo-generator-feed
 subnav:
-  mail: "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY"
+  mail: "mailto:cs876321722@outlook.com?subject=github%20page%20hexo%20subject"
   github: "https://github.com/chengshea"
+  QQ: "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY"
   # zhihu: "#"
-  # weibo: "#"
-  google: "mailto:cs876321722@gmail.com?subject=github%20subject"
+  # google: "mailto:cs876321722@gmail.com?subject=github%20subject"
   # twitter: "#"
   # linkedin: "#"
   # facebook: "#"
   # rss: /atom.xml
   # pinterest: "#"
-  # QQ: "#"
+  # weibo: "#"
+
   # wechat: "#"
   # douban: "#"
   # pinboard: "#"
@@ -114,7 +115,7 @@ friends:
   theme author: http://luuman.github.io/
 
 #是否开启“关于我”。
-aboutme: 八哥，你跑那里去了！！！
+aboutme: Ctrl+C and Ctrl+V,restart
 #aboutme: false
 
 # 是否在新窗口打开链接
@@ -164,3 +165,4 @@ TipTitle: true
 
 
 baiduPush: true
+

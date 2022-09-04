@@ -34,7 +34,13 @@
 
     console.log(prt(str));
     if("chengshea.github.io"==baseurl || "cheng.vercel.app"==baseurl){
-	    L2Dwidget.init({
+       
+        var newScript = document.createElement("script");
+        newScript.setAttribute("type","text/javascript");
+        newScript.setAttribute("src","/js/snow.js");
+        document.body.appendChild(newScript);
+	  
+        L2Dwidget.init({
 		"model": {
 	　　　　　　　//jsonpath控制显示那个小萝莉模型，haru01/haru01  haru02/haru02  hibiki/hibiki  hijiki/hijiki
 		    //jsonPath: "https://xxxxx/assets/hijiki.model.json",

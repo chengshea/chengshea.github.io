@@ -3412,17 +3412,18 @@ var Gitment = function () {
         link: replacedUrl
       }, options);
 
-      this.state.user.isLoggingIn = true;//https://blog.csdn.net/weixin_34008805/article/details/88585514
-      _utils.http.post('https://github.com/login/oauth/access_token', {//域名访问改自己域名 https://YourAppName.xx.com/
+      this.state.user.isLoggingIn = true;//域名  
+      _utils.http.post('https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token', {//域名访问改自己域名 https://YourAppName.xx.com/
         code: code,
         client_id: client_id,
         client_secret: client_secret
-      }, '').then(function (data) {
+      }, '',{Accept:'application/json'}).then(function (data) {
         _this.accessToken = data.access_token;
         _this.update();
+         console.log("data:"+JSON.stringify(data));
       }).catch(function (e) {
         _this.state.user.isLoggingIn = false;
-        console.log(JSON.stringify(e));
+        console.log("catch:"+JSON.stringify(e));
       });
     } else {
       this.update();
