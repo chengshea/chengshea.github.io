@@ -21,7 +21,7 @@ date: 2022-08-20 13:24:54
 npm install --save hexo-generator-search
 ```
 
-<!--more--->
+<!--more-->
 
 ### hexo
 

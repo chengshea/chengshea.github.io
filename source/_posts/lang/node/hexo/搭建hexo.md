@@ -19,6 +19,9 @@ git
 hexo
 
 ### node 安装
+
+#### linux
+
 ``` bash
 $tar  -zxvf  node.tar.gz
 $cd node
@@ -37,6 +40,50 @@ $sudo node -v #当用root执行，commond not found
 alias sudo='sudo env PATH=$PATH'
 ```
  <!--more--> 
+
+#### win10
+
+‪C:/Users/Shea/.npmrc
+
+```
+prefix=K:\node\last\node_global
+cache=K:\node\last\node_cache
+registry=https://registry.npm.taobao.org/
+```
+
+##### 环境变量
+
+###### 用户变量path
+
+K:\node\last
+
+K:\node\last\node_global
+
+###### 系统变量
+
+NODE_PATH=K:\node\last\node_global\node_modules
+
+#### 检查版本
+
+```powershell
+PS K:\chengshea.github.io> node -v
+v16.17.0
+PS K:\chengshea.github.io> npm -v
+8.15.0
+```
+
+Error: EPERM: operation not permitted
+> node目录 右键----属性----安全--选择当前用户（编辑）--权限 -- 完全控制
+
+
+
+
+hexo : 无法加载文件 K:\node\last\node_global\hexo.ps1，因为在此系统上禁止运行脚本
+
+> 设置->隐私和安全性->开发者选项->**PowerShell** 勾选 应用
+
+
+
 ### git
 
 
@@ -86,7 +133,7 @@ $hexo d #deploy
 
 会导致hexo server 正常,但hexo generate 生成的public目录文件**全为为0kb**
 
-版本降级
+版本降级,或升级到一定版本,如
 
 ```json
 {
@@ -146,4 +193,3 @@ npm ls --depth 0
 
 hexo g --debug
 ```
-

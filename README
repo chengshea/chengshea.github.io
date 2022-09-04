@@ -1,13 +1,12 @@
+npm install 
+
+
 
 hexo new  "初识K8S"
 cs@debian:~/oss/hexo$ hexo new  "初识K8S"
 (node:9721) ExperimentalWarning: The fs.promises API is experimental
 (node:9721) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.
 INFO  Created: ~/oss/hexo/source/_posts/初识K8S.md
-
-
-
-
 
 
 
@@ -20,7 +19,7 @@ INFO  Created: ~/oss/hexo/source/_posts/linux/go.md
 ~/oss/hexo/source/_posts路径下
 
 
-
+ git push origin src:src
 
 
 hexo server
@@ -50,6 +49,11 @@ M	db.json
 您的分支与上游分支 'origin/src' 一致。
   master
 * src
+
+
+
+grep gitment-editor-login -rl --include=\*.{ejs,js} /home/cs/oss/hexo/themes/spfk
+
 
 
 

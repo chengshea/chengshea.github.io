@@ -13,15 +13,23 @@ date: 2022-08-27 23:24:33
 
 postman **https://learning.postman.com/docs/writing-scripts/intro-to-scripts/**
 
+设置变量 {{变量名}}，可用于Pre-request Script，Body，request url ,Tests...
+
+
+
 ### 前置操作
 
 Pre-request-script
 
-![](/pics/test-2022-08-28-14-30.gif)
+![](/pics/test-2022-08-31-21-02.gif)
 
-#### 设置环境变量
+body 的json串在图片上仅为展示可以设置变量
 
-{{变量名}}
+#### 设置变量
+
+ <!--more--> 
+
+##### 字符串
 
 ```js
 var url = "scripts/pre-request-script"; 
@@ -29,11 +37,40 @@ pm.environment.set("example", url.split("/")[0]);
 pm.environment.set("function", url.split("/")[1]);
 ```
 
->environment
+>环境变量 environment ；例如:测试,预发,生产url
 >
->globals
+>全局变量 globals；例如:登录token
 
-<!--more--->
+##### 非字符串
+
+对于数组和对象需要 JSON.stringify() 转换成字符串
+
+###### 设置
+
+```js
+var array = [1, 2, 3, 4];
+pm.environment.set('array', JSON.stringify(array));
+
+var obj = { a: [1, 2, 3, 4], b: { c: 'val' } };
+pm.environment.set('obj', JSON.stringify(obj));
+```
+
+
+
+###### 读取
+
+```js
+try {
+  var array = JSON.parse(pm.environment.get('array'));
+  var obj = JSON.parse(pm.environment.get('obj'));
+} catch (e) {
+  // 处理异常
+}
+```
+
+
+
+
 
 ### 后置操作
 

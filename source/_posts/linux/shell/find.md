@@ -19,15 +19,15 @@ date: 2022-06-12 21:55:12
 
 
 
-#### 路径
+### 路径
 
   相对    `./`
 
   绝对   `/`
 
-#### 条件
+### 条件
 
-名称
+#### 名称
 
 **name**    `find  /  -name   mysql`
 
@@ -35,7 +35,8 @@ date: 2022-06-12 21:55:12
 
 **regex**  `find / -regex  /docker*`  正则模糊查询
 
-大小
+#### size 大小
+
 <!--more-->
 
 **size**   `find  / -size  +20M` 
@@ -48,7 +49,7 @@ date: 2022-06-12 21:55:12
 
 `+ 20M`    (20,+∞]
 
-时间
+#### 时间
 
 **atime**  文件最后访问  
 
@@ -91,18 +92,52 @@ sudo find /boot/burg/themes/  -name '[^Metro]*' | xargs rm -rf
 
 ```
 
--path  排除路径
+#### -path  排除路径
 
--type  类型  d 目录  f文件     
 
--o  or 
 
--a and
+#### -type  类型
 
--prune 配备到path路径，则跳过该目录
+   d 目录  f文件 
+
+
+
+
+
+#### -prune 忽略
+
+配备到path路径，则跳过该目录
 
 ```
 
 sudo find  /  -path "/home/cs/lua-5.3.4"  -prune -o -type f    -name  lua*
 
 ```
+
+
+
+​    
+
+#### -o  or 
+
+```shell
+cs@debian:~/oss/test$ find ./ -path ./cs -prune -o -type f -name *.js -print
+./cs1/c.js
+./cs2/s.js
+cs@debian:~/oss/test$ find ./ \( -path ./cs -o -path ./cs1 \) -prune -o -type f -name *.js -print
+./cs2/s.js
+```
+
+> 多个目录, 括号前后空格,\转义
+
+
+
+#### -a and
+
+```
+find   ./cs2  ./cs1   -type f  -name *js -a  -name c.*  -print
+./cs2/c.ejs
+./cs1/c.ejs
+./cs1/c.js
+```
+

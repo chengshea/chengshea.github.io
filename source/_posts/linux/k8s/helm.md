@@ -39,7 +39,7 @@ version.BuildInfo{Version:"v3.9.3", GitCommit:"414ff28d4029ae8c8b05d62aa06c7fe3d
 
 ### 添加源
 
-
+<!--more-->
 
 ```
 helm repo add stable http://mirror.azure.cn/kubernetes/charts 
