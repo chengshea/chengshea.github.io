@@ -4,3 +4,4 @@ models/
 package-lock.json
 db.json
 test.txt
+.*
