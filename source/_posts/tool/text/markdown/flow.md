@@ -1,6 +1,6 @@
 ---
 title: md流程图
-permalink: markdown/flow/
+permalink: tool/text/markdown/flow/
 tags:
   - 流程图
   - flow
@@ -50,5 +50,4 @@ xx->end
 >模块1 id->模块2 id ：
 >
 >一般的箭头指向条件模块id (描述)->模块id(direction) ：条件模块跳转到对应的执行模块，并指定对应分支的布局方向
-
 

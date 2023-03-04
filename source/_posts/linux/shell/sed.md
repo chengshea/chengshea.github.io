@@ -539,6 +539,8 @@ sed 's/^#.*\(en_US.UTF-8\)/\1/' test
 sed -i '/^#/d' ./join.yaml
 #去空行和注释行
 sed -i '/^$/d;/^#/' ./join.yaml
+#空格字符
+sed -n  '/^[:space:]/##/' ./join.yaml
 ```
 
 

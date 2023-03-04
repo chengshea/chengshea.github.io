@@ -1,6 +1,6 @@
 ---
 title: kubeadm容器化安装
-permalink: linux/k8s/kubeadm//
+permalink: linux/k8s/kubeadm/
 tags:
   - kubeadm
 categories:

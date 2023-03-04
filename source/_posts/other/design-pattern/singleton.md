@@ -1,6 +1,6 @@
 ---
 title: singleton单例模式
-permalink: design-pattern/singleton/
+permalink: other/design-pattern/singleton/
 tags:
   - singleton
 categories:

@@ -1,6 +1,6 @@
 ---
 title: pandoc文本格式转换
-permalink: markdown/pandoc/
+permalink: tool/text/markdown/pandoc/
 tags:
   - format
   - md

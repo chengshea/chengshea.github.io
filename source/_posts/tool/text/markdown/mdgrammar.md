@@ -1,6 +1,6 @@
 ---
 title: md语法
-permalink: markdown/mdgrammar/
+permalink: tool/text/markdown/mdgrammar/
 tags:
   - grammar
 categories:

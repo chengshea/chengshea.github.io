@@ -1,10 +1,11 @@
 ---
-title: decompress解压/压缩
+title: 解压/压缩
 permalink: linux/shell/decompress/
 tags:
   - tar
   - unzip
   - xz
+  - decompress
 categories:
   - linux
   - shell

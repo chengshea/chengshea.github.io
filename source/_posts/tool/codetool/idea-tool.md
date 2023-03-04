@@ -1,13 +1,74 @@
 ---
-title: jpa
-permalink: tool/codetool/idea-jpa/
+title: IDEA tool
+permalink: tool/codetool/idea-tool/
 tags:
   - jpa
+  - Template
+  - Font
+  - active
 categories:
   - tool
   - idea
 date: 2022-09-01 21:32:59
 ---
+
+
+
+## 激活
+
+### idea64.exe.vmoptions
+
+-javaagent:C:\Program Files\IDEA\jetbra\ja-netfilter.jar=jetbrains
+
+### code
+
+[copy code ]: https://3.jetbra.in/	"code"
+
+
+
+
+
+## Font
+
+### code 代码区域
+
+File-->Settings
+
+选择Editor--> Font
+
+
+
+### console log区域
+
+File-->Settings
+
+选择Editor-->Color Scheme-->*Console* Font
+
+
+
+## 模板
+
+### java main
+
+ **1.点击File-->Settings-->Editor-->Live Templates**
+
+ **2 新增**
+
+点击右上角的"+"，添加"Template Group"，如java
+
+ 点击右上角的"+"，添加"Live Template"，如main
+
+**3.填写模板内容 Template text**
+
+```Java
+public static void main(String[] args){
+
+}
+```
+
+**4. 定义作用域  选择"Change",选择Java文件下的选项**
+
+
 
  
 

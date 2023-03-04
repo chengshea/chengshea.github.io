@@ -1,6 +1,6 @@
 ---
 title: Mathjax公式
-permalink: markdown/formula/
+permalink: tool/text/markdown/formula/
 tags:
   - formula
 categories:
