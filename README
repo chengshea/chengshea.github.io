@@ -1,7 +1,6 @@
 npm install 
 
 
-
 hexo new  "初识K8S"
 cs@debian:~/oss/hexo$ hexo new  "初识K8S"
 (node:9721) ExperimentalWarning: The fs.promises API is experimental
@@ -22,10 +21,7 @@ INFO  Created: ~/oss/hexo/source/_posts/linux/go.md
  git push origin src:src
 
 
-hexo server
-
-
-
+hexo s
 
 hexo g
 
@@ -50,9 +46,9 @@ M	db.json
   master
 * src
 
+git push origin src:src
 
 
-grep gitment-editor-login -rl --include=\*.{ejs,js} /home/cs/oss/hexo/themes/spfk
 
 
 

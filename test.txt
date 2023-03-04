@@ -39,7 +39,7 @@ entering pod netns for default/nginx-98f85fbb8-ql2gv
 nsenter -n --target 4536
 ====
 
-
+grep gitment-editor-login -rl --include=\*.{ejs,js} /home/cs/oss/hexo/themes/spfk
 
 
 var isMobile = {
@@ -98,5 +98,7 @@ cs@debian:~/oss/hexo/themes/spfk$
 待确定是否使用
 /home/cs/oss/hexo/themes/spfk/source/js/jquery/
 
-
+搜索
+/home/cs/oss/hexo/themes/spfk/source/js/search.js
+/home/cs/oss/hexo/themes/spfk/layout/_partial/after-footer.ejs
 

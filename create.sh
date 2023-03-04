@@ -23,13 +23,13 @@ help(){
 
 
 [ -n "$1" ] || { help && exit 1;}
-
+[[ "$1" != -@(h|help) ]] || { help && exit 1;}
 
 exec(){
    tmp=$2
    [ -n "$2" ] || tmp=${tmp:-$1}
-   echo "local:$1  title:$tmp"
-   hexo new --path $1 $tmp
+   echo "local:$1  title:${tmp#*/}"
+   hexo new --path $1 ${temp#*/}
 }
 
 
@@ -41,5 +41,5 @@ exec $1 $2
 
 ls -l |grep "^d"
 find  ./ -type d
-
+@(...) 是扩展模式的一个示例，在最新版本的 [[ ... ]] 中应该默认识别它bash;-h|-help
 EOF

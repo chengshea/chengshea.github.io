@@ -1,9 +1,13 @@
-var searchFunc = function (path, search_id, content_id) {
+var searchFunc = function (path, search_id, content_id,spath) {
   // 0x00. environment initialization
   'use strict';
   var $input = document.getElementById(search_id);
   var $resultContent = document.getElementById(content_id);
   $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+  console.log("path:"+spath)
+   if ("/" === spath) {
+            spath = "http://localhost:4000";
+    }
   $.ajax({
     // 0x01. load xml file
     url: path,
@@ -83,7 +87,7 @@ var searchFunc = function (path, search_id, content_id) {
           }
           // 0x05. show search results
           if (isMatch) {
-            str += "<li><a href='" + data_url + "' class='search-result-title' target='_blank'>" + orig_data_title + "</a>";
+            str += "<li><a href='" +spath+ data_url + "' class='search-result-title' target='_blank'>" + orig_data_title + "</a>";
            
             var content = orig_data_content;
             var match_content = "";
