@@ -663,8 +663,9 @@ setInterval("createtime()",250);
 	var inputArea       = document.querySelector("#local-search-input");
 	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
 	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+        var baseurl=document.domain;
 	var getSearchFile = function(){
-	  searchFunc("/" + "search.json", 'local-search-input', 'local-search-result',"/");
+	  searchFunc("/" + "search.json", 'local-search-input', 'local-search-result',baseurl);
 	}
            
           $(document).on('click', function(e) {
