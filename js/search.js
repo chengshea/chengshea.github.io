@@ -1,9 +1,13 @@
-var searchFunc = function (path, search_id, content_id) {
+var searchFunc = function (path, search_id, content_id,spath) {
   // 0x00. environment initialization
   'use strict';
   var $input = document.getElementById(search_id);
   var $resultContent = document.getElementById(content_id);
   $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+  console.log("path:"+spath)
+   if ("/" === spath) {
+            spath = "http://localhost:4000";
+    }
   $.ajax({
     // 0x01. load xml file
     url: path,
@@ -34,12 +38,12 @@ var searchFunc = function (path, search_id, content_id) {
           var data_content = orig_data_content.toLowerCase();
           var data_url = data.url;
           //标签和分类
-          var data_tags=data.tags;
+          var data_tags=data.tags.toString();
             if(data_tags!=""){
-              console.log("tags:"+data_tags)
              data_tags= data_tags.toLowerCase();
+             
             }
-          var data_categories=data.categories;
+          var data_categories=data.categories.toString();
             if(data_categories!=""){
               data_categories=data_categories.toLowerCase();
             }
@@ -47,17 +51,27 @@ var searchFunc = function (path, search_id, content_id) {
           var index_title = -1;
           var index_content = -1;
           var first_occur = -1;
+
+          var index_tag = -1;
+          var index_categorie = -1;
+          var status = 0;
           // only match artiles with not empty contents
           if (data_content !== '') {
             keywords.forEach(function (keyword, i) {
+              keyword=keyword.toLowerCase();
               index_title = data_title.indexOf(keyword);
               index_content = data_content.indexOf(keyword);
               
               index_tag = data_tags.indexOf(keyword);
               index_categorie = data_categories.indexOf(keyword);
-
-              if (index_title < 0 && index_content < 0 && index_tag < 0 && index_categorie < 0) {
-                isMatch = false;
+  //console.log(index_tag + " sddd:"+index_categorie)
+              if (index_title < 0 && index_content < 0 ) {
+                 if(index_tag < 0 && index_categorie < 0){
+                     isMatch = false;
+                 }else{
+                     if(index_tag >-1) { status = 3 ;}
+                     if(index_categorie>-1) { status =4 ;} 
+                 }
               } else {
                 if (index_content < 0) {
                   index_content = 0;
@@ -73,38 +87,56 @@ var searchFunc = function (path, search_id, content_id) {
           }
           // 0x05. show search results
           if (isMatch) {
-            str += "<li><a href='" + data_url + "' class='search-result-title' target='_blank'>" + orig_data_title + "</a>";
+            str += "<li><a href='" +spath+ data_url + "' class='search-result-title' target='_blank'>" + orig_data_title + "</a>";
            
             var content = orig_data_content;
-             if(content===""){
+            var match_content = "";
+             if(content != "" ){
 
-             }
-            if (first_occur >= 0) {
-              // cut out 100 characters
-              var start = first_occur - 30;
-              var end = first_occur + 100;
+                 if (first_occur >= 0) {
+                // cut out 100 characters
+                var start = first_occur - 30;
+                var end = first_occur + 100;
 
-              if (start < 0) {
-                start = 0;
-              }
+                if (start < 0) {
+                  start = 0;
+                }
 
-              if (start == 0) {
-                end = 100;
-              }
+                if (start == 0) {
+                  end = 100;
+                }
 
-              if (end > content.length) {
-                end = content.length;
-              }
+                if (end > content.length) {
+                  end = content.length;
+                }
 
-              var match_content = content.substr(start, end);
-
+                 match_content = content.substr(start, end);
+           }
+            
+          
               // highlight all keywords
               keywords.forEach(function (keyword) {
                 var regS = new RegExp(keyword, "gi");
                 match_content = match_content.replace(regS, "<em class='search-keyword'>" + keyword + "</em>");
+                
+                 if(match_content=="" && status > -1){
+                    if( status == 3){
+                       match_content = data.tags.toString().replace(regS, "tags: <em class='search-keyword'>" + keyword + "</em>");
+                       //  console.log(" 3 "+status)
+                     }else{
+                         match_content = data.categories.toString().replace(regS, "categories: <em class='search-keyword'>" + keyword + "</em>");
+                        // console.log("4 "+status)
+                     }
+                   }
+
               });
-               let index=match_content.indexOf("<em class='search-keyword'>");
-               match_content=match_content.substr(index-20,index+50);
+              
+        
+               if(status < 0){
+                     let index=match_content.indexOf("<em class='search-keyword'>");
+                     match_content=match_content.substr(index-20,index+50);
+               }
+
 
               str += "<p class=\"search-result\">" + match_content + "...</p>"
             }

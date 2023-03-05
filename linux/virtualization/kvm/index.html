@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>kvm安装入门 | 个人杂记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="kvm安装1sudo apt install  libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon libvirt-dev  -y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kvm安装入门">
+<meta property="og:url" content="https://chengshea.github.io/linux/virtualization/kvm/index.html">
+<meta property="og:site_name" content="个人杂记">
+<meta property="og:description" content="kvm安装1sudo apt install  libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon libvirt-dev  -y">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-02-22T14:00:25.000Z">
+<meta property="article:modified_time" content="2023-03-05T02:43:08.858Z">
+<meta property="article:author" content="Cheng Shuai">
+<meta property="article:tag" content="xxx">
+<meta property="article:tag" content="xx">
+<meta property="article:tag" content="kvm安装入门">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="个人杂记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+
+      
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+
+   <!-- 评论  -->
+   <link rel="stylesheet" href="/css/sreach/sreach.css">
+   <link rel="stylesheet" href="/css/gitment.css">
+   <script src="/js/gitment.js"></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.gif" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate"></a></h1>
+        </hgroup>
+
+        
+ 
+     
+	<div id="id_search"   onclick = "document.getElementById('local_search').style.display='block'">
+ <span class="search-icon">
+		    <i class="fa fa-search"> </i>
+		  </span>
+
+搜索
+</div>
+
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+
+
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+
+
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+
+
+                     
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+
+
+                    </div>
+                    
+                </div>
+
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+                 
+        
+
+   
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">归档</a></li>
+                        
+                            <li><a href="/tags">分类&amp;标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:cs876321722@outlook.com?subject=github%20page%20hexo%20subject" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/chengshea" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Font/" style="font-size: 10px;">Font</a> <a href="/tags/PL-SQL/" style="font-size: 10px;">PL/SQL</a> <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/Template/" style="font-size: 10px;">Template</a> <a href="/tags/active/" style="font-size: 10px;">active</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/bak/" style="font-size: 10px;">bak</a> <a href="/tags/batch/" style="font-size: 10px;">batch</a> <a href="/tags/binary/" style="font-size: 10px;">binary</a> <a href="/tags/bubble/" style="font-size: 10px;">bubble</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/containerd%E5%AE%89%E8%A3%85/" style="font-size: 10px;">containerd安装</a> <a href="/tags/create-ap/" style="font-size: 10px;">create_ap</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decompress/" style="font-size: 10px;">decompress</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 11.67px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 11.67px;">docker-engine</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/example/" style="font-size: 10px;">example</a> <a href="/tags/explain%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92/" style="font-size: 10px;">explain执行计划</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flanneld/" style="font-size: 10px;">flanneld</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/format/" style="font-size: 10px;">format</a> <a href="/tags/formula/" style="font-size: 10px;">formula</a> <a href="/tags/fstab/" style="font-size: 10px;">fstab</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/gpasswd/" style="font-size: 10px;">gpasswd</a> <a href="/tags/grammar/" style="font-size: 10px;">grammar</a> <a href="/tags/grep/" style="font-size: 10px;">grep</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/harbor/" style="font-size: 10px;">harbor</a> <a href="/tags/harbor%E5%AE%B9%E5%99%A8%E4%BB%93%E5%BA%93/" style="font-size: 10px;">harbor容器仓库</a> <a href="/tags/helm/" style="font-size: 10px;">helm</a> <a href="/tags/hexo/" style="font-size: 11.67px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/install/" style="font-size: 18.33px;">install</a> <a href="/tags/iptable/" style="font-size: 10px;">iptable</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/jpa/" style="font-size: 10px;">jpa</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 11.67px;">k8s</a> <a href="/tags/k8s1-26-1%E7%BC%96%E8%AF%91%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">k8s1.26.1编译部署</a> <a href="/tags/kubeadm/" style="font-size: 10px;">kubeadm</a> <a href="/tags/kubectl/" style="font-size: 10px;">kubectl</a> <a href="/tags/kubelet/" style="font-size: 10px;">kubelet</a> <a href="/tags/kubernetes/" style="font-size: 11.67px;">kubernetes</a> <a href="/tags/kvm%E5%AE%89%E8%A3%85%E5%85%A5%E9%97%A8/" style="font-size: 10px;">kvm安装入门</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/log/" style="font-size: 11.67px;">log</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/md/" style="font-size: 10px;">md</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mvn/" style="font-size: 10px;">mvn</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/query/" style="font-size: 10px;">query</a> <a href="/tags/redis/" style="font-size: 11.67px;">redis</a> <a href="/tags/redis-cluster/" style="font-size: 11.67px;">redis-cluster</a> <a href="/tags/remote/" style="font-size: 10px;">remote</a> <a href="/tags/request/" style="font-size: 10px;">request</a> <a href="/tags/response/" style="font-size: 10px;">response</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/scp%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/" style="font-size: 10px;">scp上传下载</a> <a href="/tags/screenshot/" style="font-size: 10px;">screenshot</a> <a href="/tags/search/" style="font-size: 11.67px;">search</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/singleton/" style="font-size: 10px;">singleton</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/studio/" style="font-size: 10px;">studio</a> <a href="/tags/svgjs/" style="font-size: 10px;">svgjs</a> <a href="/tags/tar/" style="font-size: 10px;">tar</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/traefik/" style="font-size: 10px;">traefik</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/usage-high/" style="font-size: 10px;">usage_high</a> <a href="/tags/user/" style="font-size: 10px;">user</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/virtualization/" style="font-size: 10px;">virtualization</a> <a href="/tags/visual/" style="font-size: 10px;">visual</a> <a href="/tags/vm/" style="font-size: 10px;">vm</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/x/" style="font-size: 10px;">x</a> <a href="/tags/xx/" style="font-size: 16.67px;">xx</a> <a href="/tags/xxx/" style="font-size: 20px;">xxx</a> <a href="/tags/xz/" style="font-size: 10px;">xz</a> <a href="/tags/zh-cn/" style="font-size: 10px;">zh-cn</a> <a href="/tags/%E4%B8%AD%E6%96%87/" style="font-size: 10px;">中文</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">信息备份</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 10px;">内网穿透</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 10px;">函数</a> <a href="/tags/%E5%B9%B3%E8%A1%A1/" style="font-size: 10px;">平衡</a> <a href="/tags/%E5%BC%BA%E5%BC%B1%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">强弱类型</a> <a href="/tags/%E6%8C%82%E7%9B%98/" style="font-size: 10px;">挂盘</a> <a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 10px;">插件</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" style="font-size: 10px;">服务发现</a> <a href="/tags/%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">查找</a> <a href="/tags/%E6%B5%81%E7%A8%8B%E5%9B%BE/" style="font-size: 10px;">流程图</a> <a href="/tags/%E6%BA%90/" style="font-size: 10px;">源</a> <a href="/tags/%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">监控工具</a> <a href="/tags/%E7%AD%BE%E5%90%8D/" style="font-size: 10px;">签名</a> <a href="/tags/%E8%84%9A%E6%9C%AC/" style="font-size: 10px;">脚本</a> <a href="/tags/%E8%8D%89%E7%A8%BF/" style="font-size: 10px;">草稿</a> <a href="/tags/%E8%A7%84%E5%88%99/" style="font-size: 10px;">规则</a> <a href="/tags/%E8%AE%BE%E7%BD%AE/" style="font-size: 10px;">设置</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E9%80%89%E4%B8%BE/" style="font-size: 10px;">选举</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">theme author</a>
+                    
+                    </div>
+                </section>
+                
+
+
+                
+                   
+		        <section class="switch-part switch-part4">
+		        
+               <div id="js-aboutme">Ctrl+C and Ctrl+V,restart</div>
+                </section>
+                    
+
+            </div>
+
+
+        </div>
+
+    </header>   
+            
+</div>
+    </div>
+
+
+<div id="local_search" class="search-popup" >
+  <div class="search-header">
+	
+	    <i class="fa fa-search"> </i> <input id="local-search-input" class="search-input" placeholder="搜索..." spellcheck="false" type="search"/>
+	  
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.gif" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">归档</a></li>
+                
+                    <li><a href="/tags">分类&amp;标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:cs876321722@outlook.com?subject=github%20page%20hexo%20subject" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/chengshea" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-linux/virtualization/kvm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/linux/virtualization/kvm/" class="article-date">
+      <time datetime="2023-02-22T14:00:25.000Z" itemprop="datePublished">2023-02-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      kvm安装入门
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a><a class="article-category-link" href="/categories/linux/virtualization/">virtualization</a><a class="article-category-link" href="/categories/linux/virtualization/kvm/">kvm</a>
+    </div>
+
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kvm%E5%AE%89%E8%A3%85%E5%85%A5%E9%97%A8/" rel="tag">kvm安装入门</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xx/" rel="tag">xx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xxx/" rel="tag">xxx</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="kvm"><a href="#kvm" class="headerlink" title="kvm"></a>kvm</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install  libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon libvirt-dev  -y</span><br></pre></td></tr></table></figure>
+
+
+
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install virt-manager -y</span><br></pre></td></tr></table></figure>
+
+
+
+<p>检查组是否已经存在</p>
+<p>sudo getent group | grep libvirt</p>
+<p>如果不存在，请将其添加为系统组</p>
+<p>sudo groupadd –system libvirt</p>
+<p>#sudo adduser $USER libvirt</p>
+<p>sudo usermod -a -G libvirt $(whoami)</p>
+<p>newgrp libvirt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cat /etc/libvirt/libvirtd.conf | egrep  &quot;unix_sock_group|unix_sock_rw_perms&quot; </span><br><span class="line">#unix_sock_group = &quot;libvirt&quot;</span><br><span class="line">#unix_sock_rw_perms = &quot;0770&quot;</span><br><span class="line"></span><br><span class="line">sudo sed -i &#x27;s/^#\(unix_sock_group\)/\1/&#x27; /etc/libvirt/libvirtd.conf</span><br><span class="line">sudo sed -i &#x27;s/^#\(unix_sock_rw_perms\)/\1/&#x27; /etc/libvirt/libvirtd.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>sudo systemctl restart libvirtd.service</p>
+<p>sudo usermod -aG kvm $USER  ?</p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>默认存储池默认存储池 &#x2F;var&#x2F;lib&#x2F;libvirt&#x2F;images</p>
+<p>虚拟网络配置文件作为XML文件存储在**&#x2F;etc&#x2F;libvirt&#x2F;qemu&#x2F;networks**</p>
+<p>&#x2F;etc&#x2F;libvirt&#x2F;qemu&#x2F;networks&#x2F;default.xml</p>
+<h3 id="创建系统"><a href="#创建系统" class="headerlink" title="创建系统"></a>创建系统</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">virt-install \</span><br><span class="line">--virt-type kvm \</span><br><span class="line">--os-type=linux \</span><br><span class="line">--os-variant debian9 \</span><br><span class="line">--name test \</span><br><span class="line">--ram 1024  \</span><br><span class="line">--vcpus=1  \</span><br><span class="line">--disk /home/cs/data/kvm/qcow/debian9.qcow2,size=20,bus=virtio,format=qcow2 \</span><br><span class="line">--cdrom  /home/cs/data/VM/debian-9.8.0-amd64-netinst.iso    \</span><br><span class="line">--network=bridge=br0,model=virtio \</span><br><span class="line">--graphics vnc,listen=0.0.0.0 \</span><br><span class="line">--noautoconsole</span><br><span class="line">--autostart</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>–connect 默认为qemu:&#x2F;&#x2F;&#x2F;system, qemu+ssh:&#x2F;&#x2F;192.168.35.10&#x2F;system</p>
+<p>–name 这个参数就是取名字<br>–ram 这个参数就是分配内存以MB计数 16834就是16G<br>–vcpus 这个就是分配CPU的个数<br>–cdrom 这个就是选择镜像位置<br>–network&#x3D;bridge 这个就是选择桥接网卡的接口 ,nat network&#x3D;default&#x2F;net-br<br>–disk path 这个参数就是为了配置虚拟机的硬盘大小 size&#x3D;40 就是40G format为qcow2 </p>
+<p>–os-variant  查询 osinfo-query os（ apt -y install libosinfo-bin ）</p>
+<p>–autostart   自动开启</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo  brctl addbr br0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ERROR    无法在 ‘br0’ 获取接口 MTU: 没有那个设备</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brctl show | grep br0</span><br><span class="line">br0		8000.1270c8fbe175	no		vnet1</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo virt-install   --virt-type kvm --os-type=linux --os-variant centos7 --name centos7-01 --ram 2048  --vcpus=2  --disk /home/cs/data/kvm/qcow/centos7.qcow2,size=20,bus=virtio,format=qcow2 --cdrom  /home/cs/data/kvm/iso/CentOS-7-x86_64-Minimal-1810.iso    --network=bridge=br0,model=virtio --graphics vnc,listen=0.0.0.0 --noautoconsole</span><br><span class="line"></span><br><span class="line">开始安装......</span><br><span class="line">正在分配 &#x27;debian9.qcow2&#x27;        0% [                 ]    0 B/s | 1.2 MB  --:-- 正在分配 &#x27;debian9.qcow2&#x27;        0% [                 ] 5.7 MB/s | 9.2 MB  59:31 正在分配 &#x27;debian9.qcow2&#x27;        0% [                 ] 6.3 MB/s |  18 MB  53:49 正在分配 &#x27;debian9.qcow2&#x27;        0% [                 ] 6.7 MB/s |  27 MB  51:00 正在分配 &#x27;debian9.qcow2&#x27;        0% [                 ] 6.9 MB/s |  35 MB  49:24 正在分配 &#x27;debian9.qcow2&#x27;        0% [                 ] 7.1 MB/s |  42 MB  48:12 正在分配 &#x27;debian9.qcow2&#x27;                                        |  20 GB  00:05     </span><br><span class="line"></span><br><span class="line">域仍在运行。安装可能正在进行中。</span><br><span class="line">可以重新连接到控制台以完成安装过程。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>qemu:&#x2F;&#x2F;&#x2F;system</p>
+</blockquote>
+<h3 id="磁盘格式"><a href="#磁盘格式" class="headerlink" title="磁盘格式"></a>磁盘格式</h3><p>raw立即分配空间,裸格式，占用空间比较大，不适合远程传输,不支持快照功能，性能较好</p>
+<p>qcow2只有需要时才会分配空间,cow(copy on write)占用空间小，适合传输，支持快照，性能比 raw 稍差</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#创建虚拟磁盘</span><br><span class="line">qemu-img create test.raw  10G</span><br><span class="line">qemu-img create -f qcow2 test.qcow2 10G</span><br><span class="line"> </span><br><span class="line">#查看虚拟磁盘信息</span><br><span class="line">qemu-img info test.raw</span><br><span class="line"> </span><br><span class="line">#调整虚拟磁盘容量大小</span><br><span class="line">qemu-img resize test.raw +5G</span><br><span class="line"> </span><br><span class="line">#磁盘格式转换</span><br><span class="line">qemu-img convert -f raw -O qcow2 test.raw test.qcow2</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="快照"><a href="#快照" class="headerlink" title="快照"></a>快照</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">raw不支持快照</span><br><span class="line"></span><br><span class="line">创建快照</span><br><span class="line">virsh snapshot-create-as vm02 vm02.snap02</span><br><span class="line"></span><br><span class="line">查看快照</span><br><span class="line">virsh snapshot-list vm02</span><br><span class="line"></span><br><span class="line">关闭虚拟机，恢复快照</span><br><span class="line">virsh snapshot-revert vm02 vm02.snap02</span><br><span class="line"></span><br><span class="line">删除快照</span><br><span class="line">virsh snapshot-delete --snapshotname vm02.snap02 vm02</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><h4 id="brctl"><a href="#brctl" class="headerlink" title="brctl"></a>brctl</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brctl [参数] &lt;bridge&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>addbr &lt;bridge&gt;</code></td>
+<td>创建网桥</td>
+<td><strong>brctl</strong> addbr br10</td>
+</tr>
+<tr>
+<td><code>delbr &lt;bridge&gt;</code></td>
+<td>删除网桥</td>
+<td><strong>brctl</strong> delbr br10</td>
+</tr>
+<tr>
+<td><code>addif &lt;bridge&gt; &lt;device&gt;</code></td>
+<td>将网卡接口接入网桥</td>
+<td><strong>brctl</strong> addif br10 eth0</td>
+</tr>
+<tr>
+<td><code>delif &lt;bridge&gt; &lt;device&gt;</code></td>
+<td>删除网桥接入的网卡接口</td>
+<td><strong>brctl</strong> delif br10 eth0</td>
+</tr>
+<tr>
+<td><code>show &lt;bridge&gt;</code></td>
+<td>查询网桥信息</td>
+<td><strong>brctl</strong> show br10</td>
+</tr>
+<tr>
+<td>&#96;stp <bridge> {on</td>
+<td>off}&#96;</td>
+<td>启用禁用 STP</td>
+</tr>
+<tr>
+<td><code>showstp &lt;bridge&gt;</code></td>
+<td>查看网桥 STP 信息</td>
+<td><strong>brctl</strong> showstp br10</td>
+</tr>
+<tr>
+<td><code>setfd &lt;bridge&gt; &lt;time&gt;</code></td>
+<td>设置网桥延迟</td>
+<td><strong>brctl</strong> setfd br10 10</td>
+</tr>
+<tr>
+<td><code>showmacs &lt;bridge&gt;</code></td>
+<td>查看 mac 信息</td>
+<td><strong>brctl</strong> showmacs br10</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hukey/p/6436211.html">https://www.cnblogs.com/hukey/p/6436211.html</a></p>
+<h4 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#创建桥接网络</span><br><span class="line">virsh iface-bridge eth0 br0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>–network bridge&#x3D;br0</p>
+</blockquote>
+<p>sudo brctl addif br0 eth0</p>
+<p>sudo brctl stp br0 on</p>
+<p>brctl show</p>
+<h4 id="net"><a href="#net" class="headerlink" title="net"></a>net</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ sudo virsh net-list --all</span><br><span class="line"> 名称      状态     自动开始   持久</span><br><span class="line">-------------------------------------</span><br><span class="line"> default   不活跃   否         是</span><br><span class="line"></span><br><span class="line">$ sudo virsh net-autostart default</span><br><span class="line">网络default标记为自动启动</span><br><span class="line"></span><br><span class="line">$ sudo virsh net-start default</span><br><span class="line">网络 default 已开始</span><br><span class="line"></span><br><span class="line">$ sudo virsh net-list --all</span><br><span class="line"> 名称      状态   自动开始   持久</span><br><span class="line">-----------------------------------</span><br><span class="line"> default   活动   是         是</span><br><span class="line"></span><br><span class="line">$ sudo virsh net-destroy default</span><br><span class="line">网络 default 被删除</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>网络 ‘default’ 未激活</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://tqdev.com/2020-kvm-network-static-ip-addresses">https://tqdev.com/2020-kvm-network-static-ip-addresses</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo virsh net-dumpxml default</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<network>
+<name>default</name>
+<uuid>f527b455-06b2-4bd2-87cd-7c4c84ef899d</uuid>
+<forward mode='nat'>
+<nat>
+<port start='1024' end='65535'/>
+</nat>
+</forward>
+<bridge name='virbr0' stp='on' delay='0'/>
+<mac address='52:54:00:b5:1f:85'/>
+<ip address='192.168.122.1' netmask='255.255.255.0'>
+<dhcp>
+<range start='192.168.122.2' end='192.168.122.254'/>  #ip-dhcp-range
+</dhcp>
+</ip>
+</network>
+</blockquote>
+<p>宿主机操作default.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">##更新dhcp范围</span><br><span class="line"># virsh net-update default delete ip-dhcp-range &quot;&lt;range start=&#x27;192.168.122.2&#x27; end=&#x27;192.168.122.254&#x27;/&gt;&quot; --live --config</span><br><span class="line"># virsh net-update default add ip-dhcp-range &quot;&lt;range start=&#x27;192.168.122.100&#x27; end=&#x27;192.168.122.254&#x27;/&gt;&quot; --live --config</span><br><span class="line"></span><br><span class="line">#获取name</span><br><span class="line">$ sudo virsh list </span><br><span class="line"> Id   名称         状态</span><br><span class="line">----------------------------</span><br><span class="line"> 3    centos7-01   running</span><br><span class="line"> </span><br><span class="line"> #获取mac</span><br><span class="line">$ sudo virsh dumpxml centos7-01  | grep &quot;mac address&quot;</span><br><span class="line">      &lt;mac address=&#x27;52:54:00:ed:75:fc&#x27;/&gt;</span><br><span class="line"></span><br><span class="line">#分配ip</span><br><span class="line">sudo virsh net-update default add-last ip-dhcp-host &quot;&lt;host mac=&#x27;52:54:00:ed:75:fc&#x27; name=&#x27;centos7-01&#x27; ip=&#x27;192.168.122.11&#x27;/&gt;&quot; --live --config</span><br><span class="line">sudo virsh net-dumpxml default</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<network>
+<name>default</name>
+<uuid>f527b455-06b2-4bd2-87cd-7c4c84ef899d</uuid>
+<forward mode='nat'>
+<nat>
+<port start='1024' end='65535'/>
+</nat>
+</forward>
+<bridge name='virbr0' stp='on' delay='0'/>
+<mac address='52:54:00:b5:1f:85'/>
+<ip address='192.168.122.1' netmask='255.255.255.0'>
+<dhcp>
+<range start='192.168.122.2' end='192.168.122.254'/>
+<host mac='52:54:00:ed:75:fc' name='centos7-01' ip='192.168.122.11'/>
+</dhcp>
+</ip>
+</network>
+</blockquote>
+<p>在虚机上重新发送DHCP请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dhclient -r &amp;&amp; sudo dhclient</span><br><span class="line">dhclient -r &amp;&amp;  dhclient</span><br></pre></td></tr></table></figure>
+
+<p>ping</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ arp -a | grep 52:54:00:ed:75:fc</span><br><span class="line">? (192.168.122.11) at 52:54:00:ed:75:fc [ether] on virbr0</span><br><span class="line"></span><br><span class="line">$ ping 192.168.122.11</span><br><span class="line">PING 192.168.122.11 (192.168.122.11) 56(84) bytes of data.</span><br><span class="line">64 bytes from 192.168.122.11: icmp_seq=1 ttl=64 time=0.279 ms</span><br><span class="line">64 bytes from 192.168.122.11: icmp_seq=2 ttl=64 time=0.311 ms</span><br><span class="line">^C</span><br><span class="line">--- 192.168.122.11 ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1022ms</span><br><span class="line">rtt min/avg/max/mdev = 0.279/0.295/0.311/0.016 ms</span><br></pre></td></tr></table></figure>
+
+
+
+<p>重启自动获取ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7-01 ~]# cat /etc/sysconfig/network-scripts/ifcfg-eth0 | grep BOOT</span><br><span class="line">BOOTPROTO=dhcp</span><br><span class="line">ONBOOT=no</span><br><span class="line"></span><br><span class="line">[root@centos7-01 ~]# sed -n &#x27;/^ONBOOT=/s/no/yes/&#x27;p /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line">ONBOOT=yes</span><br><span class="line">[root@centos7-01 ~]# sed -i &#x27;/^ONBOOT=/s/no/yes/&#x27; /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line"></span><br><span class="line">[root@centos7-01 ~]# systemctl restart network</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">systemctl status sshd.service</span><br><span class="line">systemctl restart sshd.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># sed -n &quot;s/^[Port|ListenAddress]/#&amp;/&quot;p /etc/ssh/sshd_config</span><br><span class="line">#Port 22</span><br><span class="line">#ListenAddress 0.0.0.0</span><br><span class="line">#ListenAddress ::</span><br><span class="line">#PermitRootLogin yes</span><br><span class="line">待修正 ？？？？</span><br><span class="line"></span><br><span class="line">#取消 sed &#x27;s/^#\(bbb\)/\1/&#x27; z.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo virsh net-edit default</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Select an editor.  To change later, run ‘select-editor’.</p>
+<ol>
+<li>&#x2F;bin&#x2F;nano        &lt;—- easiest</li>
+<li>&#x2F;usr&#x2F;bin&#x2F;vim.tiny</li>
+</ol>
+<p>Choose 1-2 [1]: 2</p>
+</blockquote>
+<h4 id="ifcfg-eth0"><a href="#ifcfg-eth0" class="headerlink" title="ifcfg-eth0"></a>ifcfg-eth0</h4><p>host &#x2F;etc&#x2F;libvirt&#x2F;qemu&#x2F;networks&#x2F;default.xml</p>
+<blockquote>
+ <ip address='192.168.122.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.122.2' end='192.168.122.254'/>
+      <host mac='52:54:00:ed:75:fc' name='centos7-01' ip='192.168.122.11'/>
+      <host mac='52:54:00:ed:5f:02' name='centos7-01' ip='192.168.122.12'/>
+    </dhcp>
+  </ip>	
+</blockquote>
+<p>vm  &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0</p>
+<blockquote>
+<p>TYPE&#x3D;Ethernet<br>PROXY_METHOD&#x3D;none<br>BROWSER_ONLY&#x3D;no<br>BOOTPROTO&#x3D;dhcp<br>DEFROUTE&#x3D;yes<br>IPV4_FAILURE_FATAL&#x3D;no<br>IPV6INIT&#x3D;yes<br>IPV6_AUTOCONF&#x3D;yes<br>IPV6_DEFROUTE&#x3D;yes<br>IPV6_FAILURE_FATAL&#x3D;no<br>IPV6_ADDR_GEN_MODE&#x3D;stable-privacy<br>NAME&#x3D;eth0<br>UUID&#x3D;5ab88b14-d03b-4469-8dfa-d98872b7c97b<br>DEVICE&#x3D;eth0<br>ONBOOT&#x3D;yes</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=eth0</span><br><span class="line">DEVICE=eth0</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=192.168.122.1</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.122.1</span><br><span class="line">DNS1=192.168.1.1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>IPADDR&#x3D;192.168.122.1  #固定静态ip</p>
+</blockquote>
+<h3 id="libguestfs"><a href="#libguestfs" class="headerlink" title="libguestfs"></a>libguestfs</h3><p><a target="_blank" rel="noopener" href="https://libguestfs.org/">https://libguestfs.org/</a></p>
+<p>该工具包内包含的工具有virt-cat、virt-df、virt-ls、virt-copy-in、virt-copy-out、<em>virt-edit</em>….</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install libguestfs-tools      # Fedora/RHEL/CentOS</span><br><span class="line">sudo apt-get install libguestfs-tools  # Debian/Ubuntu</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="virt-edit"><a href="#virt-edit" class="headerlink" title="virt-edit"></a>virt-edit</h4><p><a target="_blank" rel="noopener" href="https://libguestfs.org/virt-edit.1.html">https://libguestfs.org/virt-edit.1.html</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cs@debian:~/data/kvm$ sudo virt-edit -d base /etc/sysconfig/network-scripts/ifcfg-eth0 -e &quot;s/dhcp/static/&quot; </span><br><span class="line">cs@debian:~/data/kvm$ sudo virt-cat base /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>TYPE&#x3D;Ethernet<br>PROXY_METHOD&#x3D;none<br>BROWSER_ONLY&#x3D;no<br>BOOTPROTO&#x3D;static<br>DEFROUTE&#x3D;yes<br>IPV4_FAILURE_FATAL&#x3D;no<br>IPV6INIT&#x3D;yes<br>IPV6_AUTOCONF&#x3D;yes<br>IPV6_DEFROUTE&#x3D;yes<br>IPV6_FAILURE_FATAL&#x3D;no<br>IPV6_ADDR_GEN_MODE&#x3D;stable-privacy<br>NAME&#x3D;eth0<br>UUID&#x3D;65a51a6b-e278-4066-8d60-f7537080cc68<br>DEVICE&#x3D;eth0<br>ONBOOT&#x3D;yes</p>
+</blockquote>
+<p>不支持  “&#x2F;^BOOTPROTO&#x2F;s&#x2F;static&#x2F;dhcp&#x2F;“</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cs@debian:~/data/kvm$ sudo virt-edit -d base /etc/sysconfig/network-scripts/ifcfg-eth0 -e &quot;/^BOOTPROTO/s/static/dhcp/&quot;</span><br><span class="line">syntax error at (eval 1) line 1, at EOF</span><br><span class="line">	...propagated at -e line 1, &lt;STDIN&gt; line 1.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="镜像模板配置"><a href="#镜像模板配置" class="headerlink" title="镜像模板配置"></a>镜像模板配置</h3><h4 id="hosts"><a href="#hosts" class="headerlink" title="hosts"></a>hosts</h4><details>
+  <summary>/etc/hosts</summary>
+127.0.0.1   localhost k8s01
+::1         localhost
+192.168.122.11 k8s01
+192.168.122.12 k8s02
+192.168.122.13 k8s03
+192.168.122.14 k8s04
+192.168.122.15 k8s05
+192.168.122.16 k8s06
+</details>
+
+
+<h4 id="ifcfg-eth0-1"><a href="#ifcfg-eth0-1" class="headerlink" title="ifcfg-eth0"></a>ifcfg-eth0</h4><details>
+  <summary>/etc/sysconfig/network-scripts/ifcfg-eth0</summary>
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=static
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=eth0
+DEVICE=eth0
+ONBOOT=yes
+NETMASK=255.255.255.0
+GATEWAY=192.168.122.1
+DNS1=192.168.1.1
+</details>
+
+
+<h4 id="批量创建"><a href="#批量创建" class="headerlink" title="批量创建"></a>批量创建</h4><p>基于已有镜像系统</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/etc/libvirt/qemu</span><br><span class="line">├── base.xml</span><br><span class="line">├── k8s01.xml</span><br><span class="line">├── k8s02.xml</span><br><span class="line">├── k8s03.xml</span><br><span class="line">├── k8s04.xml</span><br><span class="line">├── k8s05.xml</span><br><span class="line">├── k8s06.xml</span><br><span class="line">├── networks</span><br><span class="line">│   ├── autostart</span><br><span class="line">│   │   └── default.xml -&gt; /etc/libvirt/qemu/networks/default.xml</span><br><span class="line">│   └── default.xml</span><br><span class="line">└── test.xml</span><br><span class="line"></span><br><span class="line">2 directories, 10 files</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>  virsh defline –validate k8s01.xml</p>
+<details>
+  <summary>k8s01.xml</summary>
+<pre><a>/etc/libvirt/qemu/k8s01.xml</a><xmp>
+ <!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh edit k8s01
+or other application using the libvirt API.
+-->
+<domain type='kvm'>
+  <name>k8s01</name>
+  <uuid>f2e97f2f-583d-4ada-a7be-f18f42053374</uuid>
+  <title>192.168.1.1</title>
+  <metadata>
+    <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
+      <libosinfo:os id="http://centos.org/centos/7.0"/>
+    </libosinfo:libosinfo>
+  </metadata>
+  <memory unit='KiB'>2097152</memory>
+  <currentMemory unit='KiB'>2097152</currentMemory>
+  <vcpu placement='static'>2</vcpu>
+  <os>
+    <type arch='x86_64' machine='pc-q35-5.2'>hvm</type>
+    <boot dev='hd'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+  </features>
+  <cpu mode='host-model' check='partial'/>
+  <clock offset='utc'>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <pm>
+    <suspend-to-mem enabled='no'/>
+    <suspend-to-disk enabled='no'/>
+  </pm>
+  <devices>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/home/cs/data/kvm/qcow/centos7.qcow2'/>
+      <target dev='vda' bus='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
+    </disk>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <target dev='sda' bus='sata'/>
+      <readonly/>
+      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <controller type='usb' index='0' model='qemu-xhci' ports='15'>
+      <address type='pci' domain='0x0000' bus='0x02' slot='0x00' function='0x0'/>
+    </controller>
+    <controller type='sata' index='0'>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x1f' function='0x2'/>
+    </controller>
+    <controller type='pci' index='0' model='pcie-root'/>
+    <controller type='pci' index='1' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='1' port='0x10'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0' multifunction='on'/>
+    </controller>
+    <controller type='pci' index='2' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='2' port='0x11'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x1'/>
+    </controller>
+    <controller type='pci' index='3' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='3' port='0x12'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x2'/>
+    </controller>
+    <controller type='pci' index='4' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='4' port='0x13'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x3'/>
+    </controller>
+    <controller type='pci' index='5' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='5' port='0x14'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x4'/>
+    </controller>
+    <controller type='pci' index='6' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='6' port='0x15'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x5'/>
+    </controller>
+    <controller type='pci' index='7' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='7' port='0x16'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x6'/>
+    </controller>
+    <controller type='virtio-serial' index='0'>
+      <address type='pci' domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
+    </controller>
+    <interface type='network'>
+      <mac address='52:54:00:ed:75:fc'/>
+      <source network='default'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </interface>
+    <serial type='pty'>
+      <target type='isa-serial' port='0'>
+        <model name='isa-serial'/>
+      </target>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+    <channel type='unix'>
+      <target type='virtio' name='org.qemu.guest_agent.0'/>
+      <address type='virtio-serial' controller='0' bus='0' port='1'/>
+    </channel>
+    <input type='tablet' bus='usb'>
+      <address type='usb' bus='0' port='1'/>
+    </input>
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
+    <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'>
+      <listen type='address' address='0.0.0.0'/>
+    </graphics>
+    <video>
+      <model type='vga' vram='16384' heads='1' primary='yes'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
+    </video>
+    <memballoon model='virtio'>
+      <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
+    </memballoon>
+    <rng model='virtio'>
+      <backend model='random'>/dev/urandom</backend>
+      <address type='pci' domain='0x0000' bus='0x06' slot='0x00' function='0x0'/>
+    </rng>
+  </devices>
+</domain>
+ </xmp></pre>
+</details>
+
+
+
+<p>网络 </p>
+<details>
+  <summary>default.xml</summary>
+  <pre><a>/etc/libvirt/qemu/networks/default.xml</a><xmp> 
+  <!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit default
+or other application using the libvirt API.
+-->
+<network>
+  <name>default</name>
+  <uuid>f527b455-06b2-4bd2-87cd-7c4c84ef899d</uuid>
+  <forward mode='nat'/>
+  <bridge name='virbr0' stp='on' delay='0'/>
+  <mac address='52:54:00:b5:1f:85'/>
+  <ip address='192.168.122.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.122.2' end='192.168.122.254'/>
+      <host mac='52:54:00:ed:75:fc' name='centos7-01' ip='192.168.122.11'/>
+    </dhcp>
+  </ip>
+</network>
+</xmp></pre>
+</details>
+
+<p>批量</p>
+<p>batch.sh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/env bash</span></span><br><span class="line">start=4</span><br><span class="line">end=6</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">基础镜像和配置</span></span><br><span class="line">baseimg=/home/cs/data/kvm/images/centos-base.qcow2</span><br><span class="line">sqemu=/home/cs/data/kvm/k8s01.xml</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">qemu=/etc/libvirt/qemu</span></span><br><span class="line">qemu=/home/cs/data/kvm/qcow</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">网络</span></span><br><span class="line">net=/etc/libvirt/qemu/networks/default.xml</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">名称domain</span></span><br><span class="line">name=k8s0</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">ip起始</span></span><br><span class="line">bip=&quot;192.168.122.1&quot;</span><br><span class="line"></span><br><span class="line">copy_xml()&#123;</span><br><span class="line">	cp_xml=$qemu/$name$1.xml</span><br><span class="line">	cp $sqemu $cp_xml</span><br><span class="line">	uuid=$(cat /proc/sys/kernel/random/uuid)</span><br><span class="line">	mac1=`openssl rand -base64 8 |md5sum |cut -c1-2`</span><br><span class="line">	mac2=`openssl rand -base64 8 |md5sum |cut -c1-2`</span><br><span class="line"></span><br><span class="line">	sed -n &quot;/&lt;name&gt;/s/&gt;.*&lt;/&gt;$name$1&lt;/&quot;p $cp_xml</span><br><span class="line">	sed -i &quot;/&lt;name&gt;/s/&gt;.*&lt;/&gt;$name$1&lt;/&quot; $cp_xml</span><br><span class="line"></span><br><span class="line">	sed -n &quot;/&lt;uuid&gt;/s/&gt;.*&lt;/&gt;$uuid&lt;/&quot;p  $cp_xml</span><br><span class="line">	sed -i &quot;/&lt;uuid&gt;/s/&gt;.*&lt;/&gt;$uuid&lt;/&quot; $cp_xml</span><br><span class="line"></span><br><span class="line">	sed -n &quot;/&lt;title&gt;/s/&gt;.*&lt;/&gt;$bip$1&lt;/&quot;p  $cp_xml</span><br><span class="line">	sed -i &quot;/&lt;title&gt;/s/&gt;.*&lt;/&gt;$bip$1&lt;/&quot; $cp_xml</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">mac &lt;mac address=<span class="string">&#x27;52:54:00:ed:xx:xx&#x27;</span>/&gt;</span></span><br><span class="line">	mac=&quot;/&lt;mac/s/address=.*&#x27;/address=&#x27;52:54:00:ed:$mac1:$mac2&#x27;/&quot;</span><br><span class="line">	sed -n $&#123;mac&#125;p  $cp_xml</span><br><span class="line">	sed -i $&#123;mac&#125; $cp_xml</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">	#</span><span class="language-bash">磁盘名称</span></span><br><span class="line">	file=&quot;/&lt;source/s/file=.*&#x27;/file=&#x27;\/home\/cs\/data\/kvm\/qcow\/$name$i.qcow2&#x27;/&quot;</span><br><span class="line">	sed -n $&#123;file&#125;p  $cp_xml</span><br><span class="line">	sed -i  $&#123;file&#125; $cp_xml</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">复制img文件</span></span><br><span class="line">copy_qcow2()&#123;</span><br><span class="line">	for i in `seq $start $end`</span><br><span class="line">	do</span><br><span class="line">	&#123;</span><br><span class="line">		temp=/home/cs/data/kvm/qcow/$name$i.qcow2</span><br><span class="line">		[ -f &quot;$temp&quot; ] &amp;&amp; &#123; echo &quot;file:$temp is exist,exit shell&quot; &amp;&amp; exit 0;&#125; </span><br><span class="line">		echo &quot;&gt;&gt;&gt;start copy...$name$i.qcow2&quot;</span><br><span class="line">		cp $baseimg  $temp</span><br><span class="line">	    wait</span><br><span class="line">		echo &quot;copy qcow2 end&quot;</span><br><span class="line">        </span><br><span class="line">        echo &quot;&gt;&gt;&gt;start copy...xml&quot;</span><br><span class="line">        copy_xml $i</span><br><span class="line">        echo &quot;copy xml end&quot;	</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	done</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">/etc/libvirt/qemu/networks/default.xml</span></span><br><span class="line">allcote_ip()&#123;</span><br><span class="line">   for i in `seq $start $end`</span><br><span class="line">	do</span><br><span class="line">	&#123;</span><br><span class="line">        echo &quot;&gt;&gt;&gt;start allcote ip...&quot;</span><br><span class="line">        temp=$qemu/$name$i.xml</span><br><span class="line">        mac=$(cat $temp | grep &quot;&lt;mac&quot; | sed  &quot;s/.*\(52.*\)&#x27;\/&gt;/\1/&quot;)</span><br><span class="line">        sed -n &quot;/$name$i/s/mac=.* n/mac=&#x27;$mac&#x27; n/&quot;p $net</span><br><span class="line">        sed -i &quot;/$name$i/s/mac=.* n/mac=&#x27;$mac&#x27; n/&quot; $net</span><br><span class="line"></span><br><span class="line">        virsh define $temp</span><br><span class="line">        [ -n &quot;$(command virt-edit -V)&quot; ] || &#123; echo &quot;tool virt-edit is not exist,please download https://libguestfs.org/&quot; &amp;&amp; exit ; &#125;</span><br><span class="line">        ar=&quot;IPADDR=192.168.122.1$i&quot;</span><br><span class="line">        virt-edit -d $name$i /etc/sysconfig/network-scripts/ifcfg-eth0 -e &quot;s/.*ADDR=192.*/$ar/&quot;</span><br><span class="line">        wait</span><br><span class="line">        changeip=$(virt-cat $name$i /etc/sysconfig/network-scripts/ifcfg-eth0 | grep IPADDR)</span><br><span class="line">        echo &quot;NAME=$name$i MAC=$mac $changeip&quot;</span><br><span class="line">        echo &quot;end allcote ip\n&quot;</span><br><span class="line">	&#125;</span><br><span class="line">	done</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">copy_qcow2</span><br><span class="line"></span><br><span class="line">allcote_ip</span><br><span class="line"></span><br><span class="line">:&lt;&lt;EOF</span><br><span class="line">qemu-img info base.qcow2 </span><br><span class="line">image: base.qcow2</span><br><span class="line">file format: qcow2</span><br><span class="line">virtual size: 20 GiB (21474836480 bytes)</span><br><span class="line">disk size: 3.72 GiB</span><br><span class="line">cluster_size: 65536</span><br><span class="line">Format specific information:</span><br><span class="line">    compat: 1.1</span><br><span class="line">    compression type: zlib</span><br><span class="line">    lazy refcounts: true</span><br><span class="line">    refcount bits: 16</span><br><span class="line">    corrupt: false</span><br><span class="line">    extended l2: false</span><br><span class="line">    </span><br><span class="line">sudo yum install libguestfs-tools      # Fedora/RHEL/CentOS</span><br><span class="line">sudo apt-get install libguestfs-tools  # Debian/Ubuntu</span><br><span class="line"></span><br><span class="line">[ &quot;$&#123;USER&#125;&quot; = &quot;root&quot; ] || &#123; echo &quot;user:$USER &quot; &amp;&amp; copy_qcow2  ;&#125;</span><br><span class="line">[ &quot;$&#123;USER&#125;&quot; = &quot;root&quot; ] &amp;&amp; &#123; echo &quot;user:$USER &quot; &amp;&amp; allcote_ip ;&#125;</span><br><span class="line"></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="vagrant"><a href="#vagrant" class="headerlink" title="vagrant"></a>vagrant</h2><p>~&#x2F;.vagrant.d</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ln -sf /opt/vagrant/bin/vagrant  /usr/local/bin/vagrant</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>$ ls ~&#x2F;.vagrant.d</p>
+</blockquote>
+<p>metadata.json</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vagrant box add name metadata.json</span><br><span class="line">cat &gt;metadata.json&lt;&lt;EOF</span><br><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;名称&quot;, </span><br><span class="line">    &quot;versions&quot;: [&#123;</span><br><span class="line">        &quot;version&quot;: &quot;版本&quot;, </span><br><span class="line">        &quot;providers&quot;: [&#123;</span><br><span class="line">            &quot;name&quot;: &quot;虚拟机类型&quot;, </span><br><span class="line">            &quot;url&quot;: &quot;file:///home/cs/data/VM/xxx.box&quot;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>{<br>   “name”: “centos&#x2F;7”,<br>   “versions”: [{<br>       “version”: “7.1.0”,<br>       “providers”: [{<br>           “name”: “libvirt”,<br>           “url”: “file:&#x2F;&#x2F;&#x2F;home&#x2F;cs&#x2F;data&#x2F;VM&#x2F;centos&#x2F;CentOS-7-x86_64-Vagrant-2004_01.LibVirt.box”<br>       }]<br>   }]<br>}</p>
+</blockquote>
+<h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant box add centos/7 /home/cs/data/VM/centos/metadata.json</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>&#x3D;&#x3D;&gt; box: Loading metadata for box ‘&#x2F;home&#x2F;cs&#x2F;data&#x2F;VM&#x2F;centos&#x2F;metadata.json’<br>box: URL: file:&#x2F;&#x2F;&#x2F;home&#x2F;cs&#x2F;data&#x2F;VM&#x2F;centos&#x2F;metadata.json<br>&#x3D;&#x3D;&gt; box: Adding box ‘centos&#x2F;7’ (v7.1.0) for provider: libvirt<br>box: Unpacking necessary files from: file:&#x2F;&#x2F;&#x2F;home&#x2F;cs&#x2F;data&#x2F;VM&#x2F;centos&#x2F;CentOS-7-x86_64-Vagrant-2004_01.LibVirt.box<br>&#x3D;&#x3D;&gt; box: Successfully added box ‘centos&#x2F;7’ (v7.1.0) for ‘libvirt’!</p>
+</blockquote>
+<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vagrant box list</span><br><span class="line">centos/7 (libvirt, 7.1.0)</span><br><span class="line">centos/7 (virtualbox, 7.1.0)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="plugin"><a href="#plugin" class="headerlink" title="plugin"></a>plugin</h3><p>vagrant plugin expunge –reinstall</p>
+<p>#插件列表<br>vagrant plugin list</p>
+<p>命令行界面之 Plugin <a target="_blank" rel="noopener" href="https://blog.51cto.com/luciferliu/3432079">https://blog.51cto.com/luciferliu/3432079</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/linux/virtualization/kvm/">kvm安装入门</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问  的个人博客"></a></p>
+        <p><span>发布时间:</span>2023年02月22日 - 22时00分</p>
+        <p><span>最后更新:</span>2023年03月05日 - 10时43分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/linux/virtualization/kvm/" title="kvm安装入门">https://chengshea.github.io/linux/virtualization/kvm/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://chengshea.github.io/linux/virtualization/kvm/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/linux/tool/ssh-tool/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          ssh远程登陆工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/linux/virtualization/container/docker-bit/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker二进制安装</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#kvm"><span class="toc-number">1.</span> <span class="toc-text">kvm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.</span> <span class="toc-text">创建系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.</span> <span class="toc-text">磁盘格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7"><span class="toc-number">1.5.</span> <span class="toc-text">快照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C"><span class="toc-number">1.6.</span> <span class="toc-text">网络</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#brctl"><span class="toc-number">1.6.1.</span> <span class="toc-text">brctl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%A5%E6%8E%A5"><span class="toc-number">1.6.2.</span> <span class="toc-text">桥接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#net"><span class="toc-number">1.6.3.</span> <span class="toc-text">net</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ifcfg-eth0"><span class="toc-number">1.6.4.</span> <span class="toc-text">ifcfg-eth0</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#libguestfs"><span class="toc-number">1.7.</span> <span class="toc-text">libguestfs</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#virt-edit"><span class="toc-number">1.7.1.</span> <span class="toc-text">virt-edit</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E6%A8%A1%E6%9D%BF%E9%85%8D%E7%BD%AE"><span class="toc-number">1.8.</span> <span class="toc-text">镜像模板配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hosts"><span class="toc-number">1.8.1.</span> <span class="toc-text">hosts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ifcfg-eth0-1"><span class="toc-number">1.8.2.</span> <span class="toc-text">ifcfg-eth0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA"><span class="toc-number">1.8.3.</span> <span class="toc-text">批量创建</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vagrant"><span class="toc-number">2.</span> <span class="toc-text">vagrant</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#add"><span class="toc-number">2.1.</span> <span class="toc-text">add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">2.2.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plugin"><span class="toc-number">2.3.</span> <span class="toc-text">plugin</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+   
+<script src="/js/require-2.1.6.js"></script>
+
+
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+
+
+    
+        
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+<div id="gitment"></div>
+<!-- 主页不要加载gitment -->
+
+<script>
+var gitment = new Gitment({
+owner: 'chengshea',
+repo: 'chengshea.github.io',
+oauth: {
+client_id: '3478952f5e3ade063629',
+client_secret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
+ },
+})
+gitment.render('gitment')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/linux/tool/ssh-tool/" title="上一篇: ssh远程登陆工具">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/linux/virtualization/container/docker-bit/" title="下一篇: docker二进制安装">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/containerd/">containerd安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/scp/">scp上传下载</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/harbor/">harbor容器仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s-compile/">k8s1.26.1编译部署</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/environment/">go环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/ruby/compile/">ruby从git拉取编译安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/user-group/">用户组命令</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/process/svg/">svg.js示例</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/test/">md语法示例</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/create_ap/">linux开启wifi</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/ssh-tool/">ssh远程登陆工具</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/virtualization/kvm/">kvm安装入门</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/virtualization/container/docker-bit/">docker二进制安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/storage/fstab/">fstab挂盘</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/os/">os信息备份</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/screenshot/">screenshot</a></li><li class="post-list-item"><a class="post-list-link" href="/log/">记录</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/vagrant/">vagrant</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/vs-code/">visual studio code</a></li><li class="post-list-item"><a class="post-list-link" href="/other/sort/bubble/">冒泡排序</a></li><li class="post-list-item"><a class="post-list-link" href="/other/data-structure/binary-tree/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/explain/">explain执行计划</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/function/">mysql函数</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my-conf/">mysql参数配置</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/pandoc/">pandoc文本格式转换</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/mysql-query/">mysql查询过程</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/databasetool/pl-sql/">PLSQL</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/idea-tool/">IDEA tool</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/sublime03/">Sublime设置</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/sublime02/">Sublime运行脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/sublime01/">Sublime中文</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/test/tests/">前置操作/后置操作</a></li><li class="post-list-item"><a class="post-list-link" href="/draft/">草稿</a></li><li class="post-list-item"><a class="post-list-link" href="/node/npm/hexo/">hexo插件</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/decompress/">解压/压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/download/">download工具命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/helm/">helm工具</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubelet/">kubelet组件</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/formula/">Mathjax公式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/harbor/">harbor镜像私库</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubeadm/">kubeadm容器化安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/flanneld/">flanneld虚拟网络</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s/">kubernetes部署结构</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/iptable/">iptable防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/grep/">grep常用过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/tree/">tree工具</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/maven/">maven介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s01/">k8s集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/traefik/">traefik</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/etcd/">etcd集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/redis/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/redis/redis-cluster/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my/">mysql配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/install/">mysql安装</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/pip/">pip包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/services/container/tomcat/">tomcat优化</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/apt/">apt</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/sawtl/">强弱类型语言</a></li><li class="post-list-item"><a class="post-list-link" href="/database/mongo/">mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/other/design-pattern/singleton/">singleton单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker1/">常用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/sed/">sed替换查找</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm%E5%88%9D%E5%A7%8B/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/flow/">md流程图</a></li><li class="post-list-item"><a class="post-list-link" href="/services/zookeeper/%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/mdgrammar/">md语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/%E5%88%9D%E8%AF%86K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/hexo/%E8%AF%84%E8%AE%BA/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">上网</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/%E5%AE%89%E8%A3%85ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/hexo/%E6%90%AD%E5%BB%BAhexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https%E8%87%AA%E5%B7%B1%E7%AD%BE%E5%90%8D/">https签名</a></li></ul>
+    
+<script src="/js/require-2.1.6.js"></script>
+
+    
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      
+<!-- cpu  -->
+<script src="/js/L2Dwidget.min.js"></script>
+<script>
+     var baseurl=document.domain;
+    function prt(str) {
+        let l = new String(str);
+        return l.substring(l.indexOf("/*") + 3, l.lastIndexOf("*/"));
+    }
+    let str = function () {
+    /* welcome to open console
+           _____                    _____          
+          /\    \                  /\    \         
+         /::\    \                /::\    \        
+        /::::\    \              /::::\    \       
+       /::::::\    \            /::::::\    \      
+      /:::/\:::\    \          /:::/\:::\    \     
+     /:::/  \:::\    \        /:::/__\:::\    \    
+    /:::/    \:::\    \       \:::\   \:::\    \   
+   /:::/    / \:::\    \    ___\:::\   \:::\    \  
+  /:::/    /   \:::\    \  /\   \:::\   \:::\    \ 
+ /:::/____/     \:::\____\/::\   \:::\   \:::\____\
+ \:::\    \      \::/    /\:::\   \:::\   \::/    /
+  \:::\    \      \/____/  \:::\   \:::\   \/____/ 
+   \:::\    \               \:::\   \:::\    \     
+    \:::\    \               \:::\   \:::\____\    
+     \:::\    \               \:::\  /:::/    /    
+      \:::\    \               \:::\/:::/    /     
+       \:::\    \               \::::::/    /      
+        \:::\____\               \::::/    /       
+         \::/    /                \::/    /        
+          \/____/                  \/____/          @阿帅 */
+    }
+
+    console.log(prt(str));
+    if("chengshea.github.io"==baseurl || "cheng.vercel.app"==baseurl){
+       
+        var newScript = document.createElement("script");
+        newScript.setAttribute("type","text/javascript");
+        newScript.setAttribute("src","/js/snow.js");
+        document.body.appendChild(newScript);
+	  
+        L2Dwidget.init({
+		"model": {
+	　　　　　　　//jsonpath控制显示那个小萝莉模型，haru01/haru01  haru02/haru02  hibiki/hibiki  hijiki/hijiki
+		    //jsonPath: "https://xxxxx/assets/hijiki.model.json",
+		     jsonPath: "/models/haru01/haru01.model.json",
+		    "scale": 1
+		},
+		"display": {
+		    "position": "right", //看板娘的表现位置
+		    "width": 150,  //小萝莉的宽度
+		    "height": 330, //小萝莉的高度
+		    "hOffset": 0,
+		    "vOffset": -20
+		},
+		"mobile": {
+		    "show": true,
+		    "scale": 0.5
+		},
+		"react": {
+		    "opacityDefault": 0.7,
+		    "opacityOnHover": 0.2
+		}
+	    }); 
+    }
+  var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("12/03/2016 21:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已运行<span class='date_num'> "+dnum+"</span> 天 "; 
+        document.getElementById("times").innerHTML ="<span class='date_num'>"+ hnum + "</span> 小时 <span class='date_num'>" + mnum + "</span> 分 <span class='date_num'>" + snum + "</span> 秒 | "; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 Cheng Shuai
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">  <!--计数设置-->
+ <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="/js/require-2.1.6.js"></script>
+
+
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+<!--搜索--->
+
+   <script type="text/javascript">
+    
+	var inputArea       = document.querySelector("#local-search-input");
+	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+	var getSearchFile = function(){
+	  searchFunc("/" + "search.json", 'local-search-input', 'local-search-result',"/");
+	}
+           
+          $(document).on('click', function(e) {
+		  var si= $(e.target).closest('#id_search').length;
+               var d= $(e.target).closest('#local_search').length;
+
+            //console.log(si+" "+" "+d)//si==0 && d==0
+		if(si==1){ 
+			document.body.style.overflow='hidden';
+		}
+                 // 关闭弹框
+             if( si==0 && d==0){
+ 
+               //  console.log('弹出框以外的部分被点击了');
+                     
+               document.body.style.overflow=''
+               $('#local_search').hide();
+                  }
+            
+
+       });
+
+
+  </script>
+
+  </div>
+</body>
+</html>
