@@ -1,7 +1,9 @@
-node_modules/
-public/
-models/
+node_modules/*
+public/*
+source/_drafts/*
+_config.yml
+models/*
+README
+models/*
 package-lock.json
 db.json
-test.txt
-.*
