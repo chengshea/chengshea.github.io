@@ -11,12 +11,12 @@ categories:
 
 ### 简介
   **Shield**拦截所有对ElasticSearch的请求，并加上认证与加密，保障ElasticSearch及相关系统的安全性
-  
+
   [<span id='top'>安装 doc</span>]( https://www.elastic.co/guide/en/shield/2.4/installing-shield.html)
- 
+
 ### 准备
 
-版本2.4.2{% post_link 安装ElasticSearch 安装ElasticSearch %}
+版本2.4.2{% post_link services/elk/安装ElasticSearch 安装ElasticSearch %}
  <!--more--> 
 **以下操作需要你安装了elasticsearch为前提**
 
@@ -49,7 +49,7 @@ shield
 cs@debian:/opt/elasticsearch$ bin/plugin install file:///home/cs/Download/shield-2.4.2.zip
 ```
  >Installed license into /home/cs/Download/es/plugins/shield
- 
+
 安装成功目录（部分）
 ```
 cs@debian:/opt/elasticsearch$ tree -L 3 /opt/elasticsearch
@@ -94,19 +94,20 @@ cs@debian:/opt/elasticsearch$ tree -L 3 /opt/elasticsearch
   java -cp org.elasticsearch.shield.authc.esusers.tool.ESUsersTool
   ```
   
+
 ESUsersTool类在shield插件目录**shield-2.4.2.jar**
-  
+
   **注意** [自定义目录](#custom)即 *plugins* 不再 *ES_HOME* 目录下，执行脚本需要确认**ES_CLASSPATH**位置正确
-  
+
   1.添加变量 ES_PLUGIN
   ```shell
   ES_PLUGIN=`dirname $(sed -n 's/path.plugins://p'  $ES_HOME/config/elasticsearch.yml)`
-```
+  ```
    2.修改
   ```shell
 #ES_CLASSPATH="$ES_CLASSPATH:$ES_HOME/plugins/shield/*"
 ES_CLASSPATH="$ES_CLASSPATH:$ES_PLUGIN/plugins/shield/*"  
-```
+  ```
 
 <br/>
 

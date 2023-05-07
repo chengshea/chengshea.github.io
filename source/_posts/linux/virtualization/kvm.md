@@ -125,7 +125,13 @@ $ brctl show | grep br0
 br0		8000.1270c8fbe175	no		vnet1
 ```
 
+#### 创建centos7 
 
+[mirrors集合](https://www.centos.org/download/mirrors/ )
+
+
+
+[阿里CentOS-7-x86_64](http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso?spm=a2c6h.25603864.0.0.736a6aeaa9kHJB )
 
 ```
 $ sudo virt-install   --virt-type kvm --os-type=linux --os-variant centos7 --name centos7-01 --ram 2048  --vcpus=2  --disk /home/cs/data/kvm/qcow/centos7.qcow2,size=20,bus=virtio,format=qcow2 --cdrom  /home/cs/data/kvm/iso/CentOS-7-x86_64-Minimal-1810.iso    --network=bridge=br0,model=virtio --graphics vnc,listen=0.0.0.0 --noautoconsole
@@ -380,12 +386,12 @@ systemctl status sshd.service
 systemctl restart sshd.service
 
 
-# sed -n "s/^[Port|ListenAddress]/#&/"p /etc/ssh/sshd_config
+# sed -n "s/^#\(Port\|Listen\|PermitRoo\)/水&/"p /etc/ssh/sshd_config
 #Port 22
 #ListenAddress 0.0.0.0
 #ListenAddress ::
 #PermitRootLogin yes
-待修正 ？？？？
+
 
 #取消 sed 's/^#\(bbb\)/\1/' z.txt
 ```
@@ -732,8 +738,7 @@ or other application using the libvirt API.
 </details>
 
 
-
-网络 
+##### 网络 
 
 <details>
   <summary>default.xml</summary>
@@ -759,8 +764,7 @@ or other application using the libvirt API.
 </network>
 </xmp></pre>
 </details>
-
-批量
+##### 批量脚本
 
 batch.sh
 
@@ -887,12 +891,48 @@ EOF
 
 
 
+## virsh
+
+
+
+### list
+
+```
+sudo virsh list --all
+```
+
+
+
+### start
+
+```
+list=$(sudo virsh list  --all --name  | grep k8s)
+for i in $(list);do sudo virsh start $i;done
+```
+
+
+
+
+
+### shutdown
+
+批量关机
+
+```
+list=$(sudo virsh list --name | grep k8s)
+for i in $list;do sudo virsh shutdown $i;done
+```
+
+
+
+
+
 
 
 
 ## vagrant
 
-~/.vagrant.d
+ [vagrant 虚拟工具](/tool/vagrant)
 
 
 
@@ -901,7 +941,9 @@ $ sudo ln -sf /opt/vagrant/bin/vagrant  /usr/local/bin/vagrant
 
 ```
 
-> $ ls ~/.vagrant.d
+> #存储全局状态的默认目录
+>
+> $ ls  ~/.vagrant.d
 
 
 

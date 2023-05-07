@@ -14,9 +14,11 @@ date: 2023-03-01 21:07:57
 
 
 
-## Installing containerd
+## Installing containerd 
 
-https://github.com/containerd/containerd/releases
+https://github.com/containerd/containerd/releases   
+
+<p id="containerd" hidden/>
 
 ```
 $ tar -zxvf  ../containerd-1.6.19-linux-amd64.tar.gz
@@ -38,7 +40,7 @@ scp ./bin/*  root@k8s01:/usr/local/bin
 /usr/local/lib/systemd/system/containerd.service
 
 ```
-cat >/etc/systemd/system/containerd.service <<EOF
+cat  <<EOF >/etc/systemd/system/containerd.service
 [Unit]
 Description=containerd container runtime
 Documentation=https://containerd.io
@@ -277,3 +279,10 @@ scp -r ./cni  root@k8s01:/opt
 >static                                        100% 2779KB 161.2MB/s   00:00    
 >vrf                                           100% 3502KB 166.9MB/s   00:00   
 
+
+
+
+
+
+
+level=error msg="failed to load cni during init, please check CRI plugin status before setting up network for pods" error="cni config load failed: no network config found in /etc/cni/net.d: cni plugin not initialized: failed to load cni config"

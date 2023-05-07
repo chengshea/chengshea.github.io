@@ -1,14 +1,15 @@
 ﻿---
-title: 上网
+title: 科学上网
 date: 2017-10-27 12:36:33
 tags:
   - online
+  - private-cs
 categories:
   - other
 ---
 
 ### 准备
-  有时候因工作需要，查询资料，下载，就需要上网
+  有时候因工作需要，查询资料，下载，就需要科学上网
 
   **linux 环境下**
   * pip 
@@ -60,6 +61,33 @@ ss.json
 ```
 
 
+
+| Name          | Explanation                                                  |
+| ------------- | ------------------------------------------------------------ |
+| server        | the address your server listens                              |
+| server_port   | server port                                                  |
+| local_address | the address your local listens                               |
+| local_port    | local port                                                   |
+| password      | password used for encryption                                 |
+| timeout       | in seconds                                                   |
+| method        | default: "aes-256-cfb", see [Encryption](https://github.com/shadowsocks/shadowsocks/wiki/Encryption) |
+| fast_open     | use [TCP_FASTOPEN](https://github.com/shadowsocks/shadowsocks/wiki/TCP-Fast-Open), true / false |
+| workers       | number of workers, available on Unix/Linux                   |
+
+fast_open
+
+```
+echo 3 > /proc/sys/net/ipv4/tcp_fastopen
+```
+
+>0 关闭
+>
+>1  客户端使用fastopen  ，默认
+>
+>2  服务端使用fastopen
+>
+>3  无论客户端，服务端都使用 TFO功能
+
 **ssserver --help**
 
 ` -d start/stop/restart`
@@ -85,7 +113,22 @@ $cat  /xx/ss.json
 sslocal -c  /xx/ss.json
 ```
 
+
+
+#### aes-256-gcm
+
+shadowsocks2.8.2版本，不支持aes-256-gcm
+
+```
+pip install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
+```
+
+
+
+
+
 ### 运行原理
+
 ![proxy](http://ojtd6k176.bkt.clouddn.com/proxy-12.56.png)
 * 首先通过SS Local和VPS进行通信，通过Socks5协议进行通信 <br/>
 * SS Local连接到VPS， 并对Socks5中传输的数据进行对称加密传输，传输的数据格式是SS的协议

@@ -118,12 +118,40 @@ $npm install
 ```
 $hexo g  #generate 简写
 $hexo s #server  默认端口4000
+$hexo server -p 5000
 ```
 push 
 
 ```
 $hexo d #deploy
 ```
+
+后台运行
+
+```
+npm install -g pm2
+
+cat <<EOF | tee run.js
+//run
+const { exec } = require('child\_process')
+exec('hexo server',(error, stdout, stderr) => {
+        if(error){
+                console.log('exec error: \${error}')
+                return
+        }
+        console.log('stdout: \${stdout}');
+        console.log('stderr: \${stderr}');
+})
+EOF
+
+pm2  start run.js
+```
+
+> start|stop|restart
+
+
+
+
 
 
 
@@ -169,6 +197,8 @@ $hexo d #deploy
 
 
 
+### 版本问题
+
 会导致 跳转链接变成下载文件
 
 ```
@@ -193,3 +223,55 @@ npm ls --depth 0
 
 hexo g --debug
 ```
+
+
+
+post_link
+
+hexo@6.3.0
+
+- feat(tag/post_link): throw on post_link error by [@xbc5](https://github.com/xbc5) in [#4938](https://github.com/hexojs/hexo/pull/4938)
+
+```
+{% post_link a-existent-post-name 'Title' %}
+```
+
+>a-existent-post-name  可以是相对路径 permalink
+
+
+
+
+
+### nginx
+
+```
+#/usr/local/openresty/nginx/conf/conf.d/hexo.conf
+# /etc/nginx/conf.d/http/hexo.conf
+cat <<EOF | tee /usr/local/openresty/nginx/conf/conf.d/hexo.conf
+server {
+        listen      1314;
+        server_name  localhost;
+
+        location / {
+            proxy_pass_header Server;
+            proxy_set_header Host \$http_host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Scheme \$scheme;
+            proxy_pass http://localhost:4000/;
+        }
+}
+EOF
+
+
+```
+
+
+
+```
+/usr/bin/openresty -t
+
+systemctl restart openresty
+
+systemctl restart nginx
+```
+

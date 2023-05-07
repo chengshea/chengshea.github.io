@@ -83,7 +83,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 #### docker-compose.yml
-常用配置{% post_link  compose %}
+常用配置 {% post_link  linux/k8s/docker  '安装 compose' %}
 
 #### 卸载
 ```

@@ -350,3 +350,39 @@ mobile:
 </script>
 ```
 
+
+
+## hexo-blog-encrypt
+
+加密doc  https://github.com/D0n9X1n/hexo-blog-encrypt/blob/master/ReadMe.zh.md#%E4%BF%AE%E6%94%B9%E5%8A%A0%E5%AF%86%E6%A8%A1%E6%9D%BF
+
+```
+npm install --save hexo-blog-encrypt
+```
+
+单篇
+
+```
+---
+title: Hello World
+tags:
+- 加密
+date: 1022-02-30 21:12:21
+password: 123   #添加该行配置密码访问
+---
+```
+
+标签维度_config.yml
+
+```
+# 安全插件 hexo-blog-encrypt 配置
+encrypt: 
+  abstract: 有东西被加密了, 请输入密码查看.
+  message: 您好, 私密文章需要密码访问.
+  tags:
+  - {name: private-cs, password: cs@qazqwe;}
+  - {name: tagName, password: 密码@B}
+  wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.
+  wrong_hash_message: 抱歉, 私密文章不能被校验, 不过您还是能看看解密后的内容.
+```
+

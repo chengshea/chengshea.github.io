@@ -28,7 +28,9 @@ src 源码路径
 
 
 
-升级或编译源码，需要旧的二进制版本来编译 <a id="go_env"/>
+升级或编译源码，需要旧的二进制版本来编译 
+
+<p id="go_env" hidden/>
 
 ```
 export GOROOT=/opt/go/1.18.1

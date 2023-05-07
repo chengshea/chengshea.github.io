@@ -12,7 +12,9 @@ categories:
 date: 2023-02-22 21:20:48
 ---
 
-## 挂盘
+
+
+### 挂盘
 
 /etc/fstab
 
@@ -54,9 +56,11 @@ $ sudo mount -a
 mount: /etc/fstab: parse error at line 24 -- ignored
 ```
 
-> **cat -v /etc/fstab**   将显示出任何虚假字符造成任何问题
+> **cat -v /etc/fstab**   将显示出任何虚假字符/不显示乱0xa0码造成任何问题
 
-##
+
+
+
 
 
 

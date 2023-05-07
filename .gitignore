@@ -4,6 +4,5 @@ source/_drafts/*
 _config.yml
 models/*
 README
-models/*
-package-lock.json
-db.json
+.deploy_git/*
+.git/*

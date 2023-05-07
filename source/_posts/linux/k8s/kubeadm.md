@@ -415,9 +415,9 @@ kubectl logs kube-flannel-ds-amd64-7wjtn -n kube-system
 
 ![](/pics/k8s-get-node-01.png)
 
-master节点一直notready  和  coredns pod一直pending
+master节点一直NotReady  和  coredns pod一直pending
 
-安装flannel
+ [安装flanneld.yaml](/linux/k8s/flanneld#id-flanneld)
 
 ![](/pics/k8s-get-node-02.png)
 

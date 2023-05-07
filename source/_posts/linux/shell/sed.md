@@ -15,33 +15,32 @@ date: 2022-07-09 21:18:56
 sed [options] 'command' file(s) 
 
 sed [options] -f scriptfile file(s)
-
-
-g 表示行内全面替换。     global 全局   
-p 表示打印行。 P 打印模板第一行
-r 读文件
--n ：使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN 的数据一般都会被列出到终端上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。 
--e ：直接在命令列模式上进行 sed 的动作编辑； 
--f ：直接将 sed 的动作写在一个文件内， -f filename 则可以运行 filename 内的 sed 动作；
--r ：sed 的动作支持的是延伸型正规表示法的语法。(默认是基础正规表示法语法) -i ：直接修改读取的文件内容，而不是输出到终端   
- w 表示把行写入一个文件。
- x 表示互换模板块中的文本和缓冲区中的文本。
- y 表示把一个字符翻译为另外的字符（但是不用于正则表达式）
- \1 子串匹配标记 
-& 已匹配字符串标记元字符集
-^ 匹配行开始，如：/^sed/匹配所有以sed开头的行。 
-$ 匹配行结束，如：/sed$/匹配所有以sed结尾的行。
- . 匹配一个非换行符的任意字符，如：/s.d/匹配s后接一个任意字符，最后是d。
- * 匹配0个或多个字符，如：/*sed/匹配所有模板是一个或多个空格后紧跟sed的行。
- [] 匹配一个指定范围内的字符，如/[ss]ed/匹配sed和Sed。
- [^] 匹配一个不在指定范围内的字符，如：/[^A-RT-Z]ed/匹配不包含A-R和T-Z的一个字母开头，紧跟ed的行。
- \(..\) 匹配子串，保存匹配的字符，如s/\(love\)able/\1rs，loveable被替换成lovers。
- & 保存搜索字符用来替换其他字符，如s/love/**&**/，love这成**love**。
- \< 匹配单词的开始，如:/\ 匹配单词的结束，如/love\>/匹配包含以love结尾的单词的行。
- x\{m\} 重复字符x，m次，如：/0\{5\}/匹配包含5个0的行。
- x\{m,\} 重复字符x，至少m次，如：/0\{5,\}/匹配至少有5个0的行。
- x\{m,n\} 重复字符x，至少m次，不多于n次，如：/0\{5,10\}/匹配5~10个0的行。
 ```
+
+>g 表示行内全面替换。     global 全局   
+>p 表示打印行。 P 打印模板第一行
+>r 读文件
+>-n ：使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN 的数据一般都会被列出到终端上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。 
+>-e ：直接在命令列模式上进行 sed 的动作编辑； 
+>-f ：直接将 sed 的动作写在一个文件内， -f filename 则可以运行 filename 内的 sed 动作；
+>-r ：sed 的动作支持的是延伸型正规表示法的语法。(默认是基础正规表示法语法) -i ：直接修改读取的文件内容，而不是输出到终端   
+> w 表示把行写入一个文件。
+> x 表示互换模板块中的文本和缓冲区中的文本。
+> y 表示把一个字符翻译为另外的字符（但是不用于正则表达式）
+> \1 子串匹配标记 
+>& 已匹配字符串标记元字符集
+>^ 匹配行开始，如：/^sed/匹配所有以sed开头的行。 
+>$ 匹配行结束，如：/sed$/匹配所有以sed结尾的行。
+> . 匹配一个非换行符的任意字符，如：/s.d/匹配s后接一个任意字符，最后是d。
+> * 匹配0个或多个字符，如：/*sed/匹配所有模板是一个或多个空格后紧跟sed的行。
+> [] 匹配一个指定范围内的字符，如/[ss]ed/匹配sed和Sed。
+>  [^] 匹配一个不在指定范围内的字符，如：/[^A-RT-Z]ed/匹配不包含A-R和T-Z的一个字母开头，紧跟ed的行。
+>  \(..\) 匹配子串，保存匹配的字符，如s/\(love\)able/\1rs，loveable被替换成lovers。
+>  & 保存搜索字符用来替换其他字符，如s/love/**&**/，love这成**love**。
+>  \< 匹配单词的开始，如:/\ 匹配单词的结束，如/love\>/匹配包含以love结尾的单词的行。
+>  x\{m\} 重复字符x，m次，如：/0\{5\}/匹配包含5个0的行。
+>  x\{m,\} 重复字符x，至少m次，如：/0\{5,\}/匹配至少有5个0的行。
+>  x\{m,n\} 重复字符x，至少m次，不多于n次，如：/0\{5,10\}/匹配5~10个0的行。
 
  
 
@@ -182,6 +181,12 @@ cs@debian:~/～$  sed '2,5d' test.txt
 ​             
 
 匹配删除 删除匹配下一行  d删除 p打印  #加 -i 直接修改 
+
+```
+sed '/这是i/d' test.txt
+```
+
+
 
 
 
@@ -555,4 +560,28 @@ export PATH=${JAVA_HOME}/bin:$PATH
 # echo $(sed -n  '/export\ JAVA_HOME/,+2 s/export/#/'p /etc/profile)
 # sed -i '/export\ JAVA_HOME/,+2 s/export/#/' /etc/profile
 ```
+
+
+
+#### 乱码
+
+ unknown directive
+
+```
+root@racknerd-070082:~# cat -n -v /usr/local/openresty/nginx/conf/nginx.conf | grep 88
+    88	 M-BM-  M-BM-  M-BM-  M-BM- proxy_set_header Host 127.94.137.185;
+    
+root@racknerd-070082:~# sed 's/\xc2\xa0/ /g' -i /usr/local/openresty/nginx/conf/nginx.conf
+root@racknerd-070082:~# cat -n -v /usr/local/openresty/nginx/conf/nginx.conf | grep 88
+    88	        proxy_set_header Host 127.94.137.185;
+
+```
+
+> cat -v #显示输出不打印M-等一些特殊字符
+>
+>  sed 's/\xc2\xa0/ /g' -i 文件路径  #把"M-BM-" 替换成空格
+
+![](/pics/cat-unknown.png)
+
+
 

@@ -36,7 +36,9 @@ sudo ln -s /home/cs/oss/hexo/themes/spfk/source/pics /pics
 
 
 
-### 站内文章跳转
+### 跳转
+
+#### 站内文章跳转
 
 A文章跳到B文章的某处
 
@@ -44,12 +46,26 @@ A文章跳到B文章的某处
 [A文章](路径#id-service)
 
 
-B文章<a id="id-service"/>
+B文章<p id="id-service" hidden/>
 
 
 ```
 
 > eg: [跳转到](/linux/k8s/kubelet#id-service)
+
+
+
+#### 页面内跳转
+
+A文章  
+
+```
+<a id="zim-modules">跳到这里</a>
+
+[点击这里](#zim-modules)
+```
+
+> typora 按住ctrl再点击
 
 
 

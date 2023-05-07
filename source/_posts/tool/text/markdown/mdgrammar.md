@@ -8,9 +8,9 @@ categories:
 date: 2022-02-16 20:49:21
 ---
 
+<p id="id-sample" hidden/>
 
-
-/hexo/_config.yml<a id="id-sample" style="display:none"/>
+/hexo/_config.yml 
 
 ```
 permalink: :title//
@@ -51,10 +51,10 @@ $ tree -L 2 ./_posts/
 #### post_link
 
 ```
-{% post_link markdown/flow '点击查看md写flow文章' %}
+{% post_link tool/text/markdown/flow/ '点击查看md写flow文章' %}
 ```
 
-> {% post_link markdown/flow '点击查看md写flow文章' %}
+> {% post_link tool/text/markdown/flow '点击查看md写flow文章' %}
 >
 > post_link 相对路径 '标题' 
 
@@ -85,6 +85,6 @@ $ tree -L 2 ./_posts/
 #### 设置锚点
 
 ```
-锚点<a id="id-sample" style="display:none"/>
+锚点<p id="id-sample" hidden/>
 ```
 

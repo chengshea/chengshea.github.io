@@ -115,3 +115,25 @@ end
 
 
 https://www.jianshu.com/p/120c4380c69c
+
+
+
+## plugin
+
+
+
+### vagrant-libvirt
+
+vagrant默认只支持VirtualBox，Hyper-V和Docker provider,该插件安装kvm的provider插件
+
+
+
+```
+vagrant up --provider=libvirt 
+
+vagrant status
+```
+
+
+
+https://www.5axxw.com/wiki/content/mkqte4#29keoitdxry

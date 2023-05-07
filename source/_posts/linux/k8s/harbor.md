@@ -41,6 +41,8 @@ HTTP  80
 
 ## 安装
 
+<p id="harbor-install" hidden/>
+
 仓库
 
 https://github.com/goharbor/harbor/releases

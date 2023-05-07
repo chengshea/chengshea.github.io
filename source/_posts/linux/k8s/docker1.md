@@ -301,63 +301,7 @@ server {
 
 #### GPU
 
-
-
-```
-lspci | grep -i vga
-```
-
-支持列表 https://developer.nvidia.com/cuda-gpus
-
-下载 http://www.geforce.cn/drivers
-
-
-
-驱动版本
-
-```
-cat /proc/driver/nvidia/version
-```
-
-本机显卡
-
-```
-ls -l /dev/nvidia*
-```
-
-
-
-```
-sudo nvidia-smi
-```
-
-![](/pics/nvidia.png)
-
-
-
-温度
-
-```
-sudo nvidia-smi -q -d TEMPERATURE
-```
-
-10s 一次
-
-```
-watch -n 10 nvidia-smi
-```
-
-
-
-
-
-```
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64"`
-export CUDA_HOME=/usr/local/cuda`
-```
-
-> Check failed: s.ok() could not find cudnnCreate in cudnn DSO xxxxx undefined symbol: cudnnCreate
-
+[nvidia驱动安装](/tool/gpu#gpu)
 
 
 

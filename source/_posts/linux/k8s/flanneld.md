@@ -14,11 +14,15 @@ date: 2022-08-01 20:37:39
 
 github https://github.com/flannel-io/flannel/tree/v0.16.1/Documentation
 
+<p id="id-flanneld" hidden />
+
+### flannel
 
 
-### flanneld.yaml 
 
-```yaml
+<details>
+  <summary>flannel详情</summary>
+  <pre><a>flannel.yaml</a><code>
 ---
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
@@ -256,8 +260,85 @@ spec:
           path: /etc/cni/net.d
       - name: flannel-cfg
         configMap:
-          name: kube-flannel-cfg
+          name: kube-flannel-cfg  </code></pre>
+</details>
+
+
+
+
+
+### 异常
+
+#### CrashLoopBackOff
+
+coredns跟fannel
+
+![xx](/pics/coredns-flannel-q.png)
+
+##### 网段问题
+
+Error registering network: failed to acquire lease: node "k8s01" pod cidr not assigned
+
+![assigned](/pics/allocate-node-cidrs.png)
+
+
+
+[kubeadm join command](https://kubernetes.io/zh-cn/docs/reference/setup-tools/kubeadm/kubeadm-init/)
+
+   --pod-network-cidr 的网段要跟fannel配置里Network的网段一致
+
+
+
+flannel.yaml
+
+```
+[root@k8s01 ~]# cat /opt/flannel.yaml | grep -i Network
+  - "networking.k8s.io"
+      "Network": "10.244.0.0/16",
+      hostNetwork: true
 ```
 
 
 
+[kube-controller-manager command](https://kubernetes.io/zh-cn/docs/reference/command-line-tools-reference/kube-controller-manager)
+
+
+
+```
+# cat /etc/kubernetes/manifests/kube-controller-manager.yaml  | grep -A 16 command
+  - command:
+    - kube-controller-manager
+    - --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --bind-address=127.0.0.1
+    - --client-ca-file=/etc/kubernetes/pki/ca.crt
+    - --cluster-name=kubernetes
+    - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt
+    - --cluster-signing-key-file=/etc/kubernetes/pki/ca.key
+    - --controllers=*,bootstrapsigner,tokencleaner
+    - --kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --leader-elect=true
+    - --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt
+    - --root-ca-file=/etc/kubernetes/pki/ca.crt
+    - --service-account-private-key-file=/etc/kubernetes/pki/sa.key
+    - --use-service-account-credentials=true
+    image: k8s.org/k8s/kube-controller-manager:v1.26.1
+```
+
+>--allocate-node-cidrs=true  基于云驱动来为 Pod 分配和设置子网掩码
+>
+>--cluster-cidr=10.244.0.0/16  集群中 Pod 的 CIDR 范围
+
+
+
+### coredns
+
+![1](/pics/flannel-1.png)
+
+
+
+![2](/pics/flannel-2.png)
+
+
+
+![3](/home/cs/oss/hexo/themes/spfk/source/pics/flannel-3.png)
