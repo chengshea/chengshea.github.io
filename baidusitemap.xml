@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengshea.github.io//linux/shell/split/</loc>
+    <lastmod>2023-12-03</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/shell/find/</loc>
+    <lastmod>2023-12-03</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/crack/unfreeze/</loc>
+    <lastmod>2023-12-03</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//lang/python/pip/</loc>
+    <lastmod>2023-11-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/debian/grub/</loc>
+    <lastmod>2023-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/database/postgresql/install/</loc>
+    <lastmod>2023-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/debian/os/</loc>
+    <lastmod>2023-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/tool/jenkins/</loc>
+    <lastmod>2023-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io/tool/git-pull/</loc>
+    <lastmod>2023-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/maven/</loc>
+    <lastmod>2023-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/k8s/thanos/</loc>
+    <lastmod>2023-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/k8s/prometheus/</loc>
+    <lastmod>2023-11-09</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//draft/</loc>
+    <lastmod>2023-11-09</lastmod>
+  </url>
+  <url>
     <loc>https://chengshea.github.io//linux/k8s/fluent/</loc>
     <lastmod>2023-11-09</lastmod>
   </url>
@@ -17,23 +69,11 @@
     <lastmod>2023-11-08</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//draft/</loc>
-    <lastmod>2023-11-07</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//linux/k8s/alert/</loc>
     <lastmod>2023-11-07</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/k8s/mysql/</loc>
-    <lastmod>2023-11-06</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/k8s/prometheus/</loc>
-    <lastmod>2023-11-06</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//tool/crack/unfreeze/</loc>
     <lastmod>2023-11-06</lastmod>
   </url>
   <url>
@@ -89,10 +129,6 @@
     <lastmod>2023-10-22</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/tool/jenkins/</loc>
-    <lastmod>2023-10-21</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//linux/tool/create_ap/</loc>
     <lastmod>2023-10-21</lastmod>
   </url>
@@ -102,10 +138,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/debian/nginx/</loc>
-    <lastmod>2023-10-21</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/debian/os/</loc>
     <lastmod>2023-10-21</lastmod>
   </url>
   <url>
@@ -253,10 +285,6 @@
     <lastmod>2023-06-01</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/debian/grub/</loc>
-    <lastmod>2023-05-31</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//tool/text/markdown/test/</loc>
     <lastmod>2023-05-30</lastmod>
   </url>
@@ -285,19 +313,11 @@
     <lastmod>2023-05-13</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//lang/python/pip/</loc>
-    <lastmod>2023-05-13</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//tool/git-cmd/</loc>
     <lastmod>2023-05-07</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io/network/on-line/</loc>
-    <lastmod>2023-05-07</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//tool/maven/</loc>
     <lastmod>2023-05-07</lastmod>
   </url>
   <url>
@@ -334,10 +354,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/customcmd/</loc>
-    <lastmod>2023-05-07</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/shell/split/</loc>
     <lastmod>2023-05-07</lastmod>
   </url>
   <url>
@@ -418,10 +434,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//services/database/mysql/mysql-query/</loc>
-    <lastmod>2022-09-03</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/shell/find/</loc>
     <lastmod>2022-09-03</lastmod>
   </url>
   <url>
@@ -522,10 +534,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io/lang/node/hexo/%E8%AF%84%E8%AE%BA/</loc>
-    <lastmod>2022-08-21</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io/tool/git-pull/</loc>
     <lastmod>2022-08-21</lastmod>
   </url>
   <url>
