@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengshea.github.io//linux/tool/ansible/galaxy/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//other/software/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/tool/ansible/ansible/</loc>
+    <lastmod>2024-01-02</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//lang/python/pip/</loc>
+    <lastmod>2024-01-02</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/tool/ansible/ansible1/</loc>
+    <lastmod>2024-01-02</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io/linux/shell/ps/</loc>
+    <lastmod>2024-01-02</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/gitlab/</loc>
+    <lastmod>2023-12-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io/linux/debian/dpkg/</loc>
+    <lastmod>2023-12-16</lastmod>
+  </url>
+  <url>
     <loc>https://chengshea.github.io//linux/shell/split/</loc>
     <lastmod>2023-12-03</lastmod>
   </url>
@@ -11,10 +43,6 @@
   <url>
     <loc>https://chengshea.github.io//tool/crack/unfreeze/</loc>
     <lastmod>2023-12-03</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//lang/python/pip/</loc>
-    <lastmod>2023-11-17</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/debian/grub/</loc>
@@ -221,10 +249,6 @@
     <lastmod>2023-08-18</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io/linux/shell/ps/</loc>
-    <lastmod>2023-08-18</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//linux/k8s/Crossplane/</loc>
     <lastmod>2023-08-16</lastmod>
   </url>
@@ -253,10 +277,6 @@
     <lastmod>2023-06-08</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/tool/ansible/</loc>
-    <lastmod>2023-06-07</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//linux/debian/apt/</loc>
     <lastmod>2023-06-07</lastmod>
   </url>
@@ -274,10 +294,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/tool/psensor/</loc>
-    <lastmod>2023-06-03</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io/linux/debian/dpkg/</loc>
     <lastmod>2023-06-03</lastmod>
   </url>
   <url>
@@ -354,10 +370,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/customcmd/</loc>
-    <lastmod>2023-05-07</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/tool/ansible1/</loc>
     <lastmod>2023-05-07</lastmod>
   </url>
   <url>
