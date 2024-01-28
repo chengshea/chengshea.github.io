@@ -91,48 +91,52 @@ var searchFunc = function (path, search_id, content_id,baseurl) {
              if(content != "" ){
 
                  if (first_occur >= 0) {
-                // cut out 100 characters
-                var start = first_occur - 30;
-                var end = first_occur + 100;
+                        // cut out 100 characters
+                        var start = first_occur - 30;
+                        var end = first_occur + 100;
 
-                if (start < 0) {
-                  start = 0;
-                }
+                          if (start < 0) {
+                            start = 0;
+                          }
 
-                if (start == 0) {
-                  end = 100;
-                }
+                          if (start == 0) {
+                            end = 100;
+                          }
 
-                if (end > content.length) {
-                  end = content.length;
-                }
+                          if (end > content.length) {
+                            end = content.length;
+                          }
 
-                 match_content = content.substr(start, end);
-           }
+                          match_content = content.substr(start, end);
+                     }
             
           
-              // highlight all keywords
-              keywords.forEach(function (keyword) {
-                var regS = new RegExp(keyword, "gi");
-                match_content = match_content.replace(regS, "<em class='search-keyword'>" + keyword + "</em>");
-                
-                 if(match_content=="" && status > -1){
-                    if( status == 3){
-                       match_content = data.tags.toString().replace(regS, "tags: <em class='search-keyword'>" + keyword + "</em>");
-                       //  console.log(" 3 "+status)
-                     }else{
-                         match_content = data.categories.toString().replace(regS, "categories: <em class='search-keyword'>" + keyword + "</em>");
-                        // console.log("4 "+status)
-                     }
-                   }
+                     
+                     /*  // highlight all keywords
+                       keywords.forEach(function (keyword) {
+                          var regS = new RegExp(keyword, "gi");
+                           match_content = match_content.replace(regS, "<em class='search-keyword'>" + keyword + "</em>");
+                       });
+                     */
 
-              });
-              
-        
-               if(status < 0){
-                     let index=match_content.indexOf("<em class='search-keyword'>");
-                     match_content=match_content.substr(index-20,index+50);
-               }
+                        var regS = new RegExp(keywords, "i");
+                        match_content = match_content.replace(regS, "<em class='search-keyword'>" + keywords + "</em>");
+                         //匹配标签，分类
+                         if(match_content=="" && status > -1){
+                            if( status == 3){
+                               match_content = data.tags.toString().replace(regS, "tags: <em class='search-keyword'>" + keywords + "</em>");
+                             }else{
+                                 match_content = data.categories.toString().replace(regS, "categories: <em class='search-keyword'>" + keywords + "</em>");
+                             }
+                          }
+
+                  //截取长度，只展示第一次匹配的内容
+                 if(match_content.length>210){
+                        var containerIndex = match_content.indexOf("<em class='search-keyword'>");
+                        var startIndex = Math.max(0, containerIndex - 60);
+                        var endIndex = Math.min(match_content.length, containerIndex + 99 + keywords.length);
+                        match_content = match_content.substring(startIndex, endIndex);
+                  }
 
 
               str += "<p class=\"search-result\">" + match_content + "...</p>"

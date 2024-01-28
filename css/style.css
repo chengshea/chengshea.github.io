@@ -4280,6 +4280,23 @@ pre .link_url {
     padding: 20px 10px;
   }
 }
+#div1 {
+  position: relative;
+  width: 25%;
+  margin: 0 auto;
+  padding: 0.5em 1.8em;
+  font-size: 0.93em;
+  line-height: 1.6em;
+  text-align: center;
+}
+#div2 {
+  position: absolute;
+  width: 260px;
+  height: 290px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  top: -280px; /* 使其在div1上方显示 */
+}
 .inner1 {
   margin: 0 40px;
 }
