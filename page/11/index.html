@@ -5,14 +5,14 @@
   
   <title>个人杂记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好记性,不如打字记录">
+  <meta name="description" content="好记性,不如文档记录">
 <meta property="og:type" content="website">
 <meta property="og:title" content="个人杂记">
 <meta property="og:url" content="https://chengshea.github.io/page/11/index.html">
 <meta property="og:site_name" content="个人杂记">
-<meta property="og:description" content="好记性,不如打字记录">
+<meta property="og:description" content="好记性,不如文档记录">
 <meta property="og:locale">
-<meta property="article:author" content="Cheng Shuai">
+<meta property="article:author" content="阿帅">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="个人杂记" type="application/atom+xml">
@@ -1428,7 +1428,13 @@ done
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="pod"><a href="#pod" class="headerlink" title="pod"></a>pod</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">kubectl -n devops get pods</span><br><span class="line">NAME          READY   STATUS    RESTARTS   AGE</span><br><span class="line">redis-app-0   1/1     Running   0          50m</span><br><span class="line">redis-app-1   1/1     Running   0          50m</span><br><span class="line">redis-app-2   1/1     Running   0          44m</span><br><span class="line">redis-app-3   1/1     Running   0          38m</span><br><span class="line">redis-app-4   1/1     Running   0          38m</span><br><span class="line">redis-app-5   1/1     Running   0          38m</span><br><span class="line"></span><br><span class="line">kubectl -n devops exec -it redis-app-2 /bin/bash</span><br><span class="line">kubectl -n devops exec -it redis-app-4 /bin/bash</span><br></pre></td></tr></table></figure>
+        <h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><p>重启容器ip变化导致配置不对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">DIR=&quot;$(cd &quot;$(dirname &quot;$0&quot;)&quot; &amp;&amp; pwd)&quot;</span><br><span class="line">cd $DIR</span><br><span class="line">export LD_LIBRARY_PATH=$DIR:$LD_LIBRARY_PATH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hosts=/etc/hosts</span><br><span class="line">conf=/var/lib/redis/nodes.conf</span><br><span class="line"></span><br><span class="line">newip=$(cat $hosts|grep redis-app|awk &#x27;&#123;print $1&#125;&#x27;)</span><br><span class="line">[ &quot;$newip&quot;x != &quot;&quot;x ] || &#123;  echo &quot;hosts里没有找到redis-app的ip,退出&quot; &amp;&amp; exit 1; &#125;</span><br><span class="line"></span><br><span class="line">ckeckConf()&#123;</span><br><span class="line">    [ -f &quot;$1&quot; ] || &#123; echo &quot;集群配置文件nodes.conf不存在,集群初始化中...&quot;  &amp;&amp; return; &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    echo &quot;检查nodes.conf文件内容...&quot;</span><br><span class="line">    arr=&quot;$(cat $1|grep -E &quot;master|slave&quot;|awk &#x27;&#123;print $1&#125;&#x27;)&quot;</span><br><span class="line">    len=$(echo  &quot;$&#123;arr&#125;&quot; | wc -l)</span><br><span class="line">    echo -e &quot;$len条clusterid,如下: \n&quot;&quot;$&#123;arr&#125;&quot;</span><br><span class="line">    [ &quot;$len&quot; -ne 1 ] || &#123; echo &quot;集群配置文件clusterid数目不对,请到nfs服务器核查node.conf文件,退出&quot; &amp;&amp; exit 1; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    myselfid=$(cat $1 |grep myself|awk &#x27;&#123;print $1&#125;&#x27;)</span><br><span class="line">    [ &quot;$myselfid&quot;x != &quot;&quot;x ] || &#123;  echo &quot;nodes.conf里没有找到myselfid,退出&quot; &amp;&amp; exit 1; &#125;</span><br><span class="line">     echo &quot;把新ip写入自身clusterid文件内...&quot;</span><br><span class="line">    echo $newip &gt; $PWD/$myselfid </span><br><span class="line">    echo &quot;k8s重启后: $myselfid -&gt; $newip&quot;;</span><br><span class="line"></span><br><span class="line">    for i in $&#123;arr&#125;;</span><br><span class="line">    do</span><br><span class="line">        [ -f &quot;./$i&quot; ] || &#123; echo &quot;没有./$i这个目录&quot; &amp;&amp; continue; &#125;</span><br><span class="line"></span><br><span class="line">        checkip=$(cat ./$i)</span><br><span class="line">        [ &quot;$checkip&quot;x != &quot;&quot;x ] || &#123; echo &quot;clusterid文件内容为空&quot; &amp;&amp; continue; &#125;</span><br><span class="line"></span><br><span class="line">        echo &quot;执行命令:ping -c1 $checkip&quot;</span><br><span class="line">        $DIR/ping -c1 $checkip</span><br><span class="line">        [ $? -ne 1 ] || &#123; echo &quot;ping $newip 结果返回ip不通&quot; &amp;&amp; continue; &#125;</span><br><span class="line"></span><br><span class="line">        oldip=$(cat $1 |grep -E &quot;^$i&quot;|awk &#x27;&#123;print $2&#125;&#x27;|cut -d &quot;:&quot; -f1)</span><br><span class="line">        [ &quot;$oldip&quot;x != &quot;&quot;x ] || &#123; echo &quot;clusterid在nodes.conf里没有搜索到ip,退出&quot; &amp;&amp; exit 1; &#125;</span><br><span class="line"></span><br><span class="line">        echo &quot;oldip:$oldip =========== newip:$checkip&quot;</span><br><span class="line">        sed -i &quot;s/$oldip/$checkip/g&quot; $1</span><br><span class="line">        [ $? -ne 0 ] || &#123; echo &quot;完成替换,clusterid:$i === ip:$checkip&quot; &amp;&amp; continue; &#125;     </span><br><span class="line"></span><br><span class="line">    done</span><br><span class="line">    </span><br><span class="line">    echo &quot;配置文件nodes.conf,检查完毕...&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">echo &quot;$newip 开始检查配置文件nodes.conf&quot;</span><br><span class="line">ckeckConf  $conf</span><br><span class="line"></span><br><span class="line">[ &quot;$(which redis-server)&quot;x != &quot;&quot;x ] || &#123; echo &quot;找不到redis-server,退出&quot; &amp;&amp; exit 1; &#125;</span><br><span class="line">echo &quot;开始启动服务....&quot;</span><br><span class="line">echo &quot;执行命令:redis-server $1 --cluster-announce-ip $newip&quot;</span><br><span class="line">redis-server $1 --cluster-announce-ip $newip</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> .<br>├──  libcap.so.2<br>├──  libidn.so.11<br>├──  ping<br>└──  start.sh</p>
+</blockquote>
+<h3 id="pod"><a href="#pod" class="headerlink" title="pod"></a>pod</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">kubectl -n devops get pods</span><br><span class="line">NAME          READY   STATUS    RESTARTS   AGE</span><br><span class="line">redis-app-0   1/1     Running   0          50m</span><br><span class="line">redis-app-1   1/1     Running   0          50m</span><br><span class="line">redis-app-2   1/1     Running   0          44m</span><br><span class="line">redis-app-3   1/1     Running   0          38m</span><br><span class="line">redis-app-4   1/1     Running   0          38m</span><br><span class="line">redis-app-5   1/1     Running   0          38m</span><br><span class="line"></span><br><span class="line">kubectl -n devops exec -it redis-app-2 /bin/bash</span><br><span class="line">kubectl -n devops exec -it redis-app-4 /bin/bash</span><br></pre></td></tr></table></figure>
 
 <p>redis-cli -c -p 6379</p>
 <p><img src="/pics/k8s-redis-c-set01.png"></p>
@@ -1514,7 +1520,16 @@ done
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h3 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h3><h4 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h4><p>将 Redis 数据库的快照保存到磁盘文件中来实现</p>
+<h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4><p>每个写操作追加到一个文件中。通过重放这些写操作，可以完全恢复数据集的状态</p>
+<h4 id="混合备份"><a href="#混合备份" class="headerlink" title="混合备份"></a>混合备份</h4><p>同时使用 RDB 和 AOF 备份</p>
+<h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">arr=($(kubectl get pods -l app=redis -o jsonpath=&#x27;&#123;range.items[*]&#125;&#123;.status.podIP&#125;:6379 &#x27;))</span><br><span class="line">echo $&#123;arr[@]&#125;</span><br><span class="line"></span><br><span class="line">master=$(echo $&#123;arr[@]&#125;|awk &#x27;&#123;print $1&quot; &quot;$2&quot; &quot;$3&#125;&#x27;)</span><br><span class="line">echo &quot;指定主节点:$master&quot;</span><br><span class="line">echo &quot;yes&quot; | kubectl exec -it redis-app-2 -- redis-cli --cluster create $master</span><br><span class="line"></span><br><span class="line">for i in $(seq 3 +1 5); do</span><br><span class="line">	echo &quot;添加从节点:&quot;$&#123;arr[i]&#125;  $&#123;arr[0]&#125;</span><br><span class="line">	echo &quot;yes&quot; | kubectl exec -it redis-app-2 -- redis-cli --cluster add-node  $&#123;arr[i]&#125;  $&#123;arr[0]&#125; --cluster-slave</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;echo ${arr[@]}|tr -s ‘ ‘|cut -d’ ‘ -f2<br>&#x3D;&#x3D;tr<br>-s 即将重复出现字符串，只保留第一个<br>&#x3D;&#x3D;cut<br>-d 以什么为分割符<br>-f 第几个<br>组合等于   awk ‘{print $2}’</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;jsonpath&#x3D;’{range.items[:3]}{.status.podIP}:6379 ‘<br>items[:3]   取前3<br>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;jsonpath&#x3D;”{range.items[$i,0]}{.status.podIP}:6379 “<br>双引号传变量</p>
+</blockquote>
+
       
     </div>
     
@@ -1947,9 +1962,7 @@ done
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="jvm参数"><a href="#jvm参数" class="headerlink" title="jvm参数"></a>jvm参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_OPTS=&quot;-server -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=512M -XX:MaxPermSize=1024m -Xms2048m -Xmx2048m &quot;</span><br></pre></td></tr></table></figure>
-
-
+        <h2 id="jvm参数"><a href="#jvm参数" class="headerlink" title="jvm参数"></a>jvm参数</h2><h2 id="启动jvm参数"><a href="#启动jvm参数" class="headerlink" title="启动jvm参数"></a>启动jvm参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_OPTS=&quot;-server -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=512M -XX:MaxPermSize=1024m -Xms2048m -Xmx2048m &quot;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>-Xms：Java虚拟机初始化时堆的最小内存，一般与 Xmx配置为相同值，这样的好处是GC不必再为扩展内存空间而消耗性能；</p>
@@ -1959,7 +1972,8 @@ done
 <p>-XX:NewSize&#x3D;：新生代空间初始化大小 </p>
 <p>-XX:MaxNewSize&#x3D;：新生代空间最大值</p>
 </blockquote>
-<h2 id="配置优化"><a href="#配置优化" class="headerlink" title="配置优化"></a>配置优化</h2><h3 id="连接属性"><a href="#连接属性" class="headerlink" title="连接属性"></a>连接属性</h3><p>&#x2F;tomcat-8.5.38&#x2F;conf&#x2F;server.xml</p>
+<p>jmap –heap  $pid 可以看到MaxHeapSize 等参数已经生效</p>
+<h2 id="配置优化"><a href="#配置优化" class="headerlink" title="配置优化"></a>配置优化</h2><h4 id="connection并发优化"><a href="#connection并发优化" class="headerlink" title="connection并发优化"></a>connection并发优化</h4><p>&#x2F;tomcat-8.5.38&#x2F;conf&#x2F;server.xml</p>
 <p><a target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-8.5-doc/config/executor.html">https://tomcat.apache.org/tomcat-8.5-doc/config/executor.html</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;Executor   name=&quot;tomcatThreadPool&quot;</span><br><span class="line">  namePrefix=&quot;req-thead-exc&quot;</span><br><span class="line">  maxHttpHeaderSize=&quot;8192&quot; </span><br><span class="line">  maxThreads=&quot;1000&quot;</span><br><span class="line">  minSpareThreads=&quot;75&quot;</span><br><span class="line">  maxQueueSize=&quot;Integer.MAX_VALUE&quot;</span><br><span class="line">  maxIdleTime=&quot;60000&quot;</span><br><span class="line">  threadPriority=&quot;5&quot;</span><br><span class="line">  className=&quot;org.apache.catalina.core.StandardThreadExecutor&quot;</span><br><span class="line"> /&gt;</span><br></pre></td></tr></table></figure>
 
@@ -1974,7 +1988,7 @@ done
 <p>connectionTimeout代表连接超时时间，单位为毫秒,默认值为60000。通常情况下设置为30000。</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-8.5-doc/config/http.html">https://tomcat.apache.org/tomcat-8.5-doc/config/http.html</a></p>
-<h3 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h3><p>&#x2F;tomcat-8.5.38&#x2F;conf&#x2F;context.xml</p>
+<h4 id="cache缓存压缩优化"><a href="#cache缓存压缩优化" class="headerlink" title="cache缓存压缩优化"></a>cache缓存压缩优化</h4><p>&#x2F;tomcat-8.5.38&#x2F;conf&#x2F;context.xml</p>
 <p>tomcat8以上对resource采取了cache，而默认的大小是10M</p>
 <p>consider increasing the maximum size of the cache</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;/^&lt;\/Context&gt;/i\&lt;Resources cachingAllowed=&quot;true&quot;  cacheMaxSize=&quot;102400&quot; \/&gt;&#x27;  /opt/apache/tomcat-8.5.38/conf/context.xml</span><br></pre></td></tr></table></figure>
@@ -1985,6 +1999,12 @@ done
 <p>context.xml文件内添加到<Context>节点内</Context></p>
 <p>cacheMaxSize值按需设置,单位K , </p>
 </blockquote>
+<h4 id="安全优化"><a href="#安全优化" class="headerlink" title="安全优化"></a>安全优化</h4><p>普通用户启动&#x2F;修改端口号</p>
+<p><strong>清空站点目录下ROOT下管理页面等文件，ROOT下有一些站点的管理程序可以查看tomcat的各种信息及配置</strong></p>
+<p>关闭DNS查询，方式是修改server.xml文件中的enableLookups参数值改为<code>false：enableLookups=&quot;false&quot;</code></p>
+<p><strong>设置session过期时间</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1.在tomcat——&gt;conf——&gt;servler.xml文件中定义：　　</span><br><span class="line">&lt;Context path=&quot;/test&quot; docBase=&quot;/test&quot;　　</span><br><span class="line">defaultSessionTimeOut=&quot;3600&quot; </span><br><span class="line">isWARExpanded=&quot;true&quot;　　</span><br><span class="line">isWARValidated=&quot;false&quot; </span><br><span class="line">isInvokerEnabled=&quot;true&quot;　　</span><br><span class="line">isWorkDirPersistent=&quot;false&quot;/&gt; 　　</span><br><span class="line">defaultSessionTimeOut=&quot;3600&quot;　　</span><br><span class="line">2. 项目所在目录下的　web.xml中定义：　　</span><br><span class="line">&lt;session-config&gt;　　</span><br><span class="line">&lt;session-timeout&gt;20&lt;/session-timeout&gt;　　</span><br><span class="line">&lt;/session-config&gt;　　</span><br><span class="line">3. 在程序中定义：　　</span><br><span class="line">session.setMaxInactiveInterval（30*60）；设置单位为秒，设置为-1永不过期</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -2226,7 +2246,7 @@ setInterval("createtime()",250);
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2024 Cheng Shuai
+                &copy; 2024 阿帅
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
