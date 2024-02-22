@@ -556,87 +556,6 @@
 
 
   
-    <article id="post-tool/git-pull" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/tool/git-pull/" class="article-date">
-      <time datetime="2017-10-05T04:36:33.000Z" itemprop="datePublished">2017-10-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/tool/git-pull/">git pull</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/tookoff/x-spring-boot.git</span><br><span class="line"></span><br><span class="line">❯ git add .</span><br><span class="line">❯ git commit -m &quot;提交&quot;</span><br><span class="line">❯ git push origin master:develop</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>git push <remote_name> <local_branch>:<remote_branch></p>
-<p>其中 <code>&lt;remote_name&gt;</code> 表示远程仓库名称（通常为 origin）；<code>&lt;local_branch&gt;</code> 表示本地分支名称；<code>&lt;remote_branch&gt;</code> 表示远程分支名称。如果不指定 <code>&lt;remote_branch&gt;</code>，则会在远程仓库创建与本地分支同名的新分支。</p>
-</blockquote>
-<h4 id="pre-receive-hook-declined"><a href="#pre-receive-hook-declined" class="headerlink" title="pre-receive hook declined"></a>pre-receive hook declined</h4><p>push前置检查</p>
-<p>脚本错误&#x2F;权限不足&#x2F;返回非零状态码&#x2F;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">!/bin/bash</span><br><span class="line">read oldrev newrev refname</span><br><span class="line"></span><br><span class="line">if [[ &quot;$refname&quot; == &quot;refs/heads/master&quot; ]]</span><br><span class="line">then</span><br><span class="line">    # 获取最后一次提交的提交信息</span><br><span class="line">    message=$(git log --format=%B -n 1 $newrev)</span><br><span class="line">    # 提取出bug号</span><br><span class="line">    bug=$(echo &quot;$message&quot; | grep &quot;bug&quot; | awk &#x27;&#123;print $2&#125;&#x27;)</span><br><span class="line">    # 检查bug是否存在</span><br><span class="line">    if [[ -z $bug ]]</span><br><span class="line">    then</span><br><span class="line">        echo &quot;提交信息必须包含bug号&quot;</span><br><span class="line">        exit 1</span><br><span class="line">    fi</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">exit 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><p>稀疏检出<em>sparse checkout</em><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/tool/">tool</a>
-    </div>
-
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/tool/git-pull/#more">进入详情 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-tool/git-cmd" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -729,6 +648,87 @@
       
         <p class="article-more-link">
           <a  href="/tool/git-cmd/#more">进入详情 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-tool/git-pull" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/tool/git-pull/" class="article-date">
+      <time datetime="2017-10-05T04:36:33.000Z" itemprop="datePublished">2017-10-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/tool/git-pull/">git pull</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/tookoff/x-spring-boot.git</span><br><span class="line"></span><br><span class="line">❯ git add .</span><br><span class="line">❯ git commit -m &quot;提交&quot;</span><br><span class="line">❯ git push origin master:develop</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>git push <remote_name> <local_branch>:<remote_branch></p>
+<p>其中 <code>&lt;remote_name&gt;</code> 表示远程仓库名称（通常为 origin）；<code>&lt;local_branch&gt;</code> 表示本地分支名称；<code>&lt;remote_branch&gt;</code> 表示远程分支名称。如果不指定 <code>&lt;remote_branch&gt;</code>，则会在远程仓库创建与本地分支同名的新分支。</p>
+</blockquote>
+<h4 id="pre-receive-hook-declined"><a href="#pre-receive-hook-declined" class="headerlink" title="pre-receive hook declined"></a>pre-receive hook declined</h4><p>push前置检查</p>
+<p>脚本错误&#x2F;权限不足&#x2F;返回非零状态码&#x2F;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">!/bin/bash</span><br><span class="line">read oldrev newrev refname</span><br><span class="line"></span><br><span class="line">if [[ &quot;$refname&quot; == &quot;refs/heads/master&quot; ]]</span><br><span class="line">then</span><br><span class="line">    # 获取最后一次提交的提交信息</span><br><span class="line">    message=$(git log --format=%B -n 1 $newrev)</span><br><span class="line">    # 提取出bug号</span><br><span class="line">    bug=$(echo &quot;$message&quot; | grep &quot;bug&quot; | awk &#x27;&#123;print $2&#125;&#x27;)</span><br><span class="line">    # 检查bug是否存在</span><br><span class="line">    if [[ -z $bug ]]</span><br><span class="line">    then</span><br><span class="line">        echo &quot;提交信息必须包含bug号&quot;</span><br><span class="line">        exit 1</span><br><span class="line">    fi</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">exit 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><p>稀疏检出<em>sparse checkout</em><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/tool/">tool</a>
+    </div>
+
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/tool/git-pull/#more">进入详情 >></a>
         </p>
       
       <div class="clearfix"></div>

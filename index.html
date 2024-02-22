@@ -517,27 +517,94 @@
 <details>
   <summary>docker-compose.yml</summary>
   <pre><a>docker-compose.yml</a><code>
-cat  <<EOF  |  tee  /mnt/oss/gitlab/docker-compose.yml
 version: '3.6'
 services:
   web:
     image: 'gitlab/gitlab-ce:16.6.2-ce.0'
     restart: always
-   # hostname: 'gitlab.ui.k8s.cn'
+    container_name: gitlab
+    # hostname: 'gitlab-ce' #hostname标签是设置容器的主机名
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        # external_url 'http://gitlab.ui.k8s.cn:8929'
+        external_url 'https://gitlab.ui.k8s.cn:18443'
+        letsencrypt['enable'] = false
+        gitlab_rails['gitlab_ssh_host'] = 'gitlab.ui.k8s.cn'
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
+        gitlab_rails['gravatar_enabled'] = true
+        #### For HTTPS
+        gitlab_rails['gravatar_ssl_url'] = "https://seccdn.libravatar.org/avatar/%&#123;hash&#125;?s=%&#123;size&#125;&d=identicon"
+        #### Use this line instead for HTTP
+        # gitlab_rails['gravatar_plain_url'] = "http://cdn.libravatar.org/avatar/%&#123;hash&#125;?s=%&#123;size&#125;&d=identicon"
+</br>
+        #gitlab_rails['initial_root_password'] = 'c123456;'
+</br>
+        #复制crt证书到挂载目录
+        nginx['ssl_certificate'] = "/etc/gitlab/ssl/gitlab.ui.k8s.cn.crt"
+        nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/gitlab.ui.k8s.cn.key"
+</br>
+        #配置http自动跳转到https协议的地址;
+        nginx['redirect_http_to_https'] = true
+</br>
+        nginx['enable'] = true
+        nginx['client_max_body_size'] = '250m'
+         #配置监听容器内的443端口,注意不是外面主机的443端口
+        nginx['listen_port'] = 443
+</br>
+        nginx['ssl_protocols'] = "TLSv1.1 TLSv1.2"
+        nginx['logrotate_frequency'] = "weekly"
+        nginx['logrotate_rotate'] = 52
+        nginx['logrotate_compress'] = "compress"
+        nginx['logrotate_method'] = "copytruncate"
+        nginx['logrotate_delaycompress'] = "delaycompress"
+</br>
+        nginx['proxy_set_headers'] = &#123;
+           "X-Forwarded-Proto" => "https",
+           "X-Forwarded-Ssl" => "on",
+        &#125;
+</br>
+        nginx['custom_error_pages'] = &#123;
+           '404' => &#123;
+           'title' => 'Example title',
+           'header' => 'Example header',
+           'message' => 'Example message'
+           &#125;
+        &#125;
+</br>
+        # gitlab_rails['smtp_enable'] = true
+        # gitlab_rails['smtp_address'] = "smtp.example.com"
+        # gitlab_rails['smtp_port'] = 587
+        # gitlab_rails['smtp_user_name'] = "no-reply@example.com"
+        # gitlab_rails['smtp_password'] = "changeMeToSomethingGood"
+        # gitlab_rails['smtp_domain'] = "example.com"
+        # gitlab_rails['smtp_authentication'] = "login"
+        # gitlab_rails['smtp_enable_starttls_auto'] = true
     ports:
-      - '8929:80'
+      - '8980:80'
+      - '18443:443'
       - '2224:22'
     volumes:
       - '/mnt/oss/gitlab/config:/etc/gitlab'
       - '/mnt/oss/gitlab/logs:/var/log/gitlab'
       - '/mnt/oss/gitlab/data:/var/opt/gitlab'
+      - '/mnt/oss/gitlab/certs:/etc/gitlab/ssl'
     shm_size: '256m'
-EOF  </code></pre>
+</br>
+  gitlab-runner:
+    image: 'gitlab/gitlab-runner:v16.9.0'
+    restart: unless-stopped
+    container_name: 'gitlab-runner'
+    depends_on:
+      - web
+    privileged: true
+    extra_hosts:
+    - "gitlab.ui.k8s.cn:192.168.122.1" # 添加主机名
+    volumes:
+      - /mnt/oss/gitlab/runner/config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/oss/gitlab/certs/gitlab.ui.k8s.cn.crt:/home/gitlab-runner/gitlab.ui.k8s.cn.crt  
+ </code></pre>
 </details>
+
 
 
 <h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3>
