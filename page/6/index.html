@@ -265,6 +265,86 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-linux/tool/ansible/ansible1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/linux/tool/ansible/ansible1/" class="article-date">
+      <time datetime="2023-03-09T12:45:39.000Z" itemprop="datePublished">2023-03-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/linux/tool/ansible/ansible1/">ansible playbook</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="Roles"><a href="#Roles" class="headerlink" title="Roles"></a>Roles</h2><p>Roles 就是通过分别将变量、文件、任务、模块及处理器放置于单独的目录中，并可以便捷地 include 它们</p>
+<p><a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/playbooks_roles.html#roles">http://www.ansible.com.cn/docs/playbooks_roles.html#roles</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">└── roles</span><br><span class="line">    └── k8s</span><br><span class="line">        ├── files  用来存放由 copy 模块或 script 模块调用的文件</span><br><span class="line">        ├── library</span><br><span class="line">        ├── tasks 包含一个 main.yml 文件，用于定义此角色的任务列表，此文件可以使用 include 包含其它的位于此目录的 task 文件</span><br><span class="line">        └── vars  包含一个 main.yml 文件，用于定义此角色用到的变量	</span><br><span class="line"> 		└──templates	用来存放正则模板，template 模块会自动在此目录中寻找正则模板文件</span><br><span class="line">		 └──handlers	此目录应当包含一个 main.yml 文件，用于定义此角色中触发条件时执行的动作</span><br><span class="line">		 └──defaults	此目录应当包含一个 main.yml 文件，用于为当前角色设定默认变量</span><br><span class="line">	 	└──meta	此目录应当包含一个 main.yml 文件，用于定义此角色的特殊设定及其依赖关系</span><br><span class="line">	.......</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>根据情况删减目录</p>
+</blockquote>
+<p>目录</p>
+<blockquote>
+<p>cni &#x2F;opt&#x2F;cni&#x2F;bin</p>
+<p>cni config &#x2F;etc&#x2F;cni&#x2F;net.d</p>
+<p>containerd &#x2F;etc&#x2F;containerd&#x2F;config.toml</p>
+<p>crictl &#x2F;etc&#x2F;crictl.yaml</p>
+</blockquote>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a><a class="article-category-link" href="/categories/linux/tool/">tool</a><a class="article-category-link" href="/categories/linux/tool/ansible1/">ansible1</a>
+    </div>
+
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ansible/" rel="tag">ansible</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/playbook/" rel="tag">playbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xx/" rel="tag">xx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xxx/" rel="tag">xxx</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/linux/tool/ansible/ansible1/#more">进入详情 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-linux/tool/ansible/ansible" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1022,127 +1102,6 @@
 
 
   
-    <article id="post-linux/shell/user-group" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/linux/shell/user-group/" class="article-date">
-      <time datetime="2023-02-26T10:29:47.000Z" itemprop="datePublished">2023-02-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/linux/shell/user-group/">用户组命令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="user"><a href="#user" class="headerlink" title="user"></a>user</h2><p>adduser 与 useradd 指令为同一指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd user1</span><br><span class="line">[root@localhost ~]# useradd user2</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>-c&lt;备注&gt; 　加上备注文字。备注文字会保存在passwd的备注栏位中。</li>
-<li>-d&lt;登入目录&gt; 　指定用户登入时的起始目录。</li>
-<li>-D 　变更预设值．</li>
-<li>-e&lt;有效期限&gt; 　指定帐号的有效期限。</li>
-<li>-f&lt;缓冲天数&gt; 　指定在密码过期后多少天即关闭该帐号。</li>
-<li>-g&lt;群组&gt; 　指定用户所属的群组。</li>
-<li>-G&lt;群组&gt; 　指定用户所属的附加群组。</li>
-<li>-m 　制定用户的登入目录。</li>
-<li>-M 　不要自动建立用户的登入目录。</li>
-<li>-n 　取消建立以用户名称为名的群组．</li>
-<li>-r 　建立系统帐号。</li>
-<li>-s<shell>　 　指定用户登入后所使用的shell。</li>
-<li>-u<uid> 　指定用户ID。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#添加一个不能登录的用户</span><br><span class="line">useradd -d /usr/local/apache -g apache -s /bin/false apache</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># -r 删除用户登入目录以及目录中所有文件。</span><br><span class="line">userdel -r name </span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="group"><a href="#group" class="headerlink" title="group"></a>group</h2><ul>
-<li>&#x2F;etc&#x2F;group 组账户信息。</li>
-<li>&#x2F;etc&#x2F;gshadow 安全组账户信息。</li>
-<li>&#x2F;etc&#x2F;login.defs Shadow密码套件配置。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupadd group1</span><br><span class="line"></span><br><span class="line">groupdel group_name</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">❯ id www-data</span><br><span class="line">uid=33(www-data) gid=33(www-data) 组=33(www-data)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h2 id="gpasswd"><a href="#gpasswd" class="headerlink" title="gpasswd"></a>gpasswd</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpasswd [-a user][-d user][-A user,...][-M user,...][-r][-R] groupname</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>-a：添加用户到组；</li>
-<li>-d：从组删除用户；</li>
-<li>-A：指定管理员；</li>
-<li>-M：指定组成员和-A的用途差不多；</li>
-<li>-r：删除密码；</li>
-<li>-R：限制用户登入组，只有组中的成员才可以用newgrp加入该组。</li>
-</ul>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/linux/">linux</a><a class="article-category-link" href="/categories/linux/shell/">shell</a>
-    </div>
-
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gpasswd/" rel="tag">gpasswd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/group/" rel="tag">group</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/user/" rel="tag">user</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/linux/shell/user-group/#more">进入详情 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1237,6 +1196,8 @@ setInterval("createtime()",250);
         
     </div>
 </footer>
+<!--页面点击小心心-->
+    <script type="text/javascript" src="js/love.js"></script>
 
     </div>
     

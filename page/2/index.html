@@ -265,6 +265,87 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-linux/tool/jenkins" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/linux/tool/jenkins/" class="article-date">
+      <time datetime="2023-10-21T14:25:14.000Z" itemprop="datePublished">2023-10-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/linux/tool/jenkins/">jenkins</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://gitee.com/tookoff/x-spring-boot.git</span><br><span class="line"></span><br><span class="line">https://gitee.com/tookoff/x-spring-boot-ui.git</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sh  &#x27;java --version&#x27;</span><br><span class="line">sh  &#x27;git --version&#x27;</span><br><span class="line">sh  &#x27;mvn --version&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><p>删除Jenkins目录下config.xml文件中下面代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;useSecurity&gt;true&lt;/useSecurity&gt;  </span><br><span class="line">&lt;authorizationStrategy class=&quot;hudson.security.FullControlOnceLoggedInAuthorizationStrategy&quot;&gt;  </span><br><span class="line">  &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;  </span><br><span class="line">&lt;/authorizationStrategy&gt;  </span><br><span class="line">&lt;securityRealm class=&quot;hudson.security.HudsonPrivateSecurityRealm&quot;&gt;  </span><br><span class="line">  &lt;disableSignup&gt;true&lt;/disableSignup&gt;  </span><br><span class="line">  &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;  </span><br><span class="line">&lt;/securityRealm&gt; </span><br></pre></td></tr></table></figure>
+
+<p>重新设密码</p>
+<p>dae2b24cef9a4edd80fbd8453020062b</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a><a class="article-category-link" href="/categories/linux/tool/">tool</a><a class="article-category-link" href="/categories/linux/tool/jenkins/">jenkins</a>
+    </div>
+
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xx/" rel="tag">xx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xxx/" rel="tag">xxx</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/linux/tool/jenkins/#more">进入详情 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-linux/debian/nginx" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -955,91 +1036,6 @@ Created a new partition 8 of type 'Linux filesystem' and of size 80 GiB.
 
 
   
-    <article id="post-linux/k8s/prometheus" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/linux/k8s/prometheus/" class="article-date">
-      <time datetime="2023-10-01T11:04:04.000Z" itemprop="datePublished">2023-10-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/linux/k8s/prometheus/">promethus</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><p>Prometheus实现自动采集业务指标数据</p>
-<p>业务侧实现一个接口，返回Prometheus规范化数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">traefik_entrypoint_requests_total&#123;app=&quot;traefik&quot;, code=&quot;200&quot;, entrypoint=&quot;metrics&quot;, instance=&quot;121.21.48.198:9100&quot;, job=&quot;kubernetes-service-endpoints&quot;, method=&quot;GET&quot;, namespace=&quot;default&quot;, node=&quot;k8s06&quot;, protocol=&quot;http&quot;, service=&quot;traefik&quot;&#125;</span><br><span class="line">traefik_entrypoint_requests_total&#123;app=&quot;traefik&quot;, code=&quot;200&quot;, entrypoint=&quot;websecure&quot;, instance=&quot;121.21.48.198:9100&quot;, job=&quot;kubernetes-service-endpoints&quot;, method=&quot;GET&quot;, namespace=&quot;default&quot;, node=&quot;k8s06&quot;, protocol=&quot;http&quot;, service=&quot;traefik&quot;&#125;</span><br><span class="line">traefik_entrypoint_requests_total&#123;app=&quot;traefik&quot;, code=&quot;400&quot;, entrypoint=&quot;websecure&quot;, instance=&quot;121.21.48.198:9100&quot;, job=&quot;kubernetes-service-endpoints&quot;, method=&quot;GET&quot;, namespace=&quot;default&quot;, node=&quot;k8s06&quot;, protocol=&quot;http&quot;, service=&quot;traefik&quot;&#125;</span><br><span class="line">traefik_entrypoint_requests_total&#123;app=&quot;traefik&quot;, code=&quot;404&quot;, entrypoint=&quot;traefik&quot;, instance=&quot;121.21.48.198:9100&quot;, job=&quot;kubernetes-service-endpoints&quot;, method=&quot;GET&quot;, namespace=&quot;default&quot;, node=&quot;k8s06&quot;, protocol=&quot;http&quot;, service=&quot;traefik&quot;&#125;</span><br><span class="line">traefik_entrypoint_requests_total&#123;app=&quot;traefik&quot;, code=&quot;404&quot;, entrypoint=&quot;web&quot;, instance=&quot;121.21.48.198:9100&quot;, job=&quot;kubernetes-service-endpoints&quot;, method=&quot;GET&quot;, namespace=&quot;default&quot;, node=&quot;k8s06&quot;, protocol=&quot;http&quot;, service=&quot;traefik&quot;&#125;</span><br><span class="line">traefik_entrypoint_requests_total&#123;app=&quot;traefik&quot;, code=&quot;404&quot;, entrypoint=&quot;websecure&quot;, instance=&quot;121.21.48.198:9100&quot;, job=&quot;kubernetes-service-endpoints&quot;, method=&quot;GET&quot;, namespace=&quot;default&quot;, node=&quot;k8s06&quot;, protocol=&quot;http&quot;, service=&quot;traefik&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>运维侧部署的时候，在svc上带上3个标签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">annotations:</span><br><span class="line">  prometheus.io/scrape: &#x27;true&#x27;</span><br><span class="line">  prometheus.io/path: &#x27;/monitor&#x27;</span><br><span class="line">  prometheus.io/port: &#x27;9100&#x27;  </span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li><p>prometheus.io&#x2F;scrape：</p>
-</li>
-<li><p>自动采集指标数据开关，默认为false；Prometheus会在k8s集群中自动检测哪些svc是打开了这个开关</p>
-</li>
-<li><p>prometheus.io&#x2F;path：<br> 采集指标数据路径，默认为 &#x2F;metrics</p>
-</li>
-<li><p>prometheus.io&#x2F;port：<br> 采集指标端口，默认为pod暴露的端口</p>
-</li>
-</ul>
-</blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/linux/">linux</a><a class="article-category-link" href="/categories/linux/k8s/">k8s</a><a class="article-category-link" href="/categories/linux/k8s/monitor/">monitor</a>
-    </div>
-
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TSDB/" rel="tag">TSDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/monitor/" rel="tag">monitor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promethus/" rel="tag">promethus</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/linux/k8s/prometheus/#more">进入详情 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1134,6 +1130,8 @@ setInterval("createtime()",250);
         
     </div>
 </footer>
+<!--页面点击小心心-->
+    <script type="text/javascript" src="js/love.js"></script>
 
     </div>
     

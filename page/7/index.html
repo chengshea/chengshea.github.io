@@ -265,6 +265,127 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-linux/shell/user-group" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/linux/shell/user-group/" class="article-date">
+      <time datetime="2023-02-26T10:29:47.000Z" itemprop="datePublished">2023-02-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/linux/shell/user-group/">用户组命令</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="user"><a href="#user" class="headerlink" title="user"></a>user</h2><p>adduser 与 useradd 指令为同一指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd user1</span><br><span class="line">[root@localhost ~]# useradd user2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-c&lt;备注&gt; 　加上备注文字。备注文字会保存在passwd的备注栏位中。</li>
+<li>-d&lt;登入目录&gt; 　指定用户登入时的起始目录。</li>
+<li>-D 　变更预设值．</li>
+<li>-e&lt;有效期限&gt; 　指定帐号的有效期限。</li>
+<li>-f&lt;缓冲天数&gt; 　指定在密码过期后多少天即关闭该帐号。</li>
+<li>-g&lt;群组&gt; 　指定用户所属的群组。</li>
+<li>-G&lt;群组&gt; 　指定用户所属的附加群组。</li>
+<li>-m 　制定用户的登入目录。</li>
+<li>-M 　不要自动建立用户的登入目录。</li>
+<li>-n 　取消建立以用户名称为名的群组．</li>
+<li>-r 　建立系统帐号。</li>
+<li>-s<shell>　 　指定用户登入后所使用的shell。</li>
+<li>-u<uid> 　指定用户ID。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#添加一个不能登录的用户</span><br><span class="line">useradd -d /usr/local/apache -g apache -s /bin/false apache</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># -r 删除用户登入目录以及目录中所有文件。</span><br><span class="line">userdel -r name </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="group"><a href="#group" class="headerlink" title="group"></a>group</h2><ul>
+<li>&#x2F;etc&#x2F;group 组账户信息。</li>
+<li>&#x2F;etc&#x2F;gshadow 安全组账户信息。</li>
+<li>&#x2F;etc&#x2F;login.defs Shadow密码套件配置。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupadd group1</span><br><span class="line"></span><br><span class="line">groupdel group_name</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">❯ id www-data</span><br><span class="line">uid=33(www-data) gid=33(www-data) 组=33(www-data)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="gpasswd"><a href="#gpasswd" class="headerlink" title="gpasswd"></a>gpasswd</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpasswd [-a user][-d user][-A user,...][-M user,...][-r][-R] groupname</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-a：添加用户到组；</li>
+<li>-d：从组删除用户；</li>
+<li>-A：指定管理员；</li>
+<li>-M：指定组成员和-A的用途差不多；</li>
+<li>-r：删除密码；</li>
+<li>-R：限制用户登入组，只有组中的成员才可以用newgrp加入该组。</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a><a class="article-category-link" href="/categories/linux/shell/">shell</a>
+    </div>
+
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gpasswd/" rel="tag">gpasswd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/group/" rel="tag">group</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/user/" rel="tag">user</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/linux/shell/user-group/#more">进入详情 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-tool/text/process/svg" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1003,82 +1124,6 @@
 
 
   
-    <article id="post-tool/vagrant" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/tool/vagrant/" class="article-date">
-      <time datetime="2022-11-26T14:52:41.000Z" itemprop="datePublished">2022-11-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/tool/vagrant/">vagrant</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>doc <a target="_blank" rel="noopener" href="https://developer.hashicorp.com/vagrant/docs">https://developer.hashicorp.com/vagrant/docs</a></p>
-<h2 id="box"><a href="#box" class="headerlink" title="box"></a>box</h2><p>kvm libvirt</p>
-<p>virtualbox</p>
-<p><a target="_blank" rel="noopener" href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vagrant box list</span><br><span class="line">centos/7 (libvirt, 7.1.0)</span><br><span class="line">centos/7 (virtualbox, 7.1.0)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><p><code>**</code>vagrant box add metadata.json<code>**</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;metadata.json &lt;&lt;EOF</span><br><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;centos/7&quot;,</span><br><span class="line">    &quot;versions&quot;: [&#123;</span><br><span class="line">        &quot;version&quot;: &quot;7.1.0&quot;,</span><br><span class="line">        &quot;providers&quot;: [&#123;</span><br><span class="line">            &quot;name&quot;: &quot;virtualbox&quot;,</span><br><span class="line">            &quot;url&quot;: &quot;file:///home/cs/data/VM/VirtualBox/CentOS-7-x86_64-Vagrant-2004_01.VirtualBox.box&quot;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/tool/">tool</a><a class="article-category-link" href="/categories/tool/vagrant/">vagrant</a>
-    </div>
-
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/batch/" rel="tag">batch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vagrant/" rel="tag">vagrant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vm/" rel="tag">vm</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/tool/vagrant/#more">进入详情 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
@@ -1173,6 +1218,8 @@ setInterval("createtime()",250);
         
     </div>
 </footer>
+<!--页面点击小心心-->
+    <script type="text/javascript" src="js/love.js"></script>
 
     </div>
     
