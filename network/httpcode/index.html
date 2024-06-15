@@ -5,15 +5,15 @@
   
   <title>http code了解 | 个人杂记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HTTP状态码1xx 信息性状态码，表示请求已被接收，需要继续处理。  100 Continue  101 Switching Protocols 当服务器返回101状态码时，它通常还会发送一个”Upgrade”响应头 ,例如，客户端可能请求将HTTP协议切换到WebSocket协议     2xx 成功状态码，表示请求已成功被服务器接收、理解并接受。  200 OK 201 Created">
+  <meta name="description" content="HTTP状态码1xx信息性状态码，表示请求已被接收，需要继续处理。   100 Continue 101 Switching Protocols  当服务器返回101状态码时，它通常还会发送一个”Upgrade”响应头 ,例如，客户端可能请求将HTTP协议切换到WebSocket协议 2xx  成功状态码，表示请求已成功被服务器接收、理解并接受。   200 OK 201 Created">
 <meta property="og:type" content="article">
 <meta property="og:title" content="http code了解">
 <meta property="og:url" content="https://chengshea.github.io/network/httpcode/index.html">
 <meta property="og:site_name" content="个人杂记">
-<meta property="og:description" content="HTTP状态码1xx 信息性状态码，表示请求已被接收，需要继续处理。  100 Continue  101 Switching Protocols 当服务器返回101状态码时，它通常还会发送一个”Upgrade”响应头 ,例如，客户端可能请求将HTTP协议切换到WebSocket协议     2xx 成功状态码，表示请求已成功被服务器接收、理解并接受。  200 OK 201 Created">
+<meta property="og:description" content="HTTP状态码1xx信息性状态码，表示请求已被接收，需要继续处理。   100 Continue 101 Switching Protocols  当服务器返回101状态码时，它通常还会发送一个”Upgrade”响应头 ,例如，客户端可能请求将HTTP协议切换到WebSocket协议 2xx  成功状态码，表示请求已成功被服务器接收、理解并接受。   200 OK 201 Created">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-06-15T01:25:51.000Z">
-<meta property="article:modified_time" content="2024-06-15T02:03:06.440Z">
+<meta property="article:modified_time" content="2024-06-15T02:17:29.544Z">
 <meta property="article:author" content="阿帅">
 <meta property="article:tag" content="xxx">
 <meta property="article:tag" content="http">
@@ -308,42 +308,33 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><h4 id="1xx"><a href="#1xx" class="headerlink" title="1xx"></a><strong>1xx</strong></h4><ul>
-<li><p>信息性状态码，表示请求已被接收，需要继续处理。</p>
+        <h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><h4 id="1xx"><a href="#1xx" class="headerlink" title="1xx"></a><strong>1xx</strong></h4><pre><code>信息性状态码，表示请求已被接收，需要继续处理。
+</code></pre>
 <ul>
-<li><p>100 Continue</p>
-</li>
-<li><p>101 Switching Protocols</p>
+<li>100 Continue</li>
+<li>101 Switching Protocols</li>
+</ul>
 <p>当服务器返回101状态码时，它通常还会发送一个”Upgrade”响应头 ,例如，客户端可能请求将HTTP<strong>协议切换</strong>到WebSocket协议</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="2xx"><a href="#2xx" class="headerlink" title="2xx"></a><strong>2xx</strong></h4><ul>
-<li><p>成功状态码，表示请求已成功被服务器接收、理解并接受。</p>
+<h4 id="2xx"><a href="#2xx" class="headerlink" title="2xx"></a><strong>2xx</strong></h4><pre><code>  成功状态码，表示请求已成功被服务器接收、理解并接受。
+</code></pre>
 <ul>
 <li>200 OK</li>
 <li>201 Created</li>
 </ul>
-<span id="more"></span>
-
-
+  <span id="more"></span>
 
 <ul>
-<li><p>202 Accepted</p>
-<p>  表示服务器已经接收到请求，并且正在处理它，但是尚未完成；<strong>异步，队列</strong>场景</p>
-</li>
-<li><p>204 No Content</p>
-<p>返回204状态码的响应通常不包含消息体，但可以包含头部信息 ; <strong>删除操作</strong></p>
-</li>
+<li>202 Accepted</li>
 </ul>
-</li>
+<p>​	表示服务器已经接收到请求，并且正在处理它，但是尚未完成；<strong>异步，队列</strong>场景</p>
+<ul>
+<li>204 No Content</li>
 </ul>
-<h4 id="3xx"><a href="#3xx" class="headerlink" title="3xx"></a><strong>3xx</strong></h4><ul>
-<li><p>重定向状态码，表示需要进一步的操作以完成请求。</p>
-</li>
-<li><p>301 Moved Permanently</p>
-</li>
+<p>​	返回204状态码的响应通常不包含消息体，但可以包含头部信息 ; <strong>删除操作</strong></p>
+<h4 id="3xx"><a href="#3xx" class="headerlink" title="3xx"></a><strong>3xx</strong></h4><pre><code>   重定向状态码，表示需要进一步的操作以完成请求。
+</code></pre>
+<ul>
+<li>301 Moved Permanently</li>
 </ul>
 <p>  ​      当服务器返回301状态码时，它通常会在响应头中包含一个<code>Location</code>字段，指示新的URL。客户端（如浏览器）会自动使用这个新的URL重新发起请求。<strong>域名更改</strong>场景</p>
 <ul>
@@ -355,11 +346,10 @@
 </ul>
 <p>  ​      通常与HTTP头 <code>If-Modified-Since</code> 或 <code>If-None-Match</code> 一起使用，以实现缓存优化</p>
 <p>  ​       <code>Cache-Control</code>：提供关于资源缓存的指令。<br>  ​       <code>ETag</code>：资源的特定版本的标识符，用于条件请求。<br>  ​       <code>Last-Modified</code>：资源上次修改的日期和时间</p>
-<h4 id="4xx"><a href="#4xx" class="headerlink" title="4xx"></a><strong>4xx</strong></h4><ul>
-<li><p>客户端错误状态码，表示请求包含语法错误或无法完成请求。</p>
-</li>
-<li><p>400 Bad Request</p>
-</li>
+<h4 id="4xx"><a href="#4xx" class="headerlink" title="4xx"></a><strong>4xx</strong></h4><pre><code>   客户端错误状态码，表示请求包含语法错误或无法完成请求。
+</code></pre>
+<ul>
+<li>400 Bad Request</li>
 </ul>
 <p>  ​         表示客户端发送的请求中存在语法错误或请求无法被服务器理解； <strong>无效的请求</strong>（参数url，请求体，编码，http&#x2F;https）场景</p>
 <ul>
@@ -369,38 +359,43 @@
 <ul>
 <li>403 Forbidden</li>
 </ul>
-<p>  ​      表示服务器理解了客户端的请求，但是拒绝执行它; <strong>权限不足</strong>场景</p>
+<p>  ​          表示服务器理解了客户端的请求，但是拒绝执行它; <strong>权限不足</strong>场景</p>
 <ul>
-<li><p>404 Not Found</p>
-<p>  表示服务器无法找到请求的资源,请求的URL不存在;<strong>URL错误</strong>,<strong>资源已删除</strong>,<strong>路径不正确</strong>场景</p>
-</li>
-<li><p>405 Method Not Allowed</p>
-</li>
+<li>404 Not Found</li>
+</ul>
+<p>表示服务器无法找到请求的资源,请求的URL不存在;<strong>URL错误</strong>,<strong>资源已删除</strong>,<strong>路径不正确</strong>场景</p>
+<ul>
+<li>405 Method Not Allowed</li>
 </ul>
 <p>  ​        表示客户端请求中使用的方法（如GET、POST、PUT、DELETE等）对于请求的资源是不被允许的;<strong>API限制请求方法</strong>场景</p>
-<h4 id="5xx"><a href="#5xx" class="headerlink" title="5xx"></a><strong>5xx</strong></h4><ul>
-<li><p>服务器错误状态码，表示服务器在尝试处理请求时遇到了错误。</p>
+<h4 id="5xx"><a href="#5xx" class="headerlink" title="5xx"></a><strong>5xx</strong></h4><pre><code>  服务器错误状态码，表示服务器在尝试处理请求时遇到了错误。
+</code></pre>
 <ul>
-<li><p>500 Internal Server Error</p>
-<p> 表示服务器在尝试处理请求时遇到了内部错误，导致无法完成该请求;<strong>服务器端错误</strong>，<strong>数据库问题</strong>，<strong>系统维护</strong>场景</p>
-</li>
-<li><p>501 Not Implemented</p>
-<p>   表示服务器不支持请求的HTTP方法，或者服务器无法满足请求的某些参数；<strong>未实现的功能</strong>，<strong>服务器配置问题</strong>场景</p>
-</li>
-<li><p>502 Bad Gateway</p>
-<p>   表示作为网关或代理的服务器，在尝试执行请求时，从上游服务器（如HTTP、HTTPS、FTP或另一个代理）接收到了一个无效的响应</p>
-<p>   <strong>网关问题</strong>，<strong>上游服务器故障</strong>，<strong>网络问题</strong>，<strong>协议不兼容</strong>场景</p>
-</li>
-<li><p>503 Service Unavailable</p>
-<p>   表示服务器目前无法处理请求，通常是由于服务器过载或正在进行维护；<strong>过载保护</strong>，<strong>依赖服务故障</strong>场景</p>
-</li>
-<li><p>504 Gateway Timeout</p>
-<p> 表示作为网关或代理的服务器，在尝试执行请求时，未能在规定时间内从上游服务器（如HTTP、HTTPS、FTP或其他代理服务器）接收到响应</p>
+<li>500 Internal Server Error</li>
+</ul>
+<p>表示服务器在尝试处理请求时遇到了内部错误，导致无法完成该请求;<strong>服务器端错误</strong>，<strong>数据库问题</strong>，<strong>系统维护</strong>场景</p>
+<p>​    </p>
+<ul>
+<li>501 Not Implemented</li>
+</ul>
+<p>表示服务器不支持请求的HTTP方法，或者服务器无法满足请求的某些参数；<strong>未实现的功能</strong>，<strong>服务器配置问题</strong>场景</p>
+<p>​    </p>
+<ul>
+<li>502 Bad Gateway</li>
+</ul>
+<p>表示作为网关或代理的服务器，在尝试执行请求时，从上游服务器（如HTTP、HTTPS、FTP或另一个代理）接收到了一个无效的响应</p>
+<p><strong>网关问题</strong>，<strong>上游服务器故障</strong>，<strong>网络问题</strong>，<strong>协议不兼容</strong>场景</p>
+<p>​    </p>
+<ul>
+<li>503 Service Unavailable</li>
+</ul>
+<p>表示服务器目前无法处理请求，通常是由于服务器过载或正在进行维护；<strong>过载保护</strong>，<strong>依赖服务故障</strong>场景</p>
+<p>​    </p>
+<ul>
+<li>504 Gateway Timeout</li>
+</ul>
+<p>表示作为网关或代理的服务器，在尝试执行请求时，未能在规定时间内从上游服务器（如HTTP、HTTPS、FTP或其他代理服务器）接收到响应</p>
 <p><strong>上游服务器（响应慢&#x2F;不可用)</strong>,<strong>网络延迟</strong>,<strong>资源限制</strong>场景</p>
-</li>
-</ul>
-</li>
-</ul>
 
       
     </div>
@@ -414,7 +409,7 @@
        <a  title="访问 阿帅 的个人博客">阿帅</a>
         </p>
         <p><span>发布时间:</span>2024年06月15日 - 09时25分</p>
-        <p><span>最后更新:</span>2024年06月15日 - 10时03分</p>
+        <p><span>最后更新:</span>2024年06月15日 - 10时17分</p>
 
           <p>
             <span>原始链接:</span><a class="post-url" href="/network/httpcode/" title="http code了解">https://chengshea.github.io/network/httpcode/</a>
