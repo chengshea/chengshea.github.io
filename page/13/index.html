@@ -801,8 +801,15 @@
 <p> 容器 <code>container</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker ps  #run container</span><br><span class="line"></span><br><span class="line">docker ps -a  #all container</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h5 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f  &lt;container or id&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f  &lt;container or id&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">❯ docker logs -f --tail 10  jenkins</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<ul>
+<li><code>-f</code> 或 <code>--follow</code> 选项表示跟随日志输出，即持续显示新的日志条目。</li>
+<li><code>-t</code> 或 <code>--timestamps</code> 选项会在每条日志前添加时间戳，以便于追踪日志的时间顺序。</li>
+</ul>
+<p><code>--tail</code> 参数用于限制返回的日志行数，只显示最新的 N 条日志记录</p>
+</blockquote>
 <h5 id="容器信息"><a href="#容器信息" class="headerlink" title="容器信息"></a>容器信息</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker inspect  &lt;id&gt;</span><br><span class="line"></span><br><span class="line">#查看指定信息</span><br><span class="line">docker inspect  &lt;id&gt;  --format &#x27;&#123;&#123;.Args&#125;&#125;&#x27;</span><br><span class="line"></span><br><span class="line">docker inspect --format=&#x27;&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;&#x27; $CONTAINER_ID</span><br><span class="line"></span><br></pre></td></tr></table></figure>
           
       

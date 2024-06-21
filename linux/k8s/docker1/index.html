@@ -13,7 +13,7 @@
 <meta property="og:description" content="12345sudo  service docker statussudo service docker stopsudo service docker start    搜索12docker search Python  拉取12docker pull python:2.7    查询镜像  image 12docker images     容器 container 1234docker ps">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-07-11T13:50:49.000Z">
-<meta property="article:modified_time" content="2024-02-29T11:39:13.328Z">
+<meta property="article:modified_time" content="2024-06-21T09:22:02.970Z">
 <meta property="article:author" content="阿帅">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="command">
@@ -325,8 +325,15 @@
 <p> 容器 <code>container</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker ps  #run container</span><br><span class="line"></span><br><span class="line">docker ps -a  #all container</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h5 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f  &lt;container or id&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f  &lt;container or id&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">❯ docker logs -f --tail 10  jenkins</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<ul>
+<li><code>-f</code> 或 <code>--follow</code> 选项表示跟随日志输出，即持续显示新的日志条目。</li>
+<li><code>-t</code> 或 <code>--timestamps</code> 选项会在每条日志前添加时间戳，以便于追踪日志的时间顺序。</li>
+</ul>
+<p><code>--tail</code> 参数用于限制返回的日志行数，只显示最新的 N 条日志记录</p>
+</blockquote>
 <h5 id="容器信息"><a href="#容器信息" class="headerlink" title="容器信息"></a>容器信息</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker inspect  &lt;id&gt;</span><br><span class="line"></span><br><span class="line">#查看指定信息</span><br><span class="line">docker inspect  &lt;id&gt;  --format &#x27;&#123;&#123;.Args&#125;&#125;&#x27;</span><br><span class="line"></span><br><span class="line">docker inspect --format=&#x27;&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;&#x27; $CONTAINER_ID</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
@@ -435,7 +442,7 @@
        <a  title="访问 阿帅 的个人博客">阿帅</a>
         </p>
         <p><span>发布时间:</span>2022年07月11日 - 21时50分</p>
-        <p><span>最后更新:</span>2024年02月29日 - 19时39分</p>
+        <p><span>最后更新:</span>2024年06月21日 - 17时22分</p>
 
           <p>
             <span>原始链接:</span><a class="post-url" href="/linux/k8s/docker1/" title="常用语法">https://chengshea.github.io/linux/k8s/docker1/</a>
