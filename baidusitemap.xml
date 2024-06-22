@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://chengshea.github.io//linux/tool/jenkins/</loc>
-    <lastmod>2024-06-21</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/k8s/docker1/</loc>
-    <lastmod>2024-06-21</lastmod>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/database/postgresql/install/</loc>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/decompress/</loc>
@@ -259,10 +263,6 @@
   <url>
     <loc>https://chengshea.github.io//linux/k8s/etcd/</loc>
     <lastmod>2024-02-03</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//services/database/postgresql/install/</loc>
-    <lastmod>2024-01-28</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/user-group/</loc>

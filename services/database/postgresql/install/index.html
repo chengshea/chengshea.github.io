@@ -13,7 +13,7 @@
 <meta property="og:description" content="install官网网站 https:&#x2F;&#x2F;www.postgresql.org&#x2F;download&#x2F;https:&#x2F;&#x2F;www.postgresql.org&#x2F;ftp&#x2F;source&#x2F; centos先安装PostgreSQL的YUM源yum install -y https:&#x2F;&#x2F;download.postgresql.org&#x2F;pub&#x2F;repos&#x2F;yum&#x2F;reporpms&#x2F;EL-7-x86_64&#x2F;pgdg-re">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-11-13T12:27:56.000Z">
-<meta property="article:modified_time" content="2024-01-28T12:03:53.017Z">
+<meta property="article:modified_time" content="2024-06-22T05:51:18.801Z">
 <meta property="article:author" content="阿帅">
 <meta property="article:tag" content="xxx">
 <meta property="article:tag" content="postgresql">
@@ -416,6 +416,16 @@ default_text_search_config = 'pg_catalog.english'  </code></pre>
 <span id="more"></span>
 
 <p>shared_buffers、effective_cache_size、 log_directory </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">❯ grep -i &quot;hba_file&quot; /etc/postgresql/*/main/postgresql.conf</span><br><span class="line">hba_file = &#x27;/etc/postgresql/15/main/pg_hba.conf&#x27;	# host-based authentication file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>host    all             all             192.168.122.0&#x2F;24        scram-sha-256</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ grep -i &quot;listen_addresses&quot; /etc/postgresql/*/main/postgresql.conf</span><br><span class="line">#listen_addresses = &#x27;localhost&#x27;		# what IP address(es) to listen on;</span><br><span class="line">❯ cat /etc/postgresql/15/main/postgresql.conf | grep listen_addresses</span><br><span class="line">#listen_addresses = &#x27;localhost&#x27;		# what IP address(es) to listen on;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>listen_addresses &#x3D; ‘*’</p>
+</blockquote>
 <h3 id="debian"><a href="#debian" class="headerlink" title="debian"></a>debian</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">❯  sudo apt install postgresql </span><br><span class="line"></span><br><span class="line">❯ sudo -u postgres psql</span><br><span class="line">[sudo] cs 的密码：</span><br><span class="line">psql (15.5 (Debian 15.5-0+deb12u1))</span><br><span class="line"></span><br><span class="line">输入 &quot;help&quot; 来获取帮助信息.</span><br><span class="line"></span><br><span class="line">postgres=#  ALTER USER postgres WITH PASSWORD &#x27;123456&#x27;;</span><br><span class="line">ALTER ROLE</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://www.python100.com/html/115598.html">https://www.python100.com/html/115598.html</a></p>
@@ -468,7 +478,7 @@ default_text_search_config = 'pg_catalog.english'  </code></pre>
        <a  title="访问 阿帅 的个人博客">阿帅</a>
         </p>
         <p><span>发布时间:</span>2023年11月13日 - 20时27分</p>
-        <p><span>最后更新:</span>2024年01月28日 - 20时03分</p>
+        <p><span>最后更新:</span>2024年06月22日 - 13时51分</p>
 
           <p>
             <span>原始链接:</span><a class="post-url" href="/services/database/postgresql/install/" title="postgresql介绍">https://chengshea.github.io/services/database/postgresql/install/</a>
