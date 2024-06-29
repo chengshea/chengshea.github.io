@@ -365,9 +365,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h3 id="portainer"><a href="#portainer" class="headerlink" title="portainer"></a>portainer</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull m.daocloud.io/docker.io/portainer/portainer-ce:2.19.5 </span><br><span class="line">docker tag   m.daocloud.io/docker.io/portainer/portainer-ce:2.19.5    portainer/portainer-ce:2.19.5</span><br><span class="line">docker   compose  -f   portainer.yml </span><br></pre></td></tr></table></figure>
-
-
+              <h3 id="portainer"><a href="#portainer" class="headerlink" title="portainer"></a>portainer</h3><p><img src="/pics/portainer-ui.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker   compose  -f   portainer.yml </span><br></pre></td></tr></table></figure>
 
 <details>
   <summary>portainer.yml</summary>
@@ -375,30 +374,24 @@
 version: '3.8'  # 根据你的Docker Compose版本选择合适的版本号
 services:
   portainer:
-    image: portainer/portainer-ee:latest
+    image: portainer/portainer-ce:alpine-sts
     container_name: portainer
-    restart: always
     ports:
-      - "9443:9443"
-      - "8000:8000"
+      - 8000:9000
+      - 9443:9443
+    extra_hosts:
+      - "portainer.ui.k8s.cn:192.168.122.1" # 添加主机名
     volumes:
+      - /mnt/oss/portainer/data:/data
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-      - /path/to/your/certs:/certs
-    command: >
-      -H unix:///var/run/docker.sock
-      --sslcert /certs/portainer.crt
-      --sslkey /certs/portainer.key
-    environment:
-      - VIRTUAL_HOST=your_domain.com
-      - VIRTUAL_PORT=9443
-      - LETSENCRYPT_HOST=your_domain.com
-      - LETSENCRYPT_EMAIL=your_email@example.com
-</br>
-volumes:
-  portainer_data:
-    driver: local  </code></pre>
+     - /mnt/oss/portainer/public:/public  #chinese
+ </code></pre>
 </details>
+
+<blockquote>
+<p>chinese  <a target="_blank" rel="noopener" href="https://github.com/outlovecn/portainer-cn">https://github.com/outlovecn/portainer-cn</a></p>
+<p>docker pull m.daocloud.io&#x2F;docker.io&#x2F;portainer&#x2F;portainer-ce:2.19.5<br>docker tag   m.daocloud.io&#x2F;docker.io&#x2F;portainer&#x2F;portainer-ce:2.19.5    portainer&#x2F;portainer-ce:2.19.5</p>
+</blockquote>
           
       
     </div>
