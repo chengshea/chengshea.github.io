@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>夜莺监控 | 个人杂记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装https:&#x2F;&#x2F;flashcat.cloud&#x2F;download&#x2F;nightingale&#x2F; 1234https:&#x2F;&#x2F;download.flashcat.cloud&#x2F;n9e-v7.0.0-beta.13-linux-amd64.tar.gzmkdir -p  &#x2F;opt&#x2F;tools&#x2F;nightingaletar -xzvf &#x2F;home&#x2F;cs&#x2F;oss&#x2F;k8s-1.26&#x2F;n9e-v7.0.0-beta.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="夜莺监控">
+<meta property="og:url" content="https://chengshea.github.io/services/monitor/nightingale/index.html">
+<meta property="og:site_name" content="个人杂记">
+<meta property="og:description" content="安装https:&#x2F;&#x2F;flashcat.cloud&#x2F;download&#x2F;nightingale&#x2F; 1234https:&#x2F;&#x2F;download.flashcat.cloud&#x2F;n9e-v7.0.0-beta.13-linux-amd64.tar.gzmkdir -p  &#x2F;opt&#x2F;tools&#x2F;nightingaletar -xzvf &#x2F;home&#x2F;cs&#x2F;oss&#x2F;k8s-1.26&#x2F;n9e-v7.0.0-beta.">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-07-14T01:17:08.000Z">
+<meta property="article:modified_time" content="2024-07-14T08:34:56.315Z">
+<meta property="article:author" content="阿帅">
+<meta property="article:tag" content="monitor">
+<meta property="article:tag" content="nightingale">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="个人杂记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+
+      
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+
+   <!-- 评论  -->
+   <link rel="stylesheet" href="/css/sreach/sreach.css">
+   <link rel="stylesheet" href="/css/gitment.css">
+   <script src="/js/gitment.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.gif" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">阿帅</a></h1>
+        </hgroup>
+
+        
+ 
+     
+	<div id="id_search"   onclick = "document.getElementById('local_search').style.display='block'">
+ <span class="search-icon">
+		    <i class="fa fa-search"> </i>
+		  </span>
+
+搜索
+</div>
+
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+
+
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+
+
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+
+
+                     
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+
+
+                    </div>
+                    
+                </div>
+
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+                 
+        
+
+   
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">归档</a></li>
+                        
+                            <li><a href="/tags">分类&amp;标签</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:cs876321722@outlook.com?subject=github%20page%20hexo%20subject" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/chengshea" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/CUDA/" style="font-size: 10px;">CUDA</a> <a href="/tags/CoreDNS/" style="font-size: 10px;">CoreDNS</a> <a href="/tags/Crossplane/" style="font-size: 10px;">Crossplane</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Filebeat/" style="font-size: 10px;">Filebeat</a> <a href="/tags/Font/" style="font-size: 10px;">Font</a> <a href="/tags/GPU-CUDA/" style="font-size: 10px;">GPU CUDA</a> <a href="/tags/K8S/" style="font-size: 10px;">K8S</a> <a href="/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/tags/Kcptun/" style="font-size: 10px;">Kcptun</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Kubeconfig/" style="font-size: 10px;">Kubeconfig</a> <a href="/tags/Logstash/" style="font-size: 10px;">Logstash</a> <a href="/tags/MQ/" style="font-size: 10px;">MQ</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/Openresty/" style="font-size: 10px;">Openresty</a> <a href="/tags/PL-SQL/" style="font-size: 10px;">PL/SQL</a> <a href="/tags/PXE/" style="font-size: 10px;">PXE</a> <a href="/tags/PromQL/" style="font-size: 10px;">PromQL</a> <a href="/tags/RAID/" style="font-size: 10px;">RAID</a> <a href="/tags/S3/" style="font-size: 10px;">S3</a> <a href="/tags/Service-Mesh/" style="font-size: 10px;">Service-Mesh</a> <a href="/tags/Simulator/" style="font-size: 10px;">Simulator</a> <a href="/tags/Stable/" style="font-size: 10px;">Stable</a> <a href="/tags/TSDB/" style="font-size: 10px;">TSDB</a> <a href="/tags/Template/" style="font-size: 10px;">Template</a> <a href="/tags/Xsession/" style="font-size: 10px;">Xsession</a> <a href="/tags/active/" style="font-size: 10px;">active</a> <a href="/tags/alert/" style="font-size: 10px;">alert</a> <a href="/tags/amd/" style="font-size: 10px;">amd</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/ansible/" style="font-size: 12.22px;">ansible</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/apt/" style="font-size: 10px;">apt</a> <a href="/tags/auth/" style="font-size: 10px;">auth</a> <a href="/tags/backup/" style="font-size: 10px;">backup</a> <a href="/tags/bak/" style="font-size: 10px;">bak</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/bashrc/" style="font-size: 10px;">bashrc</a> <a href="/tags/batch/" style="font-size: 10px;">batch</a> <a href="/tags/binary/" style="font-size: 10px;">binary</a> <a href="/tags/bubble/" style="font-size: 10px;">bubble</a> <a href="/tags/ca/" style="font-size: 10px;">ca</a> <a href="/tags/ceph/" style="font-size: 10px;">ceph</a> <a href="/tags/cert/" style="font-size: 10px;">cert</a> <a href="/tags/cfg/" style="font-size: 10px;">cfg</a> <a href="/tags/check/" style="font-size: 10px;">check</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/cmd/" style="font-size: 11.11px;">cmd</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/commands/" style="font-size: 10px;">commands</a> <a href="/tags/compare/" style="font-size: 10px;">compare</a> <a href="/tags/compile/" style="font-size: 11.11px;">compile</a> <a href="/tags/config/" style="font-size: 11.11px;">config</a> <a href="/tags/containerd/" style="font-size: 10px;">containerd</a> <a href="/tags/containerd%E5%AE%89%E8%A3%85/" style="font-size: 10px;">containerd安装</a> <a href="/tags/control-planes/" style="font-size: 10px;">control-planes</a> <a href="/tags/crack/" style="font-size: 10px;">crack</a> <a href="/tags/create-ap/" style="font-size: 10px;">create_ap</a> <a href="/tags/crt/" style="font-size: 10px;">crt</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/custom/" style="font-size: 10px;">custom</a> <a href="/tags/dashboard/" style="font-size: 10px;">dashboard</a> <a href="/tags/deb/" style="font-size: 10px;">deb</a> <a href="/tags/decompress/" style="font-size: 10px;">decompress</a> <a href="/tags/devops/" style="font-size: 10px;">devops</a> <a href="/tags/diffusion/" style="font-size: 10px;">diffusion</a> <a href="/tags/disk/" style="font-size: 10px;">disk</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/dnsmasq/" style="font-size: 10px;">dnsmasq</a> <a href="/tags/docker/" style="font-size: 14.44px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 11.11px;">docker compose</a> <a href="/tags/docker-engine/" style="font-size: 11.11px;">docker-engine</a> <a href="/tags/download/" style="font-size: 10px;">download</a> <a href="/tags/dpkg/" style="font-size: 10px;">dpkg</a> <a href="/tags/environment/" style="font-size: 11.11px;">environment</a> <a href="/tags/error/" style="font-size: 10px;">error</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/example/" style="font-size: 10px;">example</a> <a href="/tags/explain%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92/" style="font-size: 10px;">explain执行计划</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/flanneld/" style="font-size: 11.11px;">flanneld</a> <a href="/tags/flow/" style="font-size: 10px;">flow</a> <a href="/tags/format/" style="font-size: 10px;">format</a> <a href="/tags/formula/" style="font-size: 10px;">formula</a> <a href="/tags/fstab/" style="font-size: 10px;">fstab</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/galaxy/" style="font-size: 10px;">galaxy</a> <a href="/tags/git/" style="font-size: 14.44px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/gogoprotobuf/" style="font-size: 10px;">gogoprotobuf</a> <a href="/tags/gpasswd/" style="font-size: 10px;">gpasswd</a> <a href="/tags/grafana/" style="font-size: 12.22px;">grafana</a> <a href="/tags/grammar/" style="font-size: 10px;">grammar</a> <a href="/tags/grep/" style="font-size: 10px;">grep</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/grpc/" style="font-size: 10px;">grpc</a> <a href="/tags/grub%E4%B8%BB%E9%A2%98%E6%A0%B7%E5%BC%8F/" style="font-size: 10px;">grub主题样式</a> <a href="/tags/grub%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/" style="font-size: 10px;">grub配置详解</a> <a href="/tags/harbor/" style="font-size: 11.11px;">harbor</a> <a href="/tags/hddtemp/" style="font-size: 10px;">hddtemp</a> <a href="/tags/helm/" style="font-size: 10px;">helm</a> <a href="/tags/hexo/" style="font-size: 11.11px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 11.11px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/influxdb/" style="font-size: 10px;">influxdb</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/install/" style="font-size: 17.78px;">install</a> <a href="/tags/iptable/" style="font-size: 10px;">iptable</a> <a href="/tags/issues/" style="font-size: 10px;">issues</a> <a href="/tags/istio/" style="font-size: 10px;">istio</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/jpa/" style="font-size: 10px;">jpa</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/k8s/" style="font-size: 16.67px;">k8s</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/kpi/" style="font-size: 10px;">kpi</a> <a href="/tags/kubeadm/" style="font-size: 10px;">kubeadm</a> <a href="/tags/kubectl/" style="font-size: 11.11px;">kubectl</a> <a href="/tags/kubelet/" style="font-size: 10px;">kubelet</a> <a href="/tags/kubernetes/" style="font-size: 12.22px;">kubernetes</a> <a href="/tags/kvm%E5%AE%89%E8%A3%85%E5%85%A5%E9%97%A8/" style="font-size: 10px;">kvm安装入门</a> <a href="/tags/linux/" style="font-size: 14.44px;">linux</a> <a href="/tags/log/" style="font-size: 11.11px;">log</a> <a href="/tags/logs/" style="font-size: 10px;">logs</a> <a href="/tags/loki/" style="font-size: 10px;">loki</a> <a href="/tags/lora/" style="font-size: 10px;">lora</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/match/" style="font-size: 10px;">match</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/md/" style="font-size: 10px;">md</a> <a href="/tags/mermaid/" style="font-size: 10px;">mermaid</a> <a href="/tags/models/" style="font-size: 10px;">models</a> <a href="/tags/module/" style="font-size: 10px;">module</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/monitor/" style="font-size: 12.22px;">monitor</a> <a href="/tags/mvn/" style="font-size: 10px;">mvn</a> <a href="/tags/mycli/" style="font-size: 10px;">mycli</a> <a href="/tags/mysql/" style="font-size: 15.56px;">mysql</a> <a href="/tags/mysqldump/" style="font-size: 10px;">mysqldump</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/network%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D/" style="font-size: 10px;">network网络问题定位</a> <a href="/tags/nfs/" style="font-size: 11.11px;">nfs</a> <a href="/tags/nginx/" style="font-size: 11.11px;">nginx</a> <a href="/tags/ngrok/" style="font-size: 10px;">ngrok</a> <a href="/tags/nightingale/" style="font-size: 10px;">nightingale</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/online/" style="font-size: 10px;">online</a> <a href="/tags/openresty/" style="font-size: 10px;">openresty</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/partition/" style="font-size: 11.11px;">partition</a> <a href="/tags/picture/" style="font-size: 10px;">picture</a> <a href="/tags/picture-processing-models/" style="font-size: 10px;">picture processing models</a> <a href="/tags/pip/" style="font-size: 10px;">pip</a> <a href="/tags/playbook/" style="font-size: 10px;">playbook</a> <a href="/tags/portainer/" style="font-size: 10px;">portainer</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/primary/" style="font-size: 10px;">primary</a> <a href="/tags/private-cs/" style="font-size: 11.11px;">private-cs</a> <a href="/tags/prometheus/" style="font-size: 10px;">prometheus</a> <a href="/tags/promethus/" style="font-size: 11.11px;">promethus</a> <a href="/tags/psensor/" style="font-size: 10px;">psensor</a> <a href="/tags/pull/" style="font-size: 10px;">pull</a> <a href="/tags/python/" style="font-size: 11.11px;">python</a> <a href="/tags/query/" style="font-size: 11.11px;">query</a> <a href="/tags/redis/" style="font-size: 11.11px;">redis</a> <a href="/tags/redis-cluster/" style="font-size: 11.11px;">redis-cluster</a> <a href="/tags/regular/" style="font-size: 10px;">regular</a> <a href="/tags/remote/" style="font-size: 10px;">remote</a> <a href="/tags/replace/" style="font-size: 10px;">replace</a> <a href="/tags/request/" style="font-size: 10px;">request</a> <a href="/tags/response/" style="font-size: 10px;">response</a> <a href="/tags/revAnimated-models/" style="font-size: 10px;">revAnimated models</a> <a href="/tags/role/" style="font-size: 10px;">role</a> <a href="/tags/rpc/" style="font-size: 10px;">rpc</a> <a href="/tags/ruby/" style="font-size: 10px;">ruby</a> <a href="/tags/safe/" style="font-size: 10px;">safe</a> <a href="/tags/scp%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/" style="font-size: 10px;">scp上传下载</a> <a href="/tags/screenshot/" style="font-size: 10px;">screenshot</a> <a href="/tags/search/" style="font-size: 11.11px;">search</a> <a href="/tags/sed/" style="font-size: 11.11px;">sed</a> <a href="/tags/shell/" style="font-size: 13.33px;">shell</a> <a href="/tags/singleton/" style="font-size: 10px;">singleton</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/split/" style="font-size: 10px;">split</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/storage/" style="font-size: 12.22px;">storage</a> <a href="/tags/stream/" style="font-size: 10px;">stream</a> <a href="/tags/studio/" style="font-size: 11.11px;">studio</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/svgjs/" style="font-size: 10px;">svgjs</a> <a href="/tags/tar/" style="font-size: 10px;">tar</a> <a href="/tags/tcp/" style="font-size: 10px;">tcp</a> <a href="/tags/text2img/" style="font-size: 10px;">text2img</a> <a href="/tags/thanos/" style="font-size: 10px;">thanos</a> <a href="/tags/timescaledb/" style="font-size: 10px;">timescaledb</a> <a href="/tags/tmp/" style="font-size: 10px;">tmp</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/topic/" style="font-size: 10px;">topic</a> <a href="/tags/traefik/" style="font-size: 10px;">traefik</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/tsdb/" style="font-size: 10px;">tsdb</a> <a href="/tags/ui/" style="font-size: 12.22px;">ui</a> <a href="/tags/unfreeze/" style="font-size: 10px;">unfreeze</a> <a href="/tags/unique/" style="font-size: 10px;">unique</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/usage-high/" style="font-size: 10px;">usage_high</a> <a href="/tags/user/" style="font-size: 10px;">user</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/venv/" style="font-size: 10px;">venv</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vim-%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">vim 配置</a> <a href="/tags/virtual/" style="font-size: 10px;">virtual</a> <a href="/tags/virtualization/" style="font-size: 10px;">virtualization</a> <a href="/tags/visual/" style="font-size: 11.11px;">visual</a> <a href="/tags/vm/" style="font-size: 10px;">vm</a> <a href="/tags/vscode/" style="font-size: 11.11px;">vscode</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/win/" style="font-size: 13.33px;">win</a> <a href="/tags/x/" style="font-size: 11.11px;">x</a> <a href="/tags/xtrabackup/" style="font-size: 10px;">xtrabackup</a> <a href="/tags/xx/" style="font-size: 18.89px;">xx</a> <a href="/tags/xxx/" style="font-size: 20px;">xxx</a> <a href="/tags/xz/" style="font-size: 10px;">xz</a> <a href="/tags/zabbix/" style="font-size: 11.11px;">zabbix</a> <a href="/tags/zabbix-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">zabbix 安装配置</a> <a href="/tags/zh-cn/" style="font-size: 10px;">zh-cn</a> <a href="/tags/zimfw/" style="font-size: 10px;">zimfw</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a> <a href="/tags/%E4%B8%AD%E6%96%87/" style="font-size: 10px;">中文</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 10px;">内网穿透</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 10px;">函数</a> <a href="/tags/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" style="font-size: 10px;">常见问题</a> <a href="/tags/%E5%B9%B3%E8%A1%A1/" style="font-size: 10px;">平衡</a> <a href="/tags/%E5%BC%BA%E5%BC%B1%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">强弱类型</a> <a href="/tags/%E6%8C%82%E7%9B%98/" style="font-size: 10px;">挂盘</a> <a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 10px;">插件</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" style="font-size: 10px;">服务发现</a> <a href="/tags/%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">查找</a> <a href="/tags/%E6%BA%90/" style="font-size: 10px;">源</a> <a href="/tags/%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">监控工具</a> <a href="/tags/%E7%A3%81%E7%9B%98-fdisk/" style="font-size: 10px;">磁盘 fdisk</a> <a href="/tags/%E7%AD%BE%E5%90%8D/" style="font-size: 10px;">签名</a> <a href="/tags/%E8%84%9A%E6%9C%AC/" style="font-size: 10px;">脚本</a> <a href="/tags/%E8%8D%89%E7%A8%BF/" style="font-size: 10px;">草稿</a> <a href="/tags/%E8%A7%84%E5%88%99/" style="font-size: 10px;">规则</a> <a href="/tags/%E8%AE%BE%E7%BD%AE/" style="font-size: 10px;">设置</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E9%80%89%E4%B8%BE/" style="font-size: 10px;">选举</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">theme author</a>
+                    
+                    </div>
+                </section>
+                
+
+
+                
+                   
+		        <section class="switch-part switch-part4">
+		        
+               <div id="js-aboutme">Ctrl+C and Ctrl+V,restart</div>
+                </section>
+                    
+
+            </div>
+
+
+        </div>
+
+    </header>   
+            
+</div>
+    </div>
+
+
+<div id="local_search" class="search-popup" >
+  <div class="search-header">
+	
+	    <i class="fa fa-search"> </i> <input id="local-search-input" class="search-input" placeholder="搜索..." spellcheck="false" type="search"/>
+	  
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">阿帅</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.gif" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">阿帅</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">归档</a></li>
+                
+                    <li><a href="/tags">分类&amp;标签</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:cs876321722@outlook.com?subject=github%20page%20hexo%20subject" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/chengshea" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=m6Osraipqqypqdvq6rX49PY" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-services/monitor/nightingale" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/services/monitor/nightingale/" class="article-date">
+      <time datetime="2024-07-14T01:17:08.000Z" itemprop="datePublished">2024-07-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      夜莺监控
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/services/">services</a><a class="article-category-link" href="/categories/services/monitor/">monitor</a>
+    </div>
+
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/monitor/" rel="tag">monitor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nightingale/" rel="tag">nightingale</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a target="_blank" rel="noopener" href="https://flashcat.cloud/download/nightingale/">https://flashcat.cloud/download/nightingale/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https://download.flashcat.cloud/n9e-v7.0.0-beta.13-linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">mkdir -p  /opt/tools/nightingale</span><br><span class="line">tar -xzvf /home/cs/oss/k8s-1.26/n9e-v7.0.0-beta.13-linux-amd64.tar.gz  -C /opt/tools/nightingale/</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="config-toml"><a href="#config-toml" class="headerlink" title="config.toml"></a>config.toml</h3><span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">❯ cat /opt/tools/nightingale/etc/config.toml | grep  -A 15 &quot;\[Redis\]&quot;</span><br><span class="line">[Redis]</span><br><span class="line"># address, ip:port or ip1:port,ip2:port for cluster and sentinel(SentinelAddrs)</span><br><span class="line">Address = &quot;127.0.0.1:6379&quot;</span><br><span class="line"># Username = &quot;&quot;</span><br><span class="line"># Password = &quot;&quot;</span><br><span class="line"># DB = 0</span><br><span class="line"># UseTLS = false</span><br><span class="line"># TLSMinVersion = &quot;1.2&quot;</span><br><span class="line"># standalone cluster sentinel</span><br><span class="line">RedisType = &quot;standalone&quot;</span><br><span class="line"># Mastername for sentinel type</span><br><span class="line"># MasterName = &quot;mymaster&quot;</span><br><span class="line"># SentinelUsername = &quot;&quot;</span><br><span class="line"># SentinelPassword = &quot;&quot;</span><br><span class="line"></span><br><span class="line">[Alert]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>sed -i ‘&#x2F;^Address &#x2F;s&#x2F;127.0.0.1:6379&#x2F;k8s.org:9736&#x2F;‘ &#x2F;opt&#x2F;tools&#x2F;nightingale&#x2F;etc&#x2F;config.toml</p>
+<p>sed -n ‘&#x2F;^DSN &#x2F;s&#x2F;1234&#x2F;123456&#x2F;;s&#x2F;3306&#x2F;3305&#x2F;‘p &#x2F;opt&#x2F;tools&#x2F;nightingale&#x2F;etc&#x2F;config.toml</p>
+<p>sed -i ‘&#x2F;^DSN &#x2F;s&#x2F;1234&#x2F;n9e123&#x2F;;s&#x2F;root&#x2F;n9e&#x2F;;s&#x2F;127.0.0.1:3306&#x2F;k8s.org:3305&#x2F;‘ &#x2F;opt&#x2F;tools&#x2F;nightingale&#x2F;etc&#x2F;config.toml</p>
+<p>sed -n ‘&#x2F;^# Username &#x2F;s&#x2F;^.*$&#x2F;Username &#x3D; cs&#x2F;‘p &#x2F;opt&#x2F;tools&#x2F;nightingale&#x2F;etc&#x2F;config.toml</p>
+<p>#等价上面替换</p>
+<p>sed -i ‘&#x2F;^# Username &#x2F;i \Username &#x3D; cs\nPassword &#x3D; 123456’ &#x2F;opt&#x2F;tools&#x2F;nightingale&#x2F;etc&#x2F;config.toml</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql   -P 3305 -u root -p &lt; /opt/tools/nightingale/n9e.sql</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MySQL root@localhost:(none)&gt; create user n9e@&#x27;%&#x27; identified by &#x27;n9e123&#x27;;</span><br><span class="line">Query OK, 0 rows affected</span><br><span class="line">Time: 0.014s</span><br><span class="line">MySQL root@localhost:(none)&gt; grant all privileges on `n9e_v6`.* to &#x27;n9e&#x27;@&#x27;%&#x27;;</span><br><span class="line">Query OK, 0 rows affected</span><br><span class="line">Time: 0.010s</span><br><span class="line">MySQL root@localhost:(none)&gt; flush privileges;</span><br><span class="line">Query OK, 0 rows affected</span><br><span class="line">Time: 0.005s</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:9736&gt; ACL SETUSER cs +@read +@write on allkeys</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:9736&gt; acl setuser cs +ping on allkeys</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:9736&gt; acl list</span><br><span class="line">1) &quot;user cs on sanitize-payload #8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92 ~* resetchannels -@all +@read +@write +ping&quot;</span><br><span class="line">2) &quot;user default on sanitize-payload #bbdac2e00dec531c592e9ee501cc64fde0a4a1795bb164f156982a50a4774170 ~* &amp;* +@all&quot;</span><br><span class="line">3) &quot;user logs on sanitize-payload #bbdac2e00dec531c592e9ee501cc64fde0a4a1795bb164f156982a50a4774170 ~* resetchannels +@all&quot;</span><br><span class="line">127.0.0.1:9736&gt; </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><details>
+  <summary>start.sh</summary>
+  <pre><a>start.sh</a><code>
+#!/bin/bash
+</br>
+[ -n "$(command -v nc)" ] || &#123; echo "需要安装nc" && exit 1 ;&#125;
+HOST=
+PORT=
+vars()&#123;
+    toml=/opt/tools/nightingale/etc/config.toml
+    cmd="cat $toml | sed -n '$1'p | tr ':' '\n'"
+    echo "$cmd"
+    url=$(eval $cmd)
+    echo "$url"
+    HOST=$&#123;url[0]&#125;
+    PORT=$&#123;url[1]&#125;
+&#125;
+</br>
+check()&#123;
+    [ -n $2 ] || &#123; echo "没有[prot:$2]参数,检查config.toml文件" && exit 1; &#125;
+    if nc -zv $1 $2; then
+        echo "[$3] 服务在端口 $2 上运行正常。"
+    else
+        echo "[$3] 服务在端口 $2 上没有响应,退出"
+        exit 1
+    fi	
+&#125;
+</br>
+vars "/^DSN/s/.*(\(.*\)).*/\1/g"
+check $HOST $PORT "mysql"
+</br>
+vars '/^Address/s/.*"\(.*\)"$/\1/g'
+check $HOST $PORT "redis"
+</br>
+no()&#123;
+    pid=`ps -ef | grep n9e | grep -v grep | awk '&#123;print $2&#125;'`
+    echo $pid
+&#125;
+echo ">>>>n9e<<<<"
+case $1 in
+    start|s)
+        pid=`no`
+        [ -z "$pid" ] || &#123; echo "running status $pid。。。"  && exit 0; &#125;
+        echo "start  running."
+        nohup ./n9e  &> ./logs/INFO.log  &
+        echo "url: http://localhost:17000/dashboards"
+        echo "用户是 root，密码是 root.2020"
+        ;;
+    stop|down|d)
+          pid=`no`
+         [ -n "$pid" ] || &#123; echo "没有启动，无需关闭。。。" && exit 0; &#125;
+         echo "downing ...$pid"
+         kill  -9 $pid
+         echo "ok ..."
+        ;;
+    *)
+        echo "sh $0 [s|sart|d|stop]"
+        ;;
+esac
+  </code></pre>
+</details>
+
+<p><a target="_blank" rel="noopener" href="https://flashcat.cloud/docs/content/flashcat-monitor/nightingale-v7/install/binary/">https://flashcat.cloud/docs/content/flashcat-monitor/nightingale-v7/install/binary/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/services/monitor/nightingale/">夜莺监控</a></p>
+        <p><span>文章作者:</span>
+       <a  title="访问 阿帅 的个人博客">阿帅</a>
+        </p>
+        <p><span>发布时间:</span>2024年07月14日 - 09时17分</p>
+        <p><span>最后更新:</span>2024年07月14日 - 16时34分</p>
+
+          <p>
+            <span>原始链接:</span><a class="post-url" href="/services/monitor/nightingale/" title="夜莺监控">https://chengshea.github.io/services/monitor/nightingale/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://chengshea.github.io/services/monitor/nightingale/　作者: 阿帅" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+    <div id="div1" onmouseenter="showDiv2()" onmouseleave="hideDiv2()">
+      点击打赏
+      <div id="div2" style="display: none;"> 
+        <img src='/img/123.gif'  alt="菜币">
+        <div >会心一笑</div>
+      </div>
+
+    </div>
+ 
+    <script>
+     function showDiv2() {
+  var div2 = document.getElementById("div2");
+  div2.style.display = "block";
+}
+
+function hideDiv2() {
+  var div2 = document.getElementById("div2");
+  div2.style.display = "none";
+}
+    </script>
+
+
+
+
+<nav id="article-nav">
+  
+    <a href="/linux/k8s/coredns/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          K8S DNS CoreDNS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/services/nginx/function/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">实用负载功能</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config-toml"><span class="toc-number">2.1.</span> <span class="toc-text">config.toml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">启动</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+   
+<script src="/js/require-2.1.6.js"></script>
+
+
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+
+
+    
+        
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+<div id="gitment"></div>
+<!-- 主页不要加载gitment -->
+
+<script>
+var gitment = new Gitment({
+owner: 'chengshea',
+repo: 'chengshea.github.io',
+oauth: {
+client_id: '3478952f5e3ade063629',
+client_secret: '3ca8b3ada58c7993cbb385839f83ba81eb04231a',
+ },
+})
+gitment.render('gitment')
+</script>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/linux/k8s/coredns/" title="上一篇: K8S DNS CoreDNS">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/services/nginx/function/" title="下一篇: 实用负载功能">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/coredns/">K8S DNS CoreDNS</a></li><li class="post-list-item"><a class="post-list-link" href="/services/monitor/nightingale/">夜莺监控</a></li><li class="post-list-item"><a class="post-list-link" href="/services/nginx/function/">实用负载功能</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/fklek/">FKLEK 采集展示</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/portainer/">docker ui portainer</a></li><li class="post-list-item"><a class="post-list-link" href="/other/pxe/">PXE</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/devops/devops/">devops 概念</a></li><li class="post-list-item"><a class="post-list-link" href="/services/mq/compare/">MQ 比较</a></li><li class="post-list-item"><a class="post-list-link" href="/network/httpcode/">http code了解</a></li><li class="post-list-item"><a class="post-list-link" href="/services/mq/rabbitmq/check/">检查状态</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/index/">各种索引</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/other/">常用软件ui</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/pybase/">python 基础</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/py3note/">py3笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/storage/ceph/">ceph 分布式存储</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/storage/disk/">RAID 磁盘阵列</a></li><li class="post-list-item"><a class="post-list-link" href="/network/net/">network网络问题定位</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/wikijs/">wiki.js</a></li><li class="post-list-item"><a class="post-list-link" href="/other/software/">linux 软件包</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/ansible/galaxy/">ansible galaxy</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/gitlab/">gitlab 使用</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/postgresql/install/">postgresql介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/thanos/">thanos storage</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/loki/">grafana loki logs</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/alert/">k8s alert</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/fluent/">k8s log apoll</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/jenkins/">jenkins</a></li><li class="post-list-item"><a class="post-list-link" href="/services/nginx/">nginx 编译</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/apollo/">k8s config apollo</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/backup/">备份mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/storage/">k8s storage</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/grafana/">k8s grafana</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/monitor/">monitor</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/istio/">istio</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/fdisk/">磁盘 fdisk</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/PromQL/">promethus PromQL</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/prometheus/">promethus</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/question/">常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/cert-manager/">k8s cert manager</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubectl/">kubectl commands</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/dashboard/">Dashboard UI</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/mysql/">k8s mysql cluster</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/protobuf/">gogoprotobuf grpc</a></li><li class="post-list-item"><a class="post-list-link" href="/services/mq/kafka/kafka/">kafka介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/Crossplane/">Crossplane控制面板</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dnsmasq/">dnsmasq</a></li><li class="post-list-item"><a class="post-list-link" href="/services/monitor/grafana/">grafana 安装配置</a></li><li class="post-list-item"><a class="post-list-link" href="/services/monitor/zabbix-sources/">zabbix 安装配置</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/mycli/">MySQL AutoCompletion</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/psensor/">psensor 监控</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/vim/">vim 配置</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/Xsession/">X session error</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/grub/">grub主题样式</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/influxdb/influxdb-zabbix/">influxdb存放zabbix监控数据</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/grub-cfg/">grub配置详解</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/stable-diffusion/models/revAnimated/">revAnimated models</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/crack/unfreeze/">解除限制小魔法</a></li><li class="post-list-item"><a class="post-list-link" href="/network/Kcptun/">Kcptun安装使用</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/stable-diffusion/models/processing/">picture processing models</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/zimfw/">zimfw shell</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/stable-diffusion/models/lora/">lora models说明</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/stable-diffusion/deep/">Stable diffusion概念</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/gpu/">GPU CUDA安装</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/venv/">venv虚拟环境</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/nfs/">nfs介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/regular-expression/">regular expression</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/ansible/ansible1/">ansible playbook</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/ansible/ansible/">ansible安装使用入门</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/customcmd/">自定义cmd命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/split/">截取分割</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/containerd/">containerd安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/scp/">scp上传下载</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/harbor/">harbor容器仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s-compile/">k8s1.26.1编译部署</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/environment/">go环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/ruby/compile/">ruby从git拉取编译安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/user-group/">用户组命令</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/process/svg/">svg.js示例</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/test/">md语法示例</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/create_ap/">linux开启wifi</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/tool/ssh-tool/">ssh远程登陆工具</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/virtualization/kvm/">kvm安装入门</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/virtualization/container/docker-bit/">docker二进制安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/storage/fstab/">fstab挂盘</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/os/">os信息备份</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/screenshot/">screenshot</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/vagrant/">vagrant</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/vscode/">visual studio code</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/vs-code/">visual studio code</a></li><li class="post-list-item"><a class="post-list-link" href="/other/sort/bubble/">冒泡排序</a></li><li class="post-list-item"><a class="post-list-link" href="/other/data-structure/binary-tree/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/explain/">explain执行计划</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/function/">mysql函数</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my-conf/">mysql参数配置</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/pandoc/">pandoc文本格式转换</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/mysql-query/">mysql查询过程</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/databasetool/pl-sql/">PLSQL</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/idea-tool/">IDEA tool</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/sublime03/">Sublime设置</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/sublime02/">Sublime运行脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/codetool/sublime01/">Sublime中文</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/test/tests/">前置操作/后置操作</a></li><li class="post-list-item"><a class="post-list-link" href="/draft/">草稿</a></li><li class="post-list-item"><a class="post-list-link" href="/node/npm/hexo/">hexo插件</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/decompress/">解压/压缩</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/download/">download工具命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/helm/">helm工具</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubelet/">kubelet组件</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/formula/">Mathjax公式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/harbor/">harbor镜像私库</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/kubeadm/">kubeadm容器化安装</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/flanneld/">flanneld虚拟网络</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s/">kubernetes部署结构</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/iptable/">iptable防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/grep/">grep常用过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/tree/">tree工具</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/maven/">maven介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/k8s01/">k8s集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/traefik/">traefik</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/etcd/">etcd集群</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/redis/">redis集群</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/redis/redis-cluster/">redis集群配置</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/my/">mysql配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/services/database/mysql/install/">mysql安装</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/python/pip/">pip包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/services/container/tomcat/">tomcat优化</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/apt/">apt</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/sawtl/">强弱类型语言</a></li><li class="post-list-item"><a class="post-list-link" href="/database/mongo/">mongodb</a></li><li class="post-list-item"><a class="post-list-link" href="/other/design-pattern/singleton/">singleton单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker1/">常用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/sed/">sed替换查找</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/usage_high/">磁盘或Inode使用率高</a></li><li class="post-list-item"><a class="post-list-link" href="/network/network/">网络概念介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/npm/npm%E5%88%9D%E5%A7%8B/">npm初始</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/vim/">vi/vim基本命令</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/find/">find查找搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/top/">top排查服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/gc/">初识jvm</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/flow/">markdown画图</a></li><li class="post-list-item"><a class="post-list-link" href="/services/zookeeper/%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6/">zk选举</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/java/stream/">stream写法</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/go/">go语法规则</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/shell/ps/">ps</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/text/markdown/mdgrammar/">md语法</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/%E5%88%9D%E8%AF%86K8S/">初识K8S</a></li><li class="post-list-item"><a class="post-list-link" href="/network/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/hexo/%E8%AF%84%E8%AE%BA/">评论</a></li><li class="post-list-item"><a class="post-list-link" href="/network/on-line/">科学上网</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/es-shield/">shield</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-server/">git server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-cmd/">git命令</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/git-pull/">git pull</a></li><li class="post-list-item"><a class="post-list-link" href="/other/avd/">avd</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/compose/">docker-compose</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/k8s/docker/">docker</a></li><li class="post-list-item"><a class="post-list-link" href="/linux/debian/dpkg/">dpkg</a></li><li class="post-list-item"><a class="post-list-link" href="/tool/redis-live/">live</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/kibana/">kibana</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/logstash/">logstash</a></li><li class="post-list-item"><a class="post-list-link" href="/services/elk/%E5%AE%89%E8%A3%85ElasticSearch/">安装elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/lang/node/hexo/">搭建hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/network/https%E8%87%AA%E5%B7%B1%E7%AD%BE%E5%90%8D/">https签名</a></li></ul>
+    
+<script src="/js/require-2.1.6.js"></script>
+
+    
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      
+<!-- cpu  -->
+
+
+
+
+<script>
+    function prt(str) {
+        let l = new String(str);
+        return l.substring(l.indexOf("/*") + 3, l.lastIndexOf("*/"));
+    }
+    let str = function () {
+    /* welcome to open console
+           _____                    _____          
+          /\    \                  /\    \         
+         /::\    \                /::\    \        
+        /::::\    \              /::::\    \       
+       /::::::\    \            /::::::\    \      
+      /:::/\:::\    \          /:::/\:::\    \     
+     /:::/  \:::\    \        /:::/__\:::\    \    
+    /:::/    \:::\    \       \:::\   \:::\    \   
+   /:::/    / \:::\    \    ___\:::\   \:::\    \  
+  /:::/    /   \:::\    \  /\   \:::\   \:::\    \ 
+ /:::/____/     \:::\____\/::\   \:::\   \:::\____\
+ \:::\    \      \::/    /\:::\   \:::\   \::/    /
+  \:::\    \      \/____/  \:::\   \:::\   \/____/ 
+   \:::\    \               \:::\   \:::\    \     
+    \:::\    \               \:::\   \:::\____\    
+     \:::\    \               \:::\  /:::/    /    
+      \:::\    \               \:::\/:::/    /     
+       \:::\    \               \::::::/    /      
+        \:::\____\               \::::/    /       
+         \::/    /                \::/    /        
+          \/____/                  \/____/          @阿帅 */
+    }
+
+    console.log(prt(str));
+  
+  var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("12/03/2016 21:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已运行<span class='date_num'> "+dnum+"</span> 天 "; 
+        document.getElementById("times").innerHTML ="<span class='date_num'>"+ hnum + "</span> 小时 <span class='date_num'>" + mnum + "</span> 分 <span class='date_num'>" + snum + "</span> 秒 | "; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2024 阿帅
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">  <!--计数设置-->
+ <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+<!--页面点击小心心-->
+    <script type="text/javascript" src="js/love.js"></script>
+
+    </div>
+    
+<script src="/js/require-2.1.6.js"></script>
+
+
+<script src="/js/jquery-1.9.1.min.js"></script>
+
+
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+<!--搜索--->
+
+   <script type="text/javascript">
+    
+	var inputArea       = document.querySelector("#local-search-input");
+	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+        var baseurl=document.domain;//del
+	var getSearchFile = function(){
+	  searchFunc("/" + "search.json", 'local-search-input', 'local-search-result',baseurl);
+	}
+           
+          $(document).on('click', function(e) {
+		  var si= $(e.target).closest('#id_search').length;
+               var d= $(e.target).closest('#local_search').length;
+
+            //console.log(si+" "+" "+d)//si==0 && d==0
+		if(si==1){ 
+			document.body.style.overflow='hidden';
+		}
+                 // 关闭弹框
+             if( si==0 && d==0){
+ 
+               //  console.log('弹出框以外的部分被点击了');
+                     
+               document.body.style.overflow=''
+               $('#local_search').hide();
+                  }
+            
+
+       });
+
+
+  </script>
+
+  </div>
+</body>
+</html>
