@@ -13,7 +13,7 @@
 <meta property="og:description" content="ps (process status) 命令用于显示当前进程的状态，类似于 windows 的任务管理器 查找指定进程12$ ps -ef | grep  keycs        4565  4533  0 21:14 pts&#x2F;2    00:00:00 &#x2F;opt&#x2F;ELK&#x2F;elasticsearch-7.17.1&#x2F;modules&#x2F;x-pack-ml&#x2F;platform&#x2F;linux-x86_64&#x2F;b">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-06-03T08:56:09.000Z">
-<meta property="article:modified_time" content="2024-03-02T11:11:19.225Z">
+<meta property="article:modified_time" content="2024-07-24T01:20:16.534Z">
 <meta property="article:author" content="阿帅">
 <meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary">
@@ -363,6 +363,17 @@
 <p>r 反向(reverse) ,默认从小到大</p>
 <p>head  头几列(-3 ,显示前3列)</p>
 </blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">❯ ps -eo pid,cmd,%mem,rss,vsize | grep chrome</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>进程的PID、cmd、内存使用百分比、RSS和VSIZE。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">❯ ps -eo pid,cmd,%mem,rss,vsize | grep chrome | awk &#x27;&#123;sum+=$3&#125; END &#123;print sum&#125;&#x27;</span><br><span class="line"></span><br><span class="line">#awk 累加内存使用百分比并计数进程数量，最后计算平均值。</span><br><span class="line">❯ ps -eo pid,cmd,%mem,rss,vsize | grep chrome | awk &#x27;&#123;sum+=$3; count++&#125; END &#123;print sum/count&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <h4 id="cpu"><a href="#cpu" class="headerlink" title="cpu"></a>cpu</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ps -aux | sort -k3nr | head -3</span><br></pre></td></tr></table></figure>
 
 
@@ -414,7 +425,7 @@
        <a  title="访问 阿帅 的个人博客">阿帅</a>
         </p>
         <p><span>发布时间:</span>2022年06月03日 - 16时56分</p>
-        <p><span>最后更新:</span>2024年03月02日 - 19时11分</p>
+        <p><span>最后更新:</span>2024年07月24日 - 09时20分</p>
 
           <p>
             <span>原始链接:</span><a class="post-url" href="/linux/shell/ps/" title="ps">https://chengshea.github.io/linux/shell/ps/</a>

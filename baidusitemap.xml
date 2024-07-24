@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengshea.github.io//linux/shell/top/</loc>
+    <lastmod>2024-07-24</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/shell/ps/</loc>
+    <lastmod>2024-07-24</lastmod>
+  </url>
+  <url>
     <loc>https://chengshea.github.io//other/LLM/ollama/</loc>
     <lastmod>2024-07-23</lastmod>
   </url>
@@ -286,10 +294,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/k8s/%E5%88%9D%E8%AF%86K8S/</loc>
-    <lastmod>2024-03-02</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/shell/ps/</loc>
     <lastmod>2024-03-02</lastmod>
   </url>
   <url>
@@ -658,10 +662,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/tree/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/shell/top/</loc>
     <lastmod>2023-05-20</lastmod>
   </url>
   <url>
