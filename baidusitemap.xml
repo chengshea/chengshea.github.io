@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengshea.github.io//services/apisix/ingress/</loc>
+    <lastmod>2024-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/apisix/apisix/</loc>
+    <lastmod>2024-07-25</lastmod>
+  </url>
+  <url>
     <loc>https://chengshea.github.io//linux/shell/top/</loc>
     <lastmod>2024-07-24</lastmod>
   </url>
@@ -38,14 +46,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/k8s/docker1/</loc>
-    <lastmod>2024-07-15</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//services/apisix/ingress/</loc>
-    <lastmod>2024-07-15</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//services/apisix/apisix/</loc>
     <lastmod>2024-07-15</lastmod>
   </url>
   <url>
