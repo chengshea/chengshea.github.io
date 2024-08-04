@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengshea.github.io//linux/tool/supervisor/</loc>
+    <lastmod>2024-08-04</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/codetool/sublime02/</loc>
+    <lastmod>2024-08-02</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/tool/ansible/ansible1/</loc>
+    <lastmod>2024-08-02</lastmod>
+  </url>
+  <url>
     <loc>https://chengshea.github.io//services/apisix/ingress/</loc>
+    <lastmod>2024-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/k8s/k8s01/</loc>
+    <lastmod>2024-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/apm/skywalking/</loc>
     <lastmod>2024-07-25</lastmod>
   </url>
   <url>
@@ -89,10 +109,6 @@
     <lastmod>2024-07-02</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//tool/codetool/sublime02/</loc>
-    <lastmod>2024-07-01</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//services/nginx/function/</loc>
     <lastmod>2024-07-01</lastmod>
   </url>
@@ -115,10 +131,6 @@
   <url>
     <loc>https://chengshea.github.io//linux/tool/ansible/ansible/</loc>
     <lastmod>2024-06-30</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/k8s/k8s01/</loc>
-    <lastmod>2024-06-29</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/tool/portainer/</loc>
@@ -339,10 +351,6 @@
   <url>
     <loc>https://chengshea.github.io//other/software/</loc>
     <lastmod>2024-01-03</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/tool/ansible/ansible1/</loc>
-    <lastmod>2024-01-02</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/split/</loc>
