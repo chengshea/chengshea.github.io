@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengshea.github.io//linux/k8s/metallb/</loc>
+    <lastmod>2024-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/apisix/apisix/</loc>
+    <lastmod>2024-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/database/redis/redis-cluster/</loc>
+    <lastmod>2024-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//other/software/</loc>
+    <lastmod>2024-08-06</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/debian/grub/</loc>
+    <lastmod>2024-08-05</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/codetool/sublime03/</loc>
+    <lastmod>2024-08-05</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/database/mysql/index/</loc>
+    <lastmod>2024-08-05</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/debian/other/</loc>
+    <lastmod>2024-08-04</lastmod>
+  </url>
+  <url>
     <loc>https://chengshea.github.io//linux/tool/supervisor/</loc>
     <lastmod>2024-08-04</lastmod>
   </url>
@@ -22,10 +54,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//tool/apm/skywalking/</loc>
-    <lastmod>2024-07-25</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//services/apisix/apisix/</loc>
     <lastmod>2024-07-25</lastmod>
   </url>
   <url>
@@ -54,10 +82,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/tool/jenkins/</loc>
-    <lastmod>2024-07-17</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//services/database/redis/redis-cluster/</loc>
     <lastmod>2024-07-17</lastmod>
   </url>
   <url>
@@ -201,15 +225,7 @@
     <lastmod>2024-06-14</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//services/database/mysql/index/</loc>
-    <lastmod>2024-06-14</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//lang/python/pybase/</loc>
-    <lastmod>2024-06-09</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/debian/other/</loc>
     <lastmod>2024-06-09</lastmod>
   </url>
   <url>
@@ -349,20 +365,12 @@
     <lastmod>2024-01-15</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//other/software/</loc>
-    <lastmod>2024-01-03</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//linux/shell/split/</loc>
     <lastmod>2023-12-03</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/find/</loc>
     <lastmod>2023-12-03</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/debian/grub/</loc>
-    <lastmod>2023-11-14</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/debian/os/</loc>
@@ -634,10 +642,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//tool/codetool/sublime01/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//tool/codetool/sublime03/</loc>
     <lastmod>2023-05-20</lastmod>
   </url>
   <url>
