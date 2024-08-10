@@ -13,7 +13,7 @@
 <meta property="og:description" content="ingressdoc https:&#x2F;&#x2F;apisix.apache.org&#x2F;zh&#x2F;docs&#x2F;ingress-controller&#x2F;deployments&#x2F;kind&#x2F; helm https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;apisix-helm-chart">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-07-15T09:25:53.000Z">
-<meta property="article:modified_time" content="2024-07-30T04:51:26.201Z">
+<meta property="article:modified_time" content="2024-08-10T09:32:18.760Z">
 <meta property="article:author" content="阿帅">
 <meta property="article:tag" content="xxx">
 <meta property="article:tag" content="ingress">
@@ -485,7 +485,73 @@ spec:
 </details>
 
 
+<h3 id="installing-apisix-ingress-controller"><a href="#installing-apisix-ingress-controller" class="headerlink" title="installing-apisix-ingress-controller"></a>installing-apisix-ingress-controller</h3><p><a target="_blank" rel="noopener" href="https://apisix.apache.org/zh/docs/ingress-controller/tutorials/the-hard-way/#installing-apisix-ingress-controller">https://apisix.apache.org/zh/docs/ingress-controller/tutorials/the-hard-way/#installing-apisix-ingress-controller</a></p>
+<details>
+  <summary>httpbin-route.yaml</summary>
+  <pre><a>httpserver-route</a><code>
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: httpserver-route
+spec:
+  http:
+  - name: httpbin
+    match:
+      hosts:
+      - local.httpbin.org
+      paths:
+      - /*
+    backends:
+      - serviceName: httpbin
+        servicePort: 80
+  </code></pre>
+</details>
 
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">❯ kubectl debug -n apisix -it pod/apisix-77466dcc99-hpl8f  --image=k8s.org/cs/netshoot   -- bash</span><br><span class="line">Defaulting debug container name to debugger-gqx4k.</span><br><span class="line">If you don&#x27;t see a command prompt, try pressing enter.</span><br><span class="line">apisix-77466dcc99-hpl8f:~# </span><br><span class="line">apisix-77466dcc99-hpl8f:~# curl &quot;http://127.0.0.1:9080/get&quot; -H &quot;Host: local.httpbin.org&quot;</span><br><span class="line">&#123;&quot;error_msg&quot;:&quot;404 Route Not Found&quot;&#125;</span><br><span class="line">apisix-77466dcc99-hpl8f:~# </span><br><span class="line">apisix-77466dcc99-hpl8f:~# curl &quot;http://127.0.0.1:9080/get&quot; -H &quot;Host: local.httpbin.org&quot;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;args&quot;: &#123;&#125;, </span><br><span class="line">  &quot;headers&quot;: &#123;</span><br><span class="line">    &quot;Accept&quot;: &quot;*/*&quot;, </span><br><span class="line">    &quot;Host&quot;: &quot;local.httpbin.org&quot;, </span><br><span class="line">    &quot;User-Agent&quot;: &quot;curl/8.0.1&quot;, </span><br><span class="line">    &quot;X-Forwarded-Host&quot;: &quot;local.httpbin.org&quot;</span><br><span class="line">  &#125;, </span><br><span class="line">  &quot;origin&quot;: &quot;127.0.0.1&quot;, </span><br><span class="line">  &quot;url&quot;: &quot;http://local.httpbin.org/get&quot;</span><br><span class="line">&#125;</span><br><span class="line">apisix-77466dcc99-hpl8f:~# </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<details>
+  <summary>httpbin-tls-route.yaml</summary>
+  <pre><a>httpbin-tls-route</a><code>
+apiVersion: apisix.apache.org/v2
+kind: ApisixTls
+metadata:
+  name: httpbin
+  namespace: config
+spec:
+  hosts:
+  - cs.ui.k8s.cn
+  secret:
+    name: ui.k8s.cn-tls
+    namespace: config
+</br>
+# 定义 ApisixTls 对象
+---
+# 定义访问后端的路由
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: httpbin
+  namespace: config
+spec:
+  http:
+  - name: httpbin
+    match:
+      paths:
+      - /*
+      hosts:
+      - cs.ui.k8s.cn
+    backends:
+    - serviceName: httpbin
+      servicePort: 80  </code></pre>
+</details>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">❯ kubectl port-forward -n apisix svc/apisix-gateway 9443:443</span><br><span class="line">Forwarding from 127.0.0.1:9443 -&gt; 9443</span><br><span class="line">Forwarding from [::1]:9443 -&gt; 9443</span><br><span class="line">Handling connection for 9443</span><br><span class="line">Handling connection for 9443</span><br><span class="line"></span><br><span class="line">❯ curl https://cs.ui.k8s.cn:9443/json --resolve &#x27;cs.ui.k8s.cn:9443:127.0.0.1&#x27; -sk</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;slideshow&quot;: &#123;</span><br><span class="line">    &quot;author&quot;: &quot;Yours Truly&quot;, </span><br><span class="line">    &quot;date&quot;: &quot;date of publication&quot;, </span><br><span class="line">    &quot;slides&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;title&quot;: &quot;Wake up to WonderWidgets!&quot;, </span><br><span class="line">        &quot;type&quot;: &quot;all&quot;</span><br><span class="line">      &#125;, </span><br><span class="line">      &#123;</span><br><span class="line">        &quot;items&quot;: [</span><br><span class="line">          &quot;Why &lt;em&gt;WonderWidgets&lt;/em&gt; are great&quot;, </span><br><span class="line">          &quot;Who &lt;em&gt;buys&lt;/em&gt; WonderWidgets&quot;</span><br><span class="line">        ], </span><br><span class="line">        &quot;title&quot;: &quot;Overview&quot;, </span><br><span class="line">        &quot;type&quot;: &quot;all&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ], </span><br><span class="line">    &quot;title&quot;: &quot;Sample Slide Show&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -505,7 +571,7 @@ spec:
        <a  title="访问 阿帅 的个人博客">阿帅</a>
         </p>
         <p><span>发布时间:</span>2024年07月15日 - 17时25分</p>
-        <p><span>最后更新:</span>2024年07月30日 - 12时51分</p>
+        <p><span>最后更新:</span>2024年08月10日 - 17时32分</p>
 
           <p>
             <span>原始链接:</span><a class="post-url" href="/services/apisix/ingress/" title="APISIX ingress">https://chengshea.github.io/services/apisix/ingress/</a>
@@ -566,7 +632,7 @@ function hideDiv2() {
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ingress"><span class="toc-number">1.</span> <span class="toc-text">ingress</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ingress"><span class="toc-number">1.</span> <span class="toc-text">ingress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#installing-apisix-ingress-controller"><span class="toc-number">2.</span> <span class="toc-text">installing-apisix-ingress-controller</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
