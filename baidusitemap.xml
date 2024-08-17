@@ -1,6 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengshea.github.io//linux/k8s/k8s-compile/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/ansible/ansible/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/ansible/galaxy/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/ansible/ansible1/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/gitlab/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/database/mongo/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/database/mysql/mysql-query/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/nginx/nginx/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/shell/download/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//lang/node/hexo/%E6%90%AD%E5%BB%BAhexo/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//lang/node/hexo/hexo/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//lang/node/npm/npm%E5%88%9D%E5%A7%8B/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//lang/go/go%E5%88%9D%E8%AF%86/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//lang/java/jvm-gc0/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/shell/grep/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io/draft/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io/tool/devops/drafts/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/jenkins/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/cicd/gitlabci/</loc>
+    <lastmod>2024-08-16</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/virtualization/kvm/</loc>
+    <lastmod>2024-08-16</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/git/git-server/</loc>
+    <lastmod>2024-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/git/git-pull/</loc>
+    <lastmod>2024-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//tool/devops/git/git-cmd/</loc>
+    <lastmod>2024-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//other/pxe/</loc>
+    <lastmod>2024-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/k8s/k8s/</loc>
+    <lastmod>2024-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/k8s/etcd/</loc>
+    <lastmod>2024-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/k8s/upgrade/</loc>
+    <lastmod>2024-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//lang/go/environment/</loc>
+    <lastmod>2024-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/debian/dnsmasq/</loc>
+    <lastmod>2024-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/shell/sed/</loc>
+    <lastmod>2024-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/tool/ansible/ansible1/</loc>
+    <lastmod>2024-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/k8s/hpa/</loc>
+    <lastmod>2024-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/database/mysql/MHA/</loc>
+    <lastmod>2024-08-12</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/tool/keepalived/</loc>
+    <lastmod>2024-08-12</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/nginx/baseknowledge/</loc>
+    <lastmod>2024-08-12</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//linux/k8s/helm/</loc>
+    <lastmod>2024-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://chengshea.github.io//services/nginx/function/</loc>
+    <lastmod>2024-08-11</lastmod>
+  </url>
+  <url>
     <loc>https://chengshea.github.io//linux/k8s/metallb/</loc>
     <lastmod>2024-08-10</lastmod>
   </url>
@@ -53,10 +201,6 @@
     <lastmod>2024-08-02</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/tool/ansible/ansible1/</loc>
-    <lastmod>2024-08-02</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//linux/k8s/k8s01/</loc>
     <lastmod>2024-07-25</lastmod>
   </url>
@@ -83,10 +227,6 @@
   <url>
     <loc>https://chengshea.github.io//services/database/tidb/tidb/</loc>
     <lastmod>2024-07-19</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/tool/jenkins/</loc>
-    <lastmod>2024-07-17</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/k8s/docker/</loc>
@@ -125,24 +265,12 @@
     <lastmod>2024-07-03</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/shell/sed/</loc>
-    <lastmod>2024-07-03</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//draft/</loc>
+    <loc>https://chengshea.github.io//linux/k8s/prometheus/</loc>
     <lastmod>2024-07-03</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//services/elk/fklek/</loc>
     <lastmod>2024-07-02</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//services/nginx/function/</loc>
-    <lastmod>2024-07-01</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//services/nginx/</loc>
-    <lastmod>2024-07-01</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//services/monitor/grafana/</loc>
@@ -153,12 +281,12 @@
     <lastmod>2024-06-30</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/k8s/k8s/</loc>
+    <loc>https://chengshea.github.io//linux/tool/ansible/ansible/</loc>
     <lastmod>2024-06-30</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/tool/ansible/ansible/</loc>
-    <lastmod>2024-06-30</lastmod>
+    <loc>https://chengshea.github.io//linux/k8s/kubectl/</loc>
+    <lastmod>2024-06-29</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/tool/portainer/</loc>
@@ -170,27 +298,19 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//services/database/postgresql/install/</loc>
-    <lastmod>2024-06-22</lastmod>
+    <lastmod>2024-06-24</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/decompress/</loc>
     <lastmod>2024-06-19</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//other/pxe/</loc>
+    <loc>https://chengshea.github.io//network/httpcode/</loc>
     <lastmod>2024-06-18</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/tool/ansible/galaxy/</loc>
     <lastmod>2024-06-18</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/k8s/prometheus/</loc>
-    <lastmod>2024-06-17</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/k8s/k8s-compile/</loc>
-    <lastmod>2024-06-17</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//services/elk/logstash/</loc>
@@ -209,15 +329,7 @@
     <lastmod>2024-06-17</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//tool/gitlab/</loc>
-    <lastmod>2024-06-16</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//tool/crack/unfreeze/</loc>
-    <lastmod>2024-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//network/httpcode/</loc>
     <lastmod>2024-06-15</lastmod>
   </url>
   <url>
@@ -257,10 +369,6 @@
     <lastmod>2024-04-25</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/k8s/helm/</loc>
-    <lastmod>2024-04-22</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//services/zookeeper/%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6/</loc>
     <lastmod>2024-04-16</lastmod>
   </url>
@@ -275,14 +383,6 @@
   <url>
     <loc>https://chengshea.github.io//network/net/</loc>
     <lastmod>2024-04-13</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//tool/git-pull/</loc>
-    <lastmod>2024-03-02</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//tool/git-server/</loc>
-    <lastmod>2024-03-02</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//tool/redis-live/</loc>
@@ -333,14 +433,6 @@
     <lastmod>2024-03-02</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//node/npm/hexo/</loc>
-    <lastmod>2024-03-02</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//lang/node/hexo/</loc>
-    <lastmod>2024-03-02</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//linux/tool/nfs/</loc>
     <lastmod>2024-02-22</lastmod>
   </url>
@@ -349,20 +441,12 @@
     <lastmod>2024-02-21</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//tool/git-cmd/</loc>
-    <lastmod>2024-02-14</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//lang/python/pip/</loc>
     <lastmod>2024-02-13</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/tool/wikijs/</loc>
     <lastmod>2024-02-11</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/k8s/etcd/</loc>
-    <lastmod>2024-02-03</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/shell/user-group/</loc>
@@ -409,20 +493,8 @@
     <lastmod>2023-11-06</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//linux/virtualization/kvm/</loc>
-    <lastmod>2023-11-05</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/shell/grep/</loc>
-    <lastmod>2023-11-05</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//linux/shell/fdisk/</loc>
     <lastmod>2023-11-04</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/debian/dnsmasq/</loc>
-    <lastmod>2023-10-28</lastmod>
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/k8s/kubelet/</loc>
@@ -434,10 +506,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/tool/create_ap/</loc>
-    <lastmod>2023-10-21</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/k8s/kubectl/</loc>
     <lastmod>2023-10-21</lastmod>
   </url>
   <url>
@@ -541,15 +609,7 @@
     <lastmod>2023-05-20</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//services/database/mysql/mysql-query/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//network/Kcptun/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//database/mongo/</loc>
     <lastmod>2023-05-20</lastmod>
   </url>
   <url>
@@ -585,23 +645,7 @@
     <lastmod>2023-05-20</lastmod>
   </url>
   <url>
-    <loc>https://chengshea.github.io//lang/gc/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//lang/go/environment/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//lang/go/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
     <loc>https://chengshea.github.io//lang/java/stream/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//lang/npm/npm%E5%88%9D%E5%A7%8B/</loc>
     <lastmod>2023-05-20</lastmod>
   </url>
   <url>
@@ -662,10 +706,6 @@
   </url>
   <url>
     <loc>https://chengshea.github.io//linux/k8s/flanneld/</loc>
-    <lastmod>2023-05-20</lastmod>
-  </url>
-  <url>
-    <loc>https://chengshea.github.io//linux/k8s/download/</loc>
     <lastmod>2023-05-20</lastmod>
   </url>
   <url>
