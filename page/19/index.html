@@ -292,7 +292,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="为服务器端和客户端准备公钥、私钥"><a href="#为服务器端和客户端准备公钥、私钥" class="headerlink" title="为服务器端和客户端准备公钥、私钥"></a>为服务器端和客户端准备公钥、私钥</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#私钥</span><br><span class="line">&gt;openssl genrsa -out server.key 1024 -config E:\Git\mingw64\ssl\openssl.cnf</span><br></pre></td></tr></table></figure>
+        <h3 id="制作流程"><a href="#制作流程" class="headerlink" title="制作流程"></a>制作流程</h3><h4 id="为服务器端和客户端准备公钥、私钥"><a href="#为服务器端和客户端准备公钥、私钥" class="headerlink" title="为服务器端和客户端准备公钥、私钥"></a>为服务器端和客户端准备公钥、私钥</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#私钥</span><br><span class="line">&gt;openssl genrsa -out server.key 1024 -config E:\Git\mingw64\ssl\openssl.cnf</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#公钥</span><br><span class="line">&gt;openssl rsa -in server.key -pubout -out server.pem</span><br></pre></td></tr></table></figure>
 <h4 id="生成-CA-证书"><a href="#生成-CA-证书" class="headerlink" title="生成 CA 证书"></a>生成 CA 证书</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;!--more--&gt; </span><br><span class="line">#ca私钥</span><br><span class="line">&gt;openssl genrsa -out ca.key 1024 -config E:\Git\mingw64\ssl\openssl.cnf</span><br></pre></td></tr></table></figure>
 <p> <strong>第一次填写信息</strong></p>
@@ -313,6 +313,117 @@
 <p> 生成p12</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">F:\logs\http&gt;openssl pkcs12 -export -clcerts -in server.crt -inkey server.key -out client.p12</span><br><span class="line">WARNING: can&#x27;t open config file: /usr/local/ssl/openssl.cnf</span><br><span class="line">Loading &#x27;screen&#x27; into random state - done</span><br><span class="line">Enter Export Password:12345678</span><br><span class="line">Verifying - Enter Export Password:12345678</span><br></pre></td></tr></table></figure>
 
+
+
+<h3 id="浏览器信任"><a href="#浏览器信任" class="headerlink" title="浏览器信任"></a>浏览器信任</h3><h4 id="运行脚本-浏览器导入自制pem"><a href="#运行脚本-浏览器导入自制pem" class="headerlink" title="运行脚本 浏览器导入自制pem"></a>运行脚本 浏览器导入自制pem</h4><details>
+  <summary>ssl.sh</summary>
+  <pre><a>bash  ./ssl.sh</a><code>
+#!/bin/bash
+</br>
+# 定义变量
+name=$&#123;1:-'local.org'&#125;
+KEY_FILE="$&#123;name&#125;.key"
+CSR_FILE="$&#123;name&#125;.csr"
+CRT_FILE="$&#123;name&#125;.crt"
+PEM_FILE="$&#123;name&#125;.pem"
+CONFIG_FILE="openssl.cnf"
+</br>
+# 直接在脚本中定义配置内容并赋值给变量  
+#如果使用引号可以防止被解析cat <<"EOF"
+CONFIG_CONTENT=$(cat << EOF
+[req]
+default_bits = 2048
+distinguished_name = req_distinguished_name
+copy_extensions = copy
+req_extensions = req_ext
+x509_extensions = v3_req
+prompt = no
+</br>
+[req_distinguished_name]
+countryName = CN
+stateOrProvinceName = GuangDong
+localityName = ShenZhen
+organizationName = SRE
+commonName = $name
+</br>
+[req_ext]
+basicConstraints = CA:FALSE
+subjectAltName = @alt_names
+</br>
+[v3_req]
+basicConstraints = CA:FALSE
+subjectAltName = @alt_names
+</br>
+[alt_names]
+IP.1 = 192.168.122.1
+IP.2 = 192.168.1.100
+IP.3 = 127.0.0.1
+DNS.1 = $name
+DNS.2 = *.$name
+EOF
+)
+</br>
+# 将配置内容写入文件
+[ -d "$name" ] || mkdir -p $name
+echo "$CONFIG_CONTENT" > "$name/$CONFIG_FILE"
+if [ ! -f "$name/$CONFIG_FILE" ]; then
+    echo "配置文件创建失败，退出脚本。"
+    exit 1
+fi
+</br>
+</br>
+</br>
+# 生成私钥
+openssl genrsa -out "$name/$KEY_FILE" 2048
+if [ ! -f "$name/$KEY_FILE" ]; then
+    echo "私钥生成失败，退出脚本。"
+    exit 1
+fi
+</br>
+# 创建自签名证书
+openssl req -x509 -new -nodes -key "$name/$KEY_FILE" -sha256 -days 3650 -out "$name/$PEM_FILE" -subj "/C=CN/ST=GuangDong/O=SRE/CN=local.org"
+if [ ! -f "$name/$PEM_FILE" ]; then
+    echo "证书生成失败，退出脚本。"
+    exit 1
+fi
+</br>
+# 生成CSR
+openssl req -new -key "$name/$KEY_FILE" -config "$name/$CONFIG_FILE" -out "$name/$CSR_FILE"
+if [ ! -f "$name/$CSR_FILE" ]; then
+    echo "CSR生成失败，退出脚本。"
+    exit 1
+fi
+</br>
+# 使用CA证书和私钥签署CSR
+openssl x509 -req -in "$name/$CSR_FILE" -CA "$name/$PEM_FILE" -CAkey "$name/$KEY_FILE"  \
+   -CAcreateserial -out "$name/$CRT_FILE" -days 3650 -sha256 -extensions v3_req -extfile "$name/$CONFIG_FILE"
+if [ ! -f "$name/$CRT_FILE" ]; then
+    echo "证书签署失败，退出脚本。"
+    exit 1
+fi
+</br>
+# 验证证书
+openssl verify -CAfile "$name/$PEM_FILE" "$name/$CRT_FILE"
+if [ $? -ne 0 ]; then
+    echo "证书验证失败。"
+    exit 1
+else
+    echo "证书验证成功。"
+fi
+</br>
+echo "所有步骤执行完毕。"
+</br>
+</br>
+<<EOF
+xx.key  xx.crt  放到nginx里
+xx.pem导入浏览器内，不再提示
+</br>
+#默认local.org
+bash  ./ssl.sh  k8s.org
+</br>
+EOF
+  </code></pre>
+</details>
 
       
     </div>

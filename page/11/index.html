@@ -297,8 +297,35 @@
 
 
 
+
+
+<ol>
+<li><p>Go to <a target="_blank" rel="noopener" href="https://download.docker.com/linux/debian/dists/?_gl=1*vfva4*_ga*NDA0NTkyMjk1LjE2OTIzNTEzNDY.*_ga_XJWPQMJYHQ*MTcyNDQ3MzQ5Ni4yOC4xLjE3MjQ0NzUzMTguNjAuMC4w"><code>https://download.docker.com/linux/debian/dists/</code></a>.</p>
+</li>
+<li><p>Select your Debian version in the list.</p>
+</li>
+<li><p>Go to <code>pool/stable/</code> and select the applicable architecture (<code>amd64</code>, <code>armhf</code>, <code>arm64</code>, or <code>s390x</code>).</p>
+</li>
+<li><p>Download the following <code>deb</code> files for the Docker Engine, CLI, containerd, and Docker Compose packages:</p>
+<ul>
+<li><code>containerd.io_&lt;version&gt;_&lt;arch&gt;.deb</code></li>
+<li><code>docker-ce_&lt;version&gt;_&lt;arch&gt;.deb</code></li>
+<li><code>docker-ce-cli_&lt;version&gt;_&lt;arch&gt;.deb</code></li>
+<li><code>docker-buildx-plugin_&lt;version&gt;_&lt;arch&gt;.deb</code></li>
+<li><code>docker-compose-plugin_&lt;version&gt;_&lt;arch&gt;.deb</code></li>
+</ul>
+</li>
+<li><p>Install the <code>.deb</code> packages. Update the paths in the following example to where you downloaded the Docker packages.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo dpkg -i ./containerd.io_&lt;version&gt;_&lt;<span class="built_in">arch</span>&gt;.deb \</span></span><br><span class="line"><span class="language-bash">  ./docker-ce_&lt;version&gt;_&lt;<span class="built_in">arch</span>&gt;.deb \</span></span><br><span class="line"><span class="language-bash">  ./docker-ce-cli_&lt;version&gt;_&lt;<span class="built_in">arch</span>&gt;.deb \</span></span><br><span class="line"><span class="language-bash">  ./docker-buildx-plugin_&lt;version&gt;_&lt;<span class="built_in">arch</span>&gt;.deb \</span></span><br><span class="line"><span class="language-bash">  ./docker-compose-plugin_&lt;version&gt;_&lt;<span class="built_in">arch</span>&gt;.deb</span></span><br></pre></td></tr></table></figure></li>
+</ol>
 <h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>daemon.json</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /etc/docker/daemon.json &lt;&lt;EOF</span><br><span class="line">&#123;</span><br><span class="line">    &quot;data-root&quot;: &quot;/home/cs/data/docker&quot;,</span><br><span class="line">   &quot;registry-mirrors&quot; : [</span><br><span class="line">    &quot;http://hub-mirror.c.163.com&quot;</span><br><span class="line">  ],</span><br><span class="line">&quot;insecure-registries&quot;:[</span><br><span class="line">  &quot;https://k8s.org&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;debug&quot; : true,</span><br><span class="line">  &quot;experimental&quot; : true</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h4 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a>proxy</h4><h5 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h5><p><code>~/.docker/config.json</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;proxies&quot;:&#123;</span><br><span class="line">     &quot;default&quot;: &#123;</span><br><span class="line">	    &quot;httpProxy&quot;: &quot;http://127.0.0.1:7897&quot;,</span><br><span class="line">	    &quot;httpsProxy&quot;: &quot;https://127.0.0.1:7897&quot;,</span><br><span class="line">	    &quot;noProxy&quot;: &quot;localhost,127.0.0.1,192.0.0.0/8,*.local.org,k8s.org&quot;</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="daemon"><a href="#daemon" class="headerlink" title="daemon"></a>daemon</h5><p><code>/etc/docker/daemon.json</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> ,</span><br><span class="line">   &quot;proxies&quot;:&#123;</span><br><span class="line">    &quot;http-proxy&quot;: &quot;http://127.0.0.1:7897&quot;,</span><br><span class="line">    &quot;https-proxy&quot;: &quot;https://127.0.0.1:7897&quot;,</span><br><span class="line">    &quot;no-proxy&quot;: &quot;localhost,127.0.0.1,192.0.0.0/8,*.local.org,k8s.org&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
           
       
     </div>
