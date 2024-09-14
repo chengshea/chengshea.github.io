@@ -343,6 +343,7 @@
 
 
 
+
   
 </article>
 
@@ -384,7 +385,15 @@ gitment.render('gitment')
 
 
 
+<!--页面点击小心心-->
 
+     <script> 
+        var newScript = document.createElement("script");
+        newScript.setAttribute("type","text/javascript");
+        newScript.setAttribute("src","/js/love.js");
+        document.body.appendChild(newScript);
+    </script>
+ 
 <script>
     function prt(str) {
         let l = new String(str);
@@ -467,8 +476,6 @@ setInterval("createtime()",250);
         
     </div>
 </footer>
-<!--页面点击小心心-->
-    <script type="text/javascript" src="js/love.js"></script>
 
     </div>
     

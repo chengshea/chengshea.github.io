@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://chengshea.github.io/pics/skywalking-oap.jpg">
 <meta property="og:image" content="https://chengshea.github.io/pics/apm-skywalking-ui.gif">
 <meta property="article:published_time" content="2024-07-25T03:21:14.000Z">
-<meta property="article:modified_time" content="2024-08-24T14:15:46.638Z">
+<meta property="article:modified_time" content="2024-09-14T12:49:58.668Z">
 <meta property="article:author" content="阿帅">
 <meta property="article:tag" content="xx">
 <meta property="article:tag" content="xxx">
@@ -450,6 +450,291 @@ spec:
 
 <h3 id="ui"><a href="#ui" class="headerlink" title="ui"></a>ui</h3><p>初始化时没有对应服务，指标导到sw时显示</p>
 <p><img src="/pics/apm-skywalking-ui.gif"></p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><details>
+  <summary>sw-ui-es.yaml</summary>
+  <pre><a>skywalking-ui-elasticsearch</a><code>
+version: '3'
+services:
+  oap:
+    image: apache/skywalking-oap-server:10.0.1
+    container_name: oap
+    #restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - SW_STORAGE=elasticsearch
+      - SW_NAMESPACE=sw-index
+      - SW_STORAGE_ES_CLUSTER_NODES="es.local.org:9123"
+      - SW_ES_USER=elastic
+      - SW_ES_PASSWORD=cs123456
+      - SW_STORAGE_ES_SSL_JKS_PATH="/opt/es.jks"
+      - SW_STORAGE_ES_SSL_JKS_PASS=cs123456
+      - SW_STORAGE_ES_HTTP_PROTOCOL=https
+      - SW_CORE_RECORD_DATA_TTL=3
+      - SW_CORE_METRICS_DATA_TTL=7
+      ## 修改存储类型为 PostgreSQL
+      # - SW_STORAGE=postgresql
+      # - SW_NAMESPACE=skywalking # 根据需要设置命名空间
+      # - SW_JDBC_URL="jdbc:postgresql://local.org:5433/skywalking" # PostgreSQL JDBC URL
+      # - SW_DATA_SOURCE_USER=postgres # PostgreSQL 用户名
+      # - SW_DATA_SOURCE_PASSWORD=123456 # PostgreSQL 密码
+      - SW_TELEMETRY=prometheus
+      - SW_TELEMETRY_PROMETHEUS_HOST=0.0.0.0
+      - SW_TELEMETRY_PROMETHEUS_PORT=1234
+      - SW_TELEMETRY_PROMETHEUS_SSL_ENABLED=false
+    ports:
+      - "11800:11800"  #收集监控数据的端口
+      - "12800:12800"  #接受前端请求的端口
+      - "11234:1234"
+    extra_hosts:
+      - "es.local.org:192.168.122.1" # 添加主机名
+    healthcheck:
+      test: [ "CMD", "bash", "-c", "cat < /dev/null > /dev/tcp/127.0.0.1/12800" ]
+      interval: 10s #健康检查的执行间隔
+      timeout: 2s  #健康检查命令的超时时间
+      retries: 3 #失败的次数
+      start_period: 50s #开始执行健康检查之前的等待时间
+    volumes:
+      - '/opt/ELK/elasticsearch-7.17.1/es.local.jks:/opt/es.jks'
+     # - '/opt/ELK/elasticsearch-7.17.1/es.jks:/opt/es.jks'
+      - '/etc/localtime:/etc/localtime:ro'
+    networks:
+      - skywalking-net
+  oap-ui:
+    image: apache/skywalking-ui:10.0.1
+    container_name: oap-ui
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      # - SW_OAP_ADDRESS=http://192.168.122.1:12800
+      - SW_OAP_ADDRESS=http://oap:12800
+    ports:
+      - "8086:8080"  # 根据需要更改端口映射
+    depends_on:
+      oap:
+        condition: service_healthy
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+    networks:
+      - skywalking-net
+</br>
+</br>
+  otel-collector:
+    image: k8s.org/monitor/opentelemetry-collector-contrib:0.107.0
+    container_name: otel
+    volumes:
+      - '/opt/monitor/opentelemetry/otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml:ro'
+    ports:
+      - 1888:1888 # pprof extension
+      - 8888:8888 # Prometheus metrics exposed by the Collector
+      - 8889:8889 # Prometheus exporter metrics
+      - 13133:13133 # health_check extension   http://localhost:13133/health
+      - 4317:4317 # OTLP gRPC receiver
+      - 4318:4318 # OTLP http receiver
+      - 56789:55679 # zpages extension   55679/debug/servicez
+    extra_hosts:
+      - "local.org:192.168.122.1" # 添加主机名
+</br>
+networks:
+  skywalking-net:
+    driver: bridge
+  </code></pre>
+</details>
+
+
+
+<p>exporters sw</p>
+<details>
+  <summary>otel-sw.yaml</summary>
+  <pre><a>otel-sw.yaml</a><code>
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+##接收器
+receivers:
+  opencensus:
+    endpoint: 0.0.0.0:55678
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+  prometheus:
+    config:
+     scrape_configs:
+       - job_name: 'skywalking-so11y'
+         scrape_interval: 8s
+         static_configs:
+           - targets: ['oap:1234']
+             labels:
+               host_name: http://oap:1234
+               service: oap-server
+       - job_name: otel-collector
+         static_configs:
+          - targets:
+              - otel:8888
+            labels:
+              service: otel-collector
+       - job_name: 'nginx-monitoring'
+         scrape_interval: 10s
+         metrics_path: "/metrics"
+         static_configs:
+            - targets: ['local.org:9145']
+              labels:
+                 service: nginx-service
+                 service_instance_id: e2e-test-instance
+       # - job_name: 'apisix-monitoring'
+       #   scrape_interval: 10s
+       #   metrics_path: "/apisix/prometheus/metrics"
+       #   static_configs:
+       #      - targets: ['local.org:9091']
+       #        labels:
+       #          skywalking_service: showcase-apisix-service
+       - job_name: "vm-monitoring" # make sure to use this in the vm.yaml to filter only VM metrics
+         scrape_interval: 10s
+         static_configs:
+            - targets: ["local.org:9100"]
+       - job_name: 'mysql-monitoring'
+         scrape_interval: 5s
+         static_configs:
+           - targets: ['local.org:9104']
+             labels:
+               host_name: local.org:3305
+       - job_name: "postgresql-monitoring"
+         scrape_interval: 5s
+         static_configs: #["postgres-exporter:9187","postgres-exporter_2:9187","postgres-exporter_3:9187"]
+            - targets: ["local.org:9187"]
+              labels:
+                host_name: local.org:5433
+       - job_name: 'redis-monitoring'
+         scrape_interval: 5s
+         static_configs:
+           - targets: ['local.org:9121']
+             labels:
+               host_name: local.org:9121
+       # - job_name: 'docker-monitoring'
+       #   scrape_interval: 10s
+       #   metrics_path: "/metrics"
+       #   static_configs:
+       #      - targets: ['local.org:9188']
+       #        labels:
+       #           service: docker-service
+       #           host_name: local.org                                               
+</br>
+processors:
+  batch:
+    send_batch_size: 10000
+    send_batch_max_size: 10000
+    timeout: 10s
+##导出器
+exporters:
+  ####################################################################################
+  # If you want to use otlp exporter please ensure that your OAP version is >= 9.2.0 #
+  ####################################################################################
+  otlp:
+    endpoint: oap:11800
+    tls:
+      insecure: true
+    timeout: 10s
+    retry_on_failure:
+      enabled: true
+      initial_interval: 5s
+      max_interval: 20s
+      max_elapsed_time: 2m
+  debug:
+</br>
+##扩展组件
+extensions:
+  health_check:
+    endpoint: 0.0.0.0:13133
+  pprof:
+    endpoint: 0.0.0.0:1888
+  zpages:
+    endpoint: 0.0.0.0:55679
+</br>
+service:
+  telemetry:
+    metrics:
+      address: 0.0.0.0:8888
+  extensions: [health_check, pprof, zpages]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp,debug]
+    metrics:
+     # receivers: [otlp,prometheus]
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp,debug]
+  </code></pre>
+</details>
+
+<p>指标采集器</p>
+<details>
+  <summary>exporter.yaml</summary>
+  <pre><a>exporter</a><code>
+---
+version: '3.8'
+services:
+  node_exporter:
+    image: k8s.org/monitor/node-exporter:v1.8.2
+    container_name: node_exporter
+    command:
+      - '--path.rootfs=/host'
+   #   - '--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)'
+    ports:
+      - "9100:9100/tcp"  
+    restart: unless-stopped
+    volumes:
+      - '/:/host:ro,rslave'
+  postgres-exporter:
+    image: k8s.org/monitor/postgres-exporter:v0.15.0
+    container_name: postgres_exporter
+    extra_hosts:
+      - "local.org:192.168.122.1" # 添加主机名
+    environment:
+     - DATA_SOURCE_NAME=postgres://postgres:123456@local.org:5433/postgres?sslmode=disable
+    ports:
+      - "9187:9187/tcp"
+  mysqld-exporter:
+    image: k8s.org/monitor/mysqld-exporter:v0.15.1
+    container_name: mysqld_exporter
+    command:
+      - '--mysqld.address=local.org:3305'
+      - '--config.my-cnf=/opt/my.cnf'
+    volumes:
+      - './config/mysql.cnf:/opt/my.cnf'
+    ports:
+      - "9104:9104/tcp"  
+    extra_hosts:
+      - "local.org:192.168.122.1" # 添加主机名
+  redis-exporter:
+    image: k8s.org/monitor/redis_exporter:v1.62.0
+    container_name: redis_exporter
+    extra_hosts:
+      - "local.org:192.168.122.1" # 添加主机名
+    command:
+       - '--redis.addr=redis://local.org:9736'
+       - '--redis.user=exporter'
+       - '--redis.password-file=/opt/redis-pwd.json'
+       - '--web.listen-address=0.0.0.0:9121'
+       - '--web.telemetry-path=/metrics'
+    volumes:
+      - './config/redis-pwd.json:/opt/redis-pwd.json'
+    ports:
+      - "9121:9121/tcp"  
+  </code></pre>
+</details>
 
       
     </div>
@@ -463,7 +748,7 @@ spec:
        <a  title="访问 阿帅 的个人博客">阿帅</a>
         </p>
         <p><span>发布时间:</span>2024年07月25日 - 11时21分</p>
-        <p><span>最后更新:</span>2024年08月24日 - 22时15分</p>
+        <p><span>最后更新:</span>2024年09月14日 - 20时49分</p>
 
           <p>
             <span>原始链接:</span><a class="post-url" href="/tool/apm/skywalking/" title="skywalking">https://chengshea.github.io/tool/apm/skywalking/</a>
@@ -485,17 +770,17 @@ spec:
 
     </div>
  
-    <script>
+<script>
      function showDiv2() {
-  var div2 = document.getElementById("div2");
-  div2.style.display = "block";
-}
+    var div2 = document.getElementById("div2");
+    div2.style.display = "block";
+  }
 
-function hideDiv2() {
-  var div2 = document.getElementById("div2");
-  div2.style.display = "none";
-}
-    </script>
+  function hideDiv2() {
+    var div2 = document.getElementById("div2");
+    div2.style.display = "none";
+  }
+</script>
 
 
 
@@ -519,12 +804,13 @@ function hideDiv2() {
   
 </nav>
 
+
   
 </article>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#skywalking"><span class="toc-number">1.</span> <span class="toc-text">skywalking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker"><span class="toc-number">1.1.</span> <span class="toc-text">docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#other"><span class="toc-number">1.2.</span> <span class="toc-text">other</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ui"><span class="toc-number">1.3.</span> <span class="toc-text">ui</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#skywalking"><span class="toc-number">1.</span> <span class="toc-text">skywalking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker"><span class="toc-number">1.1.</span> <span class="toc-text">docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#other"><span class="toc-number">1.2.</span> <span class="toc-text">other</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ui"><span class="toc-number">1.3.</span> <span class="toc-text">ui</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text">示例</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -635,7 +921,15 @@ gitment.render('gitment')
 
 
 
+<!--页面点击小心心-->
 
+     <script> 
+        var newScript = document.createElement("script");
+        newScript.setAttribute("type","text/javascript");
+        newScript.setAttribute("src","/js/love.js");
+        document.body.appendChild(newScript);
+    </script>
+ 
 <script>
     function prt(str) {
         let l = new String(str);
@@ -718,8 +1012,6 @@ setInterval("createtime()",250);
         
     </div>
 </footer>
-<!--页面点击小心心-->
-    <script type="text/javascript" src="js/love.js"></script>
 
     </div>
     

@@ -13,7 +13,7 @@
 <meta property="og:description" content="installationhttps:&#x2F;&#x2F;skywalking.apache.org&#x2F;docs&#x2F;skywalking-banyandb&#x2F;next&#x2F;installation&#x2F;binaries&#x2F;">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-09-11T08:29:33.000Z">
-<meta property="article:modified_time" content="2024-09-11T08:39:26.017Z">
+<meta property="article:modified_time" content="2024-09-14T12:39:23.537Z">
 <meta property="article:author" content="阿帅">
 <meta property="article:tag" content="xxx">
 <meta property="article:tag" content="apm">
@@ -321,6 +321,196 @@
 
 <p>doc <a target="_blank" rel="noopener" href="https://skywalking.apache.org/docs/skywalking-banyandb/next/interacting/web-ui/dashboard/">https://skywalking.apache.org/docs/skywalking-banyandb/next/interacting/web-ui/dashboard/</a></p>
 <p>ui <a target="_blank" rel="noopener" href="http://localhost:17913/">skywalking-banyandb-webapp</a> </p>
+<details>
+  <summary>db-cluster.yaml</summary>
+  <pre><a>db-cluster.yaml</a><code>
+version: '3.8'
+services:
+  etcd:
+    image: bitnami/etcd:3.5.14
+    container_name: etcd
+    environment:
+      ALLOW_NONE_AUTHENTICATION: "yes"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://etcd:2379"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+    healthcheck:
+      test: ["CMD", "etcdctl", "endpoint", "health"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s #开始执行健康检查之前的等待时间
+</br>
+  liaison:
+    image: apache/skywalking-banyandb:0.7-beta
+    container_name: liaison
+    ports:
+      - 17913:17913 #ui  http://localhost:17913
+      - 6060:6060   #pprof
+      - 2121:2121   #Observability
+    command: liaison --etcd-endpoints=http://etcd:2379  --observability-modes=native
+    healthcheck:
+      test: ["CMD", "./bydbctl", "health", "--addr=http://liaison:17913"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s #开始执行健康检查之前的等待时间
+    depends_on:
+       etcd:
+         condition: service_healthy
+</br>
+  data:
+    image: apache/skywalking-banyandb:0.7-beta
+    container_name: data
+    expose:
+      - 17912
+      - 2121
+      - 6060
+    command: data  --etcd-endpoints=http://etcd:2379 --observability-modes=native
+    healthcheck:
+      test: ["CMD", "./bydbctl", "health", "--grpc-addr=data:17913"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s #开始执行健康检查之前的等待时间
+    depends_on:
+      etcd:
+        condition: service_healthy  </code></pre>
+</details>
+
+
+
+<details>
+  <summary>banyandb-oap-ui.yaml</summary>
+  <pre><a>banyandb-oap-ui.yaml</a><code>
+---
+version: '3.8'
+services:
+  banyandb:
+    image: apache/skywalking-banyandb:0.7-beta
+    container_name: sw-banyandb
+    deploy:
+      resources:
+        limits:
+          cpus: '0.85'
+          memory: 7G
+        reservations:
+          memory: 500M
+    ulimits:
+      nofile:
+        soft: 800000
+        hard: 800000
+      nproc: 8096  # 相当于 ulimit -u
+      memlock: -1  #相当于 ulimit -l unlimited，-1 表示 unlimited
+    environment:
+      - SW_AGENT_NAME=banyandb
+      - SW_AGENT_REPORTER_GRPC_BACKEND_SERVICE=oap:11800
+    volumes:
+      - '/mnt/oss/db/tsdb/banyandb:/tmp'
+    command:
+      - standalone
+      - --observability-modes=native
+    ports:
+      - 17913:17913 # http://localhost:17913
+      - 2121
+    healthcheck:
+      test: ["CMD", "./bydbctl", "health", "--config=-", "--addr=http://banyandb:17913"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: on-failure
+    networks:
+      - sw
+</br>
+  oap:
+    image: apache/skywalking-oap-server:10.0.1
+    container_name: sw-oap
+    #restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      ## 修改存储类型
+      - SW_STORAGE=banyandb # 设置存储后端为 BanyanDB
+      - SW_STORAGE_BANYANDB_TARGETS=banyandb:17912 # BanyanDB 服务器地址和端口
+      - SW_STORAGE_BANYANDB_MAX_BULK_SIZE=10000
+      - SW_STORAGE_BANYANDB_FLUSH_INTERVAL=15
+      - SW_STORAGE_BANYANDB_FLUSH_TIMEOUT=10
+      - SW_STORAGE_BANYANDB_METRICS_SHARDS_NUMBER=1
+      - SW_STORAGE_BANYANDB_RECORD_SHARDS_NUMBER=1
+      - SW_STORAGE_BANYANDB_SUPERDATASET_SHARDS_FACTOR=2
+      - SW_STORAGE_BANYANDB_CONCURRENT_WRITE_THREADS=15
+      - SW_STORAGE_BANYANDB_PROFILE_TASK_QUERY_MAX_SIZE=200
+      - SW_STORAGE_BANYANDB_SEGMENT_INTERVAL_DAYS=1
+      - SW_STORAGE_BANYANDB_SUPER_DATASET_SEGMENT_INTERVAL_DAYS=1
+      #metrics
+      - SW_TELEMETRY=prometheus
+      - SW_TELEMETRY_PROMETHEUS_HOST=0.0.0.0
+      - SW_TELEMETRY_PROMETHEUS_PORT=1234
+      - SW_TELEMETRY_PROMETHEUS_SSL_ENABLED=false
+      #receiver-otel
+      - SW_OTEL_RECEIVER=default
+      - SW_OTEL_RECEIVER_ENABLED_HANDLERS="otlp-metrics,otlp-logs,otlp-traces"
+ #     - SW_RECEIVER_ZIPKIN=default
+ #     - SW_ZIPKIN_HTTP_COLLECTOR_ENABLED=true
+ #     - SW_QUERY_ZIPKIN=default
+    ports:
+      - 11800  #收集监控数据的端口
+      - 12800:12800  #接受前端请求的端口
+      - 1234
+    extra_hosts:
+      - "local.org:192.168.122.1" # 添加主机名
+    deploy:
+      resources:
+        limits:
+          cpus: '0.90'
+          memory: 5G
+        reservations:
+          memory: 2G
+    depends_on:
+      banyandb:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "bash", "-c", "cat < /dev/null > /dev/tcp/127.0.0.1/12800" ]
+      interval: 10s #健康检查的执行间隔
+      timeout: 2s  #健康检查命令的超时时间
+      retries: 20 #失败的次数
+      start_period: 150s #开始执行健康检查之前的等待时间
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+    networks:
+      - sw
+##https://skywalking.apache.org/docs/main/next/en/setup/backend/ui-setup/
+  oap-ui:
+    image: apache/skywalking-ui:10.0.1
+    container_name: sw-oap-ui
+    environment:
+      - TZ=Asia/Shanghai
+      # - SW_OAP_ADDRESS=http://192.168.122.1:12800
+      - SW_OAP_ADDRESS=http://oap:12800
+     # - SW_ZIPKIN_ADDRESS=http://oap:9412
+    ports:
+      - "8086:8080"  # 根据需要更改端口映射
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 800M
+        reservations:
+          memory: 200M
+    depends_on:
+      oap:
+        condition: service_healthy
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+    networks:
+      - sw
+</br>
+networks:
+  sw:
+    external: true
+  </code></pre>
+</details>
+
+
+
 
       
     </div>
@@ -334,7 +524,7 @@
        <a  title="访问 阿帅 的个人博客">阿帅</a>
         </p>
         <p><span>发布时间:</span>2024年09月11日 - 16时29分</p>
-        <p><span>最后更新:</span>2024年09月11日 - 16时39分</p>
+        <p><span>最后更新:</span>2024年09月14日 - 20时39分</p>
 
           <p>
             <span>原始链接:</span><a class="post-url" href="/tool/apm/banyandb/" title="apm banyandb">https://chengshea.github.io/tool/apm/banyandb/</a>
@@ -356,17 +546,17 @@
 
     </div>
  
-    <script>
+<script>
      function showDiv2() {
-  var div2 = document.getElementById("div2");
-  div2.style.display = "block";
-}
+    var div2 = document.getElementById("div2");
+    div2.style.display = "block";
+  }
 
-function hideDiv2() {
-  var div2 = document.getElementById("div2");
-  div2.style.display = "none";
-}
-    </script>
+  function hideDiv2() {
+    var div2 = document.getElementById("div2");
+    div2.style.display = "none";
+  }
+</script>
 
 
 
@@ -389,6 +579,7 @@ function hideDiv2() {
     </a>
   
 </nav>
+
 
   
 </article>
@@ -506,7 +697,15 @@ gitment.render('gitment')
 
 
 
+<!--页面点击小心心-->
 
+     <script> 
+        var newScript = document.createElement("script");
+        newScript.setAttribute("type","text/javascript");
+        newScript.setAttribute("src","/js/love.js");
+        document.body.appendChild(newScript);
+    </script>
+ 
 <script>
     function prt(str) {
         let l = new String(str);
@@ -589,8 +788,6 @@ setInterval("createtime()",250);
         
     </div>
 </footer>
-<!--页面点击小心心-->
-    <script type="text/javascript" src="js/love.js"></script>
 
     </div>
     

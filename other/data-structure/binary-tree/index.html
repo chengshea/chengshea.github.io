@@ -451,17 +451,17 @@ style="color: rgb(0, 0, 0);">（最后一个）</span> 确定根节点，必须�
 
     </div>
  
-    <script>
+<script>
      function showDiv2() {
-  var div2 = document.getElementById("div2");
-  div2.style.display = "block";
-}
+    var div2 = document.getElementById("div2");
+    div2.style.display = "block";
+  }
 
-function hideDiv2() {
-  var div2 = document.getElementById("div2");
-  div2.style.display = "none";
-}
-    </script>
+  function hideDiv2() {
+    var div2 = document.getElementById("div2");
+    div2.style.display = "none";
+  }
+</script>
 
 
 
@@ -484,6 +484,7 @@ function hideDiv2() {
     </a>
   
 </nav>
+
 
   
 </article>
@@ -601,7 +602,15 @@ gitment.render('gitment')
 
 
 
+<!--页面点击小心心-->
 
+     <script> 
+        var newScript = document.createElement("script");
+        newScript.setAttribute("type","text/javascript");
+        newScript.setAttribute("src","/js/love.js");
+        document.body.appendChild(newScript);
+    </script>
+ 
 <script>
     function prt(str) {
         let l = new String(str);
@@ -684,8 +693,6 @@ setInterval("createtime()",250);
         
     </div>
 </footer>
-<!--页面点击小心心-->
-    <script type="text/javascript" src="js/love.js"></script>
 
     </div>
     
