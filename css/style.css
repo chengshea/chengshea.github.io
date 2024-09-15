@@ -4291,8 +4291,8 @@ pre .link_url {
 }
 #div2 {
   position: absolute;
-  width: 260px;
-  height: 290px;
+  width: 430px;
+  height: 270px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   top: -280px; /* 使其在div1上方显示 */
